@@ -76,7 +76,7 @@
       "kind": "planned",
       "approved": true,
       "report": "reports/P2_conditions.md",
-      "gate_pending": true
+      "gate_pending": false
     },
     {
       "id": "P3",
