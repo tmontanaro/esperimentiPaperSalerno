@@ -11,3 +11,4 @@
 | 2026-11-06 11:46:12 | P3 | lvef-qrs-analyst | OK (OK) | 0.0 min | $0.00 | reports/P3_lvef-qrs.md |
 | 2026-11-06 11:46:12 | gate P3 | orchestrator | OK | 0.0 min | $0.00 | gate P3 simulato |
 | 2026-11-06 11:46:12 | P4 | waveform-modeler | OK (OK) | 0.0 min | $0.00 | reports/P4_waveform.md |
+| 2026-11-06 11:46:12 | gate P4 | orchestrator | OK | 0.0 min | $0.00 | gate P4 simulato |
