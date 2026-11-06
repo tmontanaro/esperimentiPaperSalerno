@@ -1,0 +1,17 @@
+{
+ "leads": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5
+ ],
+ "epochs": 12,
+ "batch": 128,
+ "lr": 0.002,
+ "reg_weight": 0.5,
+ "population": "clean",
+ "folds": 5,
+ "debug_n": null
+}

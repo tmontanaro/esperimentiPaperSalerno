@@ -1,0 +1,34 @@
+{
+ "status": "done",
+ "jobs_total": 5,
+ "jobs_done": 5,
+ "current": null,
+ "epoch": "12/12",
+ "pid": 33786,
+ "started": "2026-11-06 18:43:45",
+ "updated": "2026-11-06 18:49:36",
+ "job_seconds": [
+  71.47606825828552,
+  70.37822079658508,
+  69.33199453353882,
+  69.52849578857422,
+  69.53542995452881
+ ],
+ "config": {
+  "leads": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "epochs": 12,
+  "batch": 128,
+  "lr": 0.002,
+  "reg_weight": 0.5,
+  "population": "clean",
+  "folds": 5,
+  "debug_n": null
+ }
+}

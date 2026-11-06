@@ -4,3 +4,4 @@
 |---|---|---|---|---|---|---|
 | 2026-11-06 17:40:42 | Q0 | inventory-auditor | OK (OK) | 2.1 min | $0.33 | reports/Q0_inventory.md |
 | 2026-11-06 18:36:49 | Q1 | cnn-cv-analyst | OK (OK) | 56.1 min | $0.39 | reports/Q1_cnn-cv.md |
+| 2026-11-06 19:59:00 | Q2 | lead-ablation-analyst | OK (OK) | 82.1 min | $0.39 | reports/Q2_lead-ablation.md |

@@ -76,14 +76,15 @@
       "gate": false,
       "priority": 0,
       "goal": "Rimozione progressiva di derivazioni: quali bastano? (idea originale di togliere input fino a trovare il sottoinsieme che funziona).",
-      "status": "pending",
-      "attempts": 0,
-      "started": null,
-      "finished": null,
-      "summary": null,
+      "status": "done",
+      "attempts": 1,
+      "started": "2026-11-06 18:36:52",
+      "finished": "2026-11-06 19:59:00",
+      "summary": "STATUS OK",
       "kind": "planned",
       "approved": true,
-      "report": "reports/Q2_lead-ablation.md"
+      "report": "reports/Q2_lead-ablation.md",
+      "gate_pending": false
     },
     {
       "id": "Q3",

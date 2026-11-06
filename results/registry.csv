@@ -23,3 +23,10 @@ ts,exp_id,phase,target,uses_val,n_configs,metric_val,description
 2026-11-06 15:36:31,E0022,P6,,1,1,,"P6 round2: verifica descrittiva su val (ristratificazione CNN/hist_gb seed 7, contratto candidati 300 righe, sensibilita righe senza lvef_value con tutti i flag=0); nessuna selezione"
 2026-11-06 17:40:54,E0023,Q1,,1,1,,CNN CV main 3 seed 12 epoche clean
 2026-11-06 18:09:49,E0024,Q1,,1,1,,CNN CV sensibilita population all seed 0
+2026-11-06 19:58:20,E0025,Q2,,1,1,,"ablazione derivazioni eight, seed 0, 5 fold, config Q1"
+2026-11-06 19:58:20,E0026,Q2,,1,1,,"ablazione derivazioni limb, seed 0, 5 fold, config Q1"
+2026-11-06 19:58:21,E0027,Q2,,1,1,,"ablazione derivazioni chest, seed 0, 5 fold, config Q1"
+2026-11-06 19:58:21,E0028,Q2,,1,1,,"ablazione derivazioni I_II, seed 0, 5 fold, config Q1"
+2026-11-06 19:58:22,E0029,Q2,,1,1,,"ablazione derivazioni II, seed 0, 5 fold, config Q1"
+2026-11-06 19:58:22,E0030,Q2,,1,1,,"ablazione derivazioni I, seed 0, 5 fold, config Q1"
+2026-11-06 19:58:23,E0031,Q2,,1,1,,"ablazione derivazioni I_II_V1, seed 0, 5 fold, config Q1"
