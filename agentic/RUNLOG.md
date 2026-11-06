@@ -8,3 +8,4 @@
 | 2026-11-06 14:08:37 | gate P1 | orchestrator | OK | 0.0 min | $0.00 | gate P1 simulato |
 | 2026-11-06 14:08:37 | P2 | condition-analyst | OK (OK) | 0.0 min | $0.00 | reports/P2_conditions.md |
 | 2026-11-06 14:08:37 | gate P2 | orchestrator | OK | 0.0 min | $0.00 | gate P2 simulato |
+| 2026-11-06 14:08:37 | P3 | lvef-qrs-analyst | OK (OK) | 0.0 min | $0.00 | reports/P3_lvef-qrs.md |

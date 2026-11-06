@@ -89,14 +89,15 @@
       "gate": true,
       "priority": 0,
       "goal": "LVEF (regressione e <=45%) e ipotesi dei medici sul QRS come modificatore d'effetto.",
-      "status": "pending",
-      "attempts": 0,
-      "started": null,
-      "finished": null,
-      "summary": null,
+      "status": "done",
+      "attempts": 1,
+      "started": "2026-11-06 14:08:37",
+      "finished": "2026-11-06 14:08:37",
+      "summary": "STATUS OK",
       "kind": "planned",
       "approved": true,
-      "report": "reports/P3_lvef-qrs.md"
+      "report": "reports/P3_lvef-qrs.md",
+      "gate_pending": true
     },
     {
       "id": "P4",
