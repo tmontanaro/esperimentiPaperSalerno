@@ -17,3 +17,4 @@
 | 2026-11-06 11:46:12 | P6 | skeptic-reviewer | OK (OK) | 0.0 min | $0.00 | reports/P6_review.md |
 | 2026-11-06 11:46:12 | gate P6 | orchestrator | OK | 0.0 min | $0.00 | gate P6 simulato |
 | 2026-11-06 11:46:35 | P7 | final-evaluator | OK (OK) | 0.0 min | $0.00 | reports/P7_final-test.md |
+| 2026-11-06 11:46:35 | P8 | synthesizer | OK (OK) | 0.0 min | $0.00 | reports/P8_synthesis.md |
