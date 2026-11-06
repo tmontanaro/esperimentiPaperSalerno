@@ -116,14 +116,15 @@
       "gate": false,
       "priority": 0,
       "goal": "Cluster sugli embedding della CNN e sottogruppi in cui la CNN funziona meglio o peggio, con rumore di fondo e correzione per confronti multipli.",
-      "status": "pending",
-      "attempts": 0,
-      "started": null,
-      "finished": null,
-      "summary": null,
+      "status": "done",
+      "attempts": 1,
+      "started": "2026-11-06 20:02:24",
+      "finished": "2026-11-06 20:28:05",
+      "summary": "STATUS OK",
       "kind": "planned",
       "approved": true,
-      "report": "reports/Q4_embedding-subgroups.md"
+      "report": "reports/Q4_embedding-subgroups.md",
+      "gate_pending": false
     },
     {
       "id": "Q5",

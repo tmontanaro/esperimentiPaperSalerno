@@ -1,0 +1,33 @@
+ts,exp_id,phase,target,uses_val,n_configs,metric_val,description
+2026-11-06 14:20:59,E0001,P1,,1,10,,"baseline composito: 2 insiemi feature (eta+sesso, 7 ECG) x 5 modelli, valutati su validation"
+2026-11-06 14:24:09,E0002,P2,,1,148,,"smoke test debug_n=2000: (a)(b)(c) pipeline completa, valutazioni su validation ridotto (36 modelli-target, strati, 15 regole)"
+2026-11-06 14:26:32,E0003,P2,,1,160,,"run completo: 12 target x 3 modelli (36), strati locale/globale (b), 15 regole top-5 per 3 target verificate su validation; 1950 regole provate in train/OOF"
+2026-11-06 14:30:25,E0004,P3,lvef_value,1,1,,"smoke test debug_n=2000: regressione 4 modelli + cls 5 + stratificazione 3 + coppie 4 MATCH_ON (riepilogo, usa val sottocampione)"
+2026-11-06 14:31:11,E0005,P3,lvef_value,1,4,,"regressione 4 modelli (ridge,rf,hist_gb,mlp) + baseline su val"
+2026-11-06 14:31:11,E0006,P3,lvef_lte_45_flag,1,5,,classificazione 5 modelli lvef_lte_45
+2026-11-06 14:31:11,E0007,P3,lvef_value,1,3,,stratificazione QRS: 3 modelli locali hgb vs globale
+2026-11-06 14:31:11,E0008,P3,lvef_value,1,1,,"coppie MATCH_ON A [eta,sesso,freq] (replica val)"
+2026-11-06 14:31:11,E0009,P3,lvef_value,1,1,,"coppie MATCH_ON B [eta,sesso] (replica val)"
+2026-11-06 14:31:11,E0010,P3,lvef_value,1,1,,"coppie MATCH_ON C [eta,sesso,freq,PR,QTc] (replica val)"
+2026-11-06 14:31:11,E0011,P3,lvef_value,1,1,,"coppie MATCH_ON D [eta,freq,PR,QTc] (replica val)"
+2026-11-06 14:36:43,E0012,P4,,1,1,,"smoke test CNN ResNet1D debug_n=2000, 2 epoche, solo forme d'onda (val monitorato)"
+2026-11-06 14:38:25,E0013,P4,,1,1,,"CNN ResNet1D completa 12 epoche, solo forme d'onda, epoca finale (val usato per valutazione/monitoraggio, non per scegliere)"
+2026-11-06 14:44:09,E0014,P5,,0,78,,"selezione feature per il clustering (backward k=3,4,5: 69 set + sparse k-means 9 configurazioni), solo train, nessun uso del validation"
+2026-11-06 14:44:09,E0015,P5,,1,47,,"smoke test debug_n=2000: globale vs locali (4 modelli) per cluster x 3 target, subset validation"
+2026-11-06 15:29:25,E0016,R1-P3,,1,1,,"coppie dedup, bootstrap per paziente, MATCH_ON A età,sesso,freq (replica val)"
+2026-11-06 15:29:26,E0017,R1-P3,,1,1,,"coppie dedup, bootstrap per paziente, MATCH_ON B età,sesso (replica val)"
+2026-11-06 15:29:26,E0018,R1-P3,,1,1,,"coppie dedup, bootstrap per paziente, MATCH_ON C età,sesso,freq,PR,QTc (replica val)"
+2026-11-06 15:29:27,E0019,R1-P3,,1,1,,"coppie dedup, bootstrap per paziente, MATCH_ON D età,freq,PR,QTc (replica val)"
+2026-11-06 15:31:57,E0020,R1-P4,,1,1,,"Stratificazione descrittiva CNN vs hist_gb su val (race, setting, sesso, eta); nessuna selezione di modello"
+2026-11-06 15:32:55,E0021,R1-P5,,1,43,,Registrazione retroattiva P5: locale vs globale run completa su validation (3 globali + 10 cluster x 4 locali; 40 confronti appaiati)
+2026-11-06 15:36:31,E0022,P6,,1,1,,"P6 round2: verifica descrittiva su val (ristratificazione CNN/hist_gb seed 7, contratto candidati 300 righe, sensibilita righe senza lvef_value con tutti i flag=0); nessuna selezione"
+2026-11-06 17:40:54,E0023,Q1,,1,1,,CNN CV main 3 seed 12 epoche clean
+2026-11-06 18:09:49,E0024,Q1,,1,1,,CNN CV sensibilita population all seed 0
+2026-11-06 19:58:20,E0025,Q2,,1,1,,"ablazione derivazioni eight, seed 0, 5 fold, config Q1"
+2026-11-06 19:58:20,E0026,Q2,,1,1,,"ablazione derivazioni limb, seed 0, 5 fold, config Q1"
+2026-11-06 19:58:21,E0027,Q2,,1,1,,"ablazione derivazioni chest, seed 0, 5 fold, config Q1"
+2026-11-06 19:58:21,E0028,Q2,,1,1,,"ablazione derivazioni I_II, seed 0, 5 fold, config Q1"
+2026-11-06 19:58:22,E0029,Q2,,1,1,,"ablazione derivazioni II, seed 0, 5 fold, config Q1"
+2026-11-06 19:58:22,E0030,Q2,,1,1,,"ablazione derivazioni I, seed 0, 5 fold, config Q1"
+2026-11-06 19:58:23,E0031,Q2,,1,1,,"ablazione derivazioni I_II_V1, seed 0, 5 fold, config Q1"
+2026-11-06 20:01:48,E0032,Q3,,1,8,,"LVEF-QRS con CNN OOF: 3 fasce QRS (CNN vs tab), 2 test valore aggiunto (dAUROC, dlogloss), 2 test residuo (corr parziale, dR2), 1 test coppie discordanti; Holm per famiglia"

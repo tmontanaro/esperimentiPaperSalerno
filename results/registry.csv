@@ -31,3 +31,6 @@ ts,exp_id,phase,target,uses_val,n_configs,metric_val,description
 2026-11-06 19:58:22,E0030,Q2,,1,1,,"ablazione derivazioni I, seed 0, 5 fold, config Q1"
 2026-11-06 19:58:23,E0031,Q2,,1,1,,"ablazione derivazioni I_II_V1, seed 0, 5 fold, config Q1"
 2026-11-06 20:01:48,E0032,Q3,,1,8,,"LVEF-QRS con CNN OOF: 3 fasce QRS (CNN vs tab), 2 test valore aggiunto (dAUROC, dlogloss), 2 test residuo (corr parziale, dR2), 1 test coppie discordanti; Holm per famiglia"
+2026-11-06 20:24:38,E0033,Q4,,1,15,,"cluster k-means su embedding CNN (5 fold, seed 0, k in 3/4/6/8 per silhouette; 15 cluster confrontati con permutazioni)"
+2026-11-06 20:24:38,E0034,Q4,,1,90,,"strati pre-specificati CNN ensemble (SHD e LVEF<=45), Holm su 90 confronti"
+2026-11-06 20:24:38,E0035,Q4,,1,32,,"regole albero sull'errore con cross-fitting (32 foglie, SHD e LVEF<=45), Holm"
