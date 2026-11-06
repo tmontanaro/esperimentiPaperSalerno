@@ -155,20 +155,23 @@
         "P2",
         "P3",
         "P4",
-        "P5"
+        "P5",
+        "R1-P4",
+        "R1-P5",
+        "R1-P3"
       ],
       "gate": true,
       "priority": 0,
       "goal": "Revisione indipendente: leakage, riproduzione dei numeri, selezione sul validation, affermazioni non supportate.",
-      "status": "done",
+      "status": "pending",
       "attempts": 1,
       "started": "2026-11-06 15:23:22",
-      "finished": "2026-11-06 15:27:45",
+      "finished": null,
       "summary": "STATUS PARZIALE",
       "kind": "planned",
       "approved": true,
       "report": "reports/P6_review.md",
-      "gate_pending": true
+      "gate_pending": false
     },
     {
       "id": "P7",
@@ -227,10 +230,73 @@
       "kind": "planned",
       "approved": true,
       "report": "reports/P9_notebook.md"
+    },
+    {
+      "id": "R1-P4",
+      "name": "review-waveform",
+      "agent": "waveform-modeler",
+      "depends_on": [
+        "P0",
+        "P1"
+      ],
+      "gate": false,
+      "priority": 0,
+      "goal": "Stratificare CNN candidato su val per race_ethnicity, location_setting, sex, age_bin (AUROC IC, n, positivi, CNN vs hist_gb con IC appaiato) da val_pred_emb.npz senza riaddestrare; documentare candidate.predict su 500 righe val (colonne, indice, max|score-pred salvata|)",
+      "status": "pending",
+      "attempts": 0,
+      "started": null,
+      "finished": null,
+      "summary": null,
+      "kind": "followup",
+      "revises": "P4",
+      "approved": true,
+      "report": "reports/R1-P4_review-waveform.md"
+    },
+    {
+      "id": "R1-P5",
+      "name": "review-clusters",
+      "agent": "cluster-analyst",
+      "depends_on": [
+        "P1",
+        "P2"
+      ],
+      "gate": false,
+      "priority": 0,
+      "goal": "Registrare con log-exp le 43 config su val mancanti; correggere Configurazioni provate/N_CONFIGURAZIONI; dichiarare che stenosi aortica cluster 2 logreg +0.021 e lasso +0.018 sono gli unici IC appaiati >0 su 40 confronti, non confermati da permutazione (p=0.77); ARI 0.999 dominato dal sesso binario",
+      "status": "pending",
+      "attempts": 0,
+      "started": null,
+      "finished": null,
+      "summary": null,
+      "kind": "followup",
+      "revises": "P5",
+      "approved": true,
+      "report": "reports/R1-P5_review-clusters.md"
+    },
+    {
+      "id": "R1-P3",
+      "name": "review-lvef-qrs",
+      "agent": "lvef-qrs-analyst",
+      "depends_on": [
+        "P0",
+        "P1"
+      ],
+      "gate": false,
+      "priority": 0,
+      "goal": "Rifare bootstrap coppie per paziente eliminando coppie reciproche duplicate; correggere descrizione filtro 20% (MATCH_ON B n_pairs=23637 = tutti i pazienti) e candidate.json di lvef_lte45_global (addestrato su tutte le righe con flag)",
+      "status": "pending",
+      "attempts": 0,
+      "started": null,
+      "finished": null,
+      "summary": null,
+      "kind": "followup",
+      "revises": "P3",
+      "approved": true,
+      "report": "reports/R1-P3_review-lvef-qrs.md"
     }
   ],
   "followups_used": 0,
-  "review_rounds": 0,
+  "review_rounds": 1,
   "frozen": false,
   "test_used": false
 }
