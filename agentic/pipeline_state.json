@@ -171,7 +171,7 @@
       "kind": "planned",
       "approved": true,
       "report": "reports/P6_review.md",
-      "gate_pending": true
+      "gate_pending": false
     },
     {
       "id": "P7",
@@ -300,6 +300,6 @@
   ],
   "followups_used": 0,
   "review_rounds": 1,
-  "frozen": false,
+  "frozen": true,
   "test_used": false
 }

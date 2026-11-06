@@ -1,0 +1,3 @@
+{"comparator_dir": "results/P1/candidates/global_best", "candidates": [
+{"name": "cnn_multilabel", "dir": "results/P4/candidates/cnn_multilabel", "target": "shd_moderate_or_greater_flag"},
+{"name": "lvef_lte45_global", "dir": "results/P3/candidates/lvef_lte45_global", "target": "lvef_lte_45_flag"}]}
