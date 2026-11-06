@@ -56,14 +56,15 @@
       "gate": false,
       "priority": 0,
       "goal": "CNN sulle forme d'onda in cross-validation per paziente, più seed: stima solida e con variabilità di tutte le etichette, confronto col tabulare, sensibilità alle righe senza LVEF.",
-      "status": "pending",
-      "attempts": 0,
-      "started": null,
-      "finished": null,
-      "summary": null,
+      "status": "done",
+      "attempts": 1,
+      "started": "2026-11-06 17:40:43",
+      "finished": "2026-11-06 18:36:49",
+      "summary": "STATUS OK",
       "kind": "planned",
       "approved": true,
-      "report": "reports/Q1_cnn-cv.md"
+      "report": "reports/Q1_cnn-cv.md",
+      "gate_pending": false
     },
     {
       "id": "Q2",
