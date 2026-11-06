@@ -1,5 +1,0 @@
-# Log delle esecuzioni (append-only)
-
-| Quando | Fase | Agente | Esito | Durata | Costo stimato | Note |
-|---|---|---|---|---|---|---|
-| 2026-11-06 11:46:11 | P0 | data-auditor | OK (OK) | 0.0 min | $0.00 | reports/P0_data-audit.md |

@@ -1,0 +1,363 @@
+{
+ "debug_n": null,
+ "integrity": {
+  "split_counts": {
+   "train": 72475,
+   "no_split": 17457,
+   "test": 5442,
+   "val": 4626
+  },
+  "patient_overlap": {
+   "train_val": 0,
+   "train_test": 0,
+   "val_test": 0
+  },
+  "ecg_per_patient_max": {
+   "train": 146,
+   "val": 1,
+   "test": 1
+  }
+ },
+ "missing_columns": [],
+ "missing_frac": {
+  "train": {
+   "sex": 0.0,
+   "ventricular_rate": 0.0,
+   "atrial_rate": 0.00624,
+   "pr_interval": 0.10513,
+   "qrs_duration": 0.0,
+   "qt_corrected": 1e-05,
+   "age_at_ecg": 0.0,
+   "shd_moderate_or_greater_flag": 0.0,
+   "lvef_lte_45_flag": 0.0,
+   "lvwt_gte_13_flag": 0.0,
+   "aortic_stenosis_moderate_or_greater_flag": 0.0,
+   "aortic_regurgitation_moderate_or_greater_flag": 0.0,
+   "mitral_regurgitation_moderate_or_greater_flag": 0.0,
+   "tricuspid_regurgitation_moderate_or_greater_flag": 0.0,
+   "pulmonary_regurgitation_moderate_or_greater_flag": 0.0,
+   "rv_systolic_dysfunction_moderate_or_greater_flag": 0.0,
+   "pericardial_effusion_moderate_large_flag": 0.0,
+   "pasp_gte_45_flag": 0.0,
+   "tr_max_gte_32_flag": 0.0,
+   "lvef_value": 0.08909,
+   "patient_key": 0.0,
+   "split": 0.0
+  },
+  "val": {
+   "sex": 0.0,
+   "ventricular_rate": 0.0,
+   "atrial_rate": 0.0067,
+   "pr_interval": 0.10138,
+   "qrs_duration": 0.0,
+   "qt_corrected": 0.0,
+   "age_at_ecg": 0.0,
+   "shd_moderate_or_greater_flag": 0.0,
+   "lvef_lte_45_flag": 0.0,
+   "lvwt_gte_13_flag": 0.0,
+   "aortic_stenosis_moderate_or_greater_flag": 0.0,
+   "aortic_regurgitation_moderate_or_greater_flag": 0.0,
+   "mitral_regurgitation_moderate_or_greater_flag": 0.0,
+   "tricuspid_regurgitation_moderate_or_greater_flag": 0.0,
+   "pulmonary_regurgitation_moderate_or_greater_flag": 0.0,
+   "rv_systolic_dysfunction_moderate_or_greater_flag": 0.0,
+   "pericardial_effusion_moderate_large_flag": 0.0,
+   "pasp_gte_45_flag": 0.0,
+   "tr_max_gte_32_flag": 0.0,
+   "lvef_value": 0.11111,
+   "patient_key": 0.0,
+   "split": 0.0
+  }
+ },
+ "labels": {
+  "shd_moderate_or_greater_flag": {
+   "train_n_labeled": 72475,
+   "train_frac_missing": 0.0,
+   "train_n_pos": 37958,
+   "train_prev": 0.52374,
+   "val_n_labeled": 4626,
+   "val_frac_missing": 0.0,
+   "val_n_pos": 1990,
+   "val_prev": 0.43018
+  },
+  "lvef_lte_45_flag": {
+   "train_n_labeled": 72475,
+   "train_frac_missing": 0.0,
+   "train_n_pos": 16962,
+   "train_prev": 0.23404,
+   "val_n_labeled": 4626,
+   "val_frac_missing": 0.0,
+   "val_n_pos": 866,
+   "val_prev": 0.1872
+  },
+  "lvwt_gte_13_flag": {
+   "train_n_labeled": 72475,
+   "train_frac_missing": 0.0,
+   "train_n_pos": 17667,
+   "train_prev": 0.24377,
+   "val_n_labeled": 4626,
+   "val_frac_missing": 0.0,
+   "val_n_pos": 877,
+   "val_prev": 0.18958
+  },
+  "aortic_stenosis_moderate_or_greater_flag": {
+   "train_n_labeled": 72475,
+   "train_frac_missing": 0.0,
+   "train_n_pos": 2919,
+   "train_prev": 0.04028,
+   "val_n_labeled": 4626,
+   "val_frac_missing": 0.0,
+   "val_n_pos": 252,
+   "val_prev": 0.05447
+  },
+  "aortic_regurgitation_moderate_or_greater_flag": {
+   "train_n_labeled": 72475,
+   "train_frac_missing": 0.0,
+   "train_n_pos": 878,
+   "train_prev": 0.01211,
+   "val_n_labeled": 4626,
+   "val_frac_missing": 0.0,
+   "val_n_pos": 62,
+   "val_prev": 0.0134
+  },
+  "mitral_regurgitation_moderate_or_greater_flag": {
+   "train_n_labeled": 72475,
+   "train_frac_missing": 0.0,
+   "train_n_pos": 6137,
+   "train_prev": 0.08468,
+   "val_n_labeled": 4626,
+   "val_frac_missing": 0.0,
+   "val_n_pos": 282,
+   "val_prev": 0.06096
+  },
+  "tricuspid_regurgitation_moderate_or_greater_flag": {
+   "train_n_labeled": 72475,
+   "train_frac_missing": 0.0,
+   "train_n_pos": 7707,
+   "train_prev": 0.10634,
+   "val_n_labeled": 4626,
+   "val_frac_missing": 0.0,
+   "val_n_pos": 305,
+   "val_prev": 0.06593
+  },
+  "pulmonary_regurgitation_moderate_or_greater_flag": {
+   "train_n_labeled": 72475,
+   "train_frac_missing": 0.0,
+   "train_n_pos": 603,
+   "train_prev": 0.00832,
+   "val_n_labeled": 4626,
+   "val_frac_missing": 0.0,
+   "val_n_pos": 21,
+   "val_prev": 0.00454
+  },
+  "rv_systolic_dysfunction_moderate_or_greater_flag": {
+   "train_n_labeled": 72475,
+   "train_frac_missing": 0.0,
+   "train_n_pos": 9597,
+   "train_prev": 0.13242,
+   "val_n_labeled": 4626,
+   "val_frac_missing": 0.0,
+   "val_n_pos": 368,
+   "val_prev": 0.07955
+  },
+  "pericardial_effusion_moderate_large_flag": {
+   "train_n_labeled": 72475,
+   "train_frac_missing": 0.0,
+   "train_n_pos": 2079,
+   "train_prev": 0.02869,
+   "val_n_labeled": 4626,
+   "val_frac_missing": 0.0,
+   "val_n_pos": 52,
+   "val_prev": 0.01124
+  },
+  "pasp_gte_45_flag": {
+   "train_n_labeled": 72475,
+   "train_frac_missing": 0.0,
+   "train_n_pos": 13727,
+   "train_prev": 0.1894,
+   "val_n_labeled": 4626,
+   "val_frac_missing": 0.0,
+   "val_n_pos": 581,
+   "val_prev": 0.12559
+  },
+  "tr_max_gte_32_flag": {
+   "train_n_labeled": 72475,
+   "train_frac_missing": 0.0,
+   "train_n_pos": 7492,
+   "train_prev": 0.10337,
+   "val_n_labeled": 4626,
+   "val_frac_missing": 0.0,
+   "val_n_pos": 267,
+   "val_prev": 0.05772
+  }
+ },
+ "quantiles": {
+  "qrs_duration_train": {
+   "0.01": 64.0,
+   "0.05": 70.0,
+   "0.25": 80.0,
+   "0.5": 90.0,
+   "0.75": 102.0,
+   "0.95": 142.0,
+   "0.99": 168.0
+  },
+  "qrs_duration_val": {
+   "0.01": 62.5,
+   "0.05": 70.0,
+   "0.25": 80.0,
+   "0.5": 88.0,
+   "0.75": 100.0,
+   "0.95": 142.0,
+   "0.99": 164.0
+  },
+  "age_at_ecg_train": {
+   "0.01": 23.0,
+   "0.05": 30.0,
+   "0.25": 52.0,
+   "0.5": 63.0,
+   "0.75": 73.0,
+   "0.95": 85.0,
+   "0.99": 90.0
+  },
+  "age_at_ecg_val": {
+   "0.01": 22.0,
+   "0.05": 30.0,
+   "0.25": 52.0,
+   "0.5": 64.0,
+   "0.75": 75.0,
+   "0.95": 88.0,
+   "0.99": 90.0
+  }
+ },
+ "spearman_features_train": {
+  "sex": {
+   "sex": 1.0,
+   "ventricular_rate": 0.02,
+   "atrial_rate": 0.028,
+   "pr_interval": 0.117,
+   "qrs_duration": 0.258,
+   "qt_corrected": 0.003,
+   "age_at_ecg": -0.032
+  },
+  "ventricular_rate": {
+   "sex": 0.02,
+   "ventricular_rate": 1.0,
+   "atrial_rate": 0.919,
+   "pr_interval": -0.276,
+   "qrs_duration": -0.146,
+   "qt_corrected": 0.258,
+   "age_at_ecg": -0.154
+  },
+  "atrial_rate": {
+   "sex": 0.028,
+   "ventricular_rate": 0.919,
+   "atrial_rate": 1.0,
+   "pr_interval": -0.274,
+   "qrs_duration": -0.127,
+   "qt_corrected": 0.232,
+   "age_at_ecg": -0.121
+  },
+  "pr_interval": {
+   "sex": 0.117,
+   "ventricular_rate": -0.276,
+   "atrial_rate": -0.274,
+   "pr_interval": 1.0,
+   "qrs_duration": 0.296,
+   "qt_corrected": 0.041,
+   "age_at_ecg": 0.229
+  },
+  "qrs_duration": {
+   "sex": 0.258,
+   "ventricular_rate": -0.146,
+   "atrial_rate": -0.127,
+   "pr_interval": 0.296,
+   "qrs_duration": 1.0,
+   "qt_corrected": 0.336,
+   "age_at_ecg": 0.122
+  },
+  "qt_corrected": {
+   "sex": 0.003,
+   "ventricular_rate": 0.258,
+   "atrial_rate": 0.232,
+   "pr_interval": 0.041,
+   "qrs_duration": 0.336,
+   "qt_corrected": 1.0,
+   "age_at_ecg": 0.052
+  },
+  "age_at_ecg": {
+   "sex": -0.032,
+   "ventricular_rate": -0.154,
+   "atrial_rate": -0.121,
+   "pr_interval": 0.229,
+   "qrs_duration": 0.122,
+   "qt_corrected": 0.052,
+   "age_at_ecg": 1.0
+  }
+ },
+ "waveforms": {
+  "train": {
+   "exists": true,
+   "csv_rows": 72475,
+   "shape": [
+    72475,
+    1,
+    2500,
+    12
+   ],
+   "dtype": "float64",
+   "shape_ok": true,
+   "n_match": true,
+   "file_bytes": 4391862508,
+   "expected_bytes": 17394000128,
+   "file_complete": false,
+   "complete_rows_in_file": 18299,
+   "mmap_ok": false,
+   "mmap_error": "mmap length is greater than file size"
+  },
+  "val": {
+   "exists": true,
+   "csv_rows": 4626,
+   "shape": [
+    4626,
+    1,
+    2500,
+    12
+   ],
+   "dtype": "float64",
+   "shape_ok": true,
+   "n_match": true,
+   "file_bytes": 443162259,
+   "expected_bytes": 1110240128,
+   "file_complete": false,
+   "complete_rows_in_file": 1846,
+   "mmap_ok": false,
+   "mmap_error": "mmap length is greater than file size"
+  },
+  "test": {
+   "exists": true,
+   "csv_rows": 5442,
+   "shape": [
+    5442,
+    1,
+    2500,
+    12
+   ],
+   "dtype": "float64",
+   "shape_ok": true,
+   "n_match": true,
+   "file_bytes": 884612299,
+   "expected_bytes": 1306080128,
+   "file_complete": false,
+   "complete_rows_in_file": 3685,
+   "mmap_ok": false,
+   "mmap_error": "mmap length is greater than file size"
+  }
+ },
+ "gpu": true,
+ "torch": "2.15.0+cu132",
+ "integrita": "OK",
+ "waveforms_status": "mancanti",
+ "n_train": 72475,
+ "n_val": 4626,
+ "prev_target_train": 0.52374
+}

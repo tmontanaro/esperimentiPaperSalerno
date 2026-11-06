@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "created": "2026-11-06 11:47:37",
+  "created": "2026-11-06 12:05:01",
   "config": {
-    "data_dir": "/tmp/echonext_synth",
+    "data_dir": "/home/idalab/Desktop/Teo/physionet.org/files/echonext/1.1.1",
     "primary_target": "shd_moderate_or_greater_flag",
     "max_followups": 4,
     "max_review_rounds": 2,
@@ -15,9 +15,9 @@
       "min_n_val": 100,
       "min_pos_val": 25
     },
-    "tabular_signal": false,
+    "tabular_signal": null,
     "cluster_targets": [],
-    "clusters_mode": "reduced"
+    "clusters_mode": "normal"
   },
   "phases": [
     {
@@ -29,15 +29,14 @@
       "priority": 0,
       "goal": "Trovare i file, verificare l'integrità del dataset (split, pazienti, mancanti, forme d'onda) e profilare le etichette.",
       "status": "done",
-      "attempts": 3,
-      "started": "2026-11-06 11:58:03",
-      "finished": "2026-11-06 11:58:11",
-      "summary": "STATUS OK",
+      "attempts": 1,
+      "started": "2026-11-06 12:05:59",
+      "finished": "2026-11-06 12:07:47",
+      "summary": "STATUS PARZIALE",
       "kind": "planned",
       "approved": true,
       "report": "reports/P0_data-audit.md",
-      "interrupted": "2026-11-06 11:53:45",
-      "gate_pending": false
+      "gate_pending": true
     },
     {
       "id": "P1",
@@ -49,15 +48,14 @@
       "gate": true,
       "priority": 0,
       "goal": "Baseline tabulare sul target composito: età+sesso contro tutte le feature ECG, 5 modelli, CV per paziente.",
-      "status": "done",
-      "attempts": 1,
-      "started": "2026-11-06 11:58:20",
-      "finished": "2026-11-06 11:59:55",
-      "summary": "STATUS OK",
+      "status": "pending",
+      "attempts": 0,
+      "started": null,
+      "finished": null,
+      "summary": null,
       "kind": "planned",
       "approved": true,
-      "report": "reports/P1_baseline.md",
-      "gate_pending": false
+      "report": "reports/P1_baseline.md"
     },
     {
       "id": "P2",
@@ -107,7 +105,7 @@
         "P1"
       ],
       "gate": true,
-      "priority": 10,
+      "priority": 0,
       "goal": "CNN 1D multi-etichetta sulle forme d'onda, confronto con la baseline tabulare.",
       "status": "pending",
       "attempts": 0,
