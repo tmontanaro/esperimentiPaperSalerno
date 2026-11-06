@@ -56,7 +56,7 @@
       "kind": "planned",
       "approved": true,
       "report": "reports/P1_baseline.md",
-      "gate_pending": true
+      "gate_pending": false
     },
     {
       "id": "P2",
