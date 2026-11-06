@@ -6,3 +6,4 @@
 | 2026-11-06 11:46:11 | gate P0 | orchestrator | OK | 0.0 min | $0.00 | gate P0 simulato |
 | 2026-11-06 11:46:12 | P1 | baseline-modeler | OK (OK) | 0.0 min | $0.00 | reports/P1_baseline.md |
 | 2026-11-06 11:46:12 | gate P1 | orchestrator | OK | 0.0 min | $0.00 | gate P1 simulato |
+| 2026-11-06 11:46:12 | P2 | condition-analyst | OK (OK) | 0.0 min | $0.00 | reports/P2_conditions.md |

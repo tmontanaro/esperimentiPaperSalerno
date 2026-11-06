@@ -68,14 +68,15 @@
       "gate": true,
       "priority": 0,
       "goal": "Predizione per singola condizione, stratificazione per gruppi noti, scoperta di sottogruppi validata.",
-      "status": "pending",
-      "attempts": 0,
-      "started": null,
-      "finished": null,
-      "summary": null,
+      "status": "done",
+      "attempts": 1,
+      "started": "2026-11-06 11:46:12",
+      "finished": "2026-11-06 11:46:12",
+      "summary": "STATUS OK",
       "kind": "planned",
       "approved": true,
-      "report": "reports/P2_conditions.md"
+      "report": "reports/P2_conditions.md",
+      "gate_pending": true
     },
     {
       "id": "P3",
