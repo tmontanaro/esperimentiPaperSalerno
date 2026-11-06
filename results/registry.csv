@@ -19,3 +19,4 @@ ts,exp_id,phase,target,uses_val,n_configs,metric_val,description
 2026-11-06 15:29:26,E0018,R1-P3,,1,1,,"coppie dedup, bootstrap per paziente, MATCH_ON C età,sesso,freq,PR,QTc (replica val)"
 2026-11-06 15:29:27,E0019,R1-P3,,1,1,,"coppie dedup, bootstrap per paziente, MATCH_ON D età,freq,PR,QTc (replica val)"
 2026-11-06 15:31:57,E0020,R1-P4,,1,1,,"Stratificazione descrittiva CNN vs hist_gb su val (race, setting, sesso, eta); nessuna selezione di modello"
+2026-11-06 15:32:55,E0021,R1-P5,,1,43,,Registrazione retroattiva P5: locale vs globale run completa su validation (3 globali + 10 cluster x 4 locali; 40 confronti appaiati)

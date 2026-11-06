@@ -264,15 +264,16 @@
       "gate": false,
       "priority": 0,
       "goal": "Registrare con log-exp le 43 config su val mancanti; correggere Configurazioni provate/N_CONFIGURAZIONI; dichiarare che stenosi aortica cluster 2 logreg +0.021 e lasso +0.018 sono gli unici IC appaiati >0 su 40 confronti, non confermati da permutazione (p=0.77); ARI 0.999 dominato dal sesso binario",
-      "status": "pending",
-      "attempts": 0,
-      "started": null,
-      "finished": null,
-      "summary": null,
+      "status": "done",
+      "attempts": 1,
+      "started": "2026-11-06 15:32:29",
+      "finished": "2026-11-06 15:33:28",
+      "summary": "STATUS OK",
       "kind": "followup",
       "revises": "P5",
       "approved": true,
-      "report": "reports/R1-P5_review-clusters.md"
+      "report": "reports/R1-P5_review-clusters.md",
+      "gate_pending": false
     },
     {
       "id": "R1-P3",
