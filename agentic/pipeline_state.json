@@ -131,14 +131,15 @@
       "gate": true,
       "priority": 0,
       "goal": "Cluster con selezione incrementale delle feature e predizione dentro i cluster, con soglia di rumore.",
-      "status": "pending",
-      "attempts": 0,
-      "started": null,
-      "finished": null,
-      "summary": null,
+      "status": "done",
+      "attempts": 1,
+      "started": "2026-11-06 14:08:38",
+      "finished": "2026-11-06 14:08:38",
+      "summary": "STATUS OK",
       "kind": "planned",
       "approved": true,
-      "report": "reports/P5_clusters.md"
+      "report": "reports/P5_clusters.md",
+      "gate_pending": true
     },
     {
       "id": "P6",
