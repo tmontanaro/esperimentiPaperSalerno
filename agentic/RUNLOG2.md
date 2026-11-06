@@ -7,3 +7,4 @@
 | 2026-11-06 19:59:00 | Q2 | lead-ablation-analyst | OK (OK) | 82.1 min | $0.39 | reports/Q2_lead-ablation.md |
 | 2026-11-06 20:02:24 | Q3 | lvef-qrs-cnn-analyst | OK (OK) | 3.3 min | $0.43 | reports/Q3_lvef-qrs-cnn.md |
 | 2026-11-06 20:28:05 | Q4 | embedding-analyst | OK (OK) | 25.7 min | $1.02 | reports/Q4_embedding-subgroups.md |
+| 2026-11-06 20:32:40 | Q5 | calibration-analyst | OK (OK) | 4.6 min | $0.53 | reports/Q5_calibration-interpret.md |
