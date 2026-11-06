@@ -1,0 +1,2 @@
+ts,exp_id,phase,target,uses_val,n_configs,metric_val,description
+2026-11-06 14:12:36,E0001,P1,,1,10,,"baseline: 5 modelli x 2 set di feature (eta+sesso; 7 feature ECG) su validation, target composito"
