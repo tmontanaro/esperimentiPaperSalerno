@@ -145,7 +145,7 @@
       "approved": true,
       "report": "reports/P5_clusters.md",
       "interrupted": "2026-11-06 15:21:15",
-      "gate_pending": true
+      "gate_pending": false
     },
     {
       "id": "P6",
