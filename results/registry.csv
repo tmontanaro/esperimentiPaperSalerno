@@ -30,3 +30,4 @@ ts,exp_id,phase,target,uses_val,n_configs,metric_val,description
 2026-11-06 19:58:22,E0029,Q2,,1,1,,"ablazione derivazioni II, seed 0, 5 fold, config Q1"
 2026-11-06 19:58:22,E0030,Q2,,1,1,,"ablazione derivazioni I, seed 0, 5 fold, config Q1"
 2026-11-06 19:58:23,E0031,Q2,,1,1,,"ablazione derivazioni I_II_V1, seed 0, 5 fold, config Q1"
+2026-11-06 20:01:48,E0032,Q3,,1,8,,"LVEF-QRS con CNN OOF: 3 fasce QRS (CNN vs tab), 2 test valore aggiunto (dAUROC, dlogloss), 2 test residuo (corr parziale, dR2), 1 test coppie discordanti; Holm per famiglia"
