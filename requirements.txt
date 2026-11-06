@@ -1,0 +1,8 @@
+numpy
+pandas
+scipy
+scikit-learn
+matplotlib
+joblib
+# solo per la fase P4 (CNN sulle forme d'onda); con GPU NVIDIA installa la build CUDA da pytorch.org
+torch

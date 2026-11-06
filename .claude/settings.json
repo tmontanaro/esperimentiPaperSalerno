@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "Edit(./reports/**)",
+      "Edit(./results/**)",
+      "Edit(./experiments/**)",
+      "Edit(./agentic/**)",
+      "Bash(python3 *)",
+      "Bash(python *)",
+      "Bash(mkdir *)",
+      "Bash(ls *)",
+      "Bash(pwd)",
+      "Bash(nvidia-smi*)"
+    ],
+    "deny": [
+      "Edit(./lib/**)",
+      "Edit(./tools/**)",
+      "Edit(./.claude/**)",
+      "Edit(./CLAUDE.md)",
+      "Edit(./agentic/pipeline_state.json)",
+      "Edit(./agentic/PLAYBOOK.md)",
+      "Edit(./agentic/REPORT_TEMPLATE.md)",
+      "Edit(./agentic/RUNLOG.md)",
+      "Bash(cat *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(less *)",
+      "Bash(more *)",
+      "Bash(curl *)",
+      "Bash(wget *)",
+      "Bash(rm *)",
+      "Bash(sudo *)",
+      "Bash(pip *)",
+      "Bash(pip3 *)",
+      "Bash(git push *)",
+      "WebFetch",
+      "WebSearch"
+    ]
+  }
+}
