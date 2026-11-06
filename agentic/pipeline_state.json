@@ -36,7 +36,7 @@
       "kind": "planned",
       "approved": true,
       "report": "reports/P0_data-audit.md",
-      "gate_pending": true
+      "gate_pending": false
     },
     {
       "id": "P1",
