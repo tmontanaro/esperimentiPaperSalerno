@@ -215,14 +215,15 @@
       "gate": false,
       "priority": 0,
       "goal": "Notebook Jupyter autonomo che permette ai partner di rifare passo passo le analisi, con obiettivo, scelte e risultati attesi.",
-      "status": "pending",
-      "attempts": 0,
-      "started": null,
-      "finished": null,
-      "summary": null,
+      "status": "done",
+      "attempts": 1,
+      "started": "2026-11-06 14:08:50",
+      "finished": "2026-11-06 14:08:50",
+      "summary": "STATUS OK",
       "kind": "planned",
       "approved": true,
-      "report": "reports/P9_notebook.md"
+      "report": "reports/P9_notebook.md",
+      "gate_pending": false
     }
   ],
   "followups_used": 0,
