@@ -179,14 +179,15 @@
       "gate": false,
       "priority": 0,
       "goal": "Revisione indipendente della pipeline 2: riproduzione dei numeri, leakage, confronti multipli, test mai toccato, affermazioni non supportate.",
-      "status": "pending",
-      "attempts": 0,
-      "started": null,
-      "finished": null,
-      "summary": null,
+      "status": "done",
+      "attempts": 1,
+      "started": "2026-11-06 20:45:35",
+      "finished": "2026-11-06 20:52:28",
+      "summary": "STATUS OK",
       "kind": "planned",
       "approved": true,
-      "report": "reports/Q7_review2.md"
+      "report": "reports/Q7_review2.md",
+      "gate_pending": false
     },
     {
       "id": "Q8",

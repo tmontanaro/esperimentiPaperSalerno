@@ -10,3 +10,4 @@
 | 2026-11-06 20:32:40 | Q5 | calibration-analyst | OK (OK) | 4.6 min | $0.53 | reports/Q5_calibration-interpret.md |
 | 2026-11-06 20:45:35 | Q6 | candidate-freezer | RIPARAZIONE REPORT | 12.8 min | $0.38 | 1 problemi |
 | 2026-11-06 20:45:35 | Q6 | candidate-freezer | OK (OK) | 0.2 min | $0.03 | reports/Q6_candidates.md |
+| 2026-11-06 20:52:28 | Q7 | skeptic-reviewer2 | OK (OK) | 6.9 min | $1.78 | reports/Q7_review2.md |

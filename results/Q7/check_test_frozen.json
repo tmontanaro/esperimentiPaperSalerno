@@ -1,0 +1,146 @@
+{
+ "final2_exists": false,
+ "experiments_Q_test_hits": [],
+ "final_dir_files": [
+  "results/final/test_results.json"
+ ],
+ "final_test_results_mtime": "2026-11-06 15:49:37",
+ "final_eval2_exists": true,
+ "n_hashes_checked": 30,
+ "hash_mismatch": [],
+ "candidate_checks": {
+  "C1_shd_all": {
+   "py_weights_ok": true,
+   "py_target_ok": true,
+   "json_target_ok": true,
+   "cv_auroc": 0.815,
+   "comparator_exists": true,
+   "has_predict": true
+  },
+  "C2_lvef45_all": {
+   "py_weights_ok": true,
+   "py_target_ok": true,
+   "json_target_ok": true,
+   "cv_auroc": 0.869,
+   "comparator_exists": true,
+   "has_predict": true
+  },
+  "C3_rv_all": {
+   "py_weights_ok": true,
+   "py_target_ok": true,
+   "json_target_ok": true,
+   "cv_auroc": 0.844,
+   "comparator_exists": null,
+   "has_predict": true
+  },
+  "C4_as_all": {
+   "py_weights_ok": true,
+   "py_target_ok": true,
+   "json_target_ok": true,
+   "cv_auroc": 0.811,
+   "comparator_exists": null,
+   "has_predict": true
+  },
+  "C5_shd_I_II_V1": {
+   "py_weights_ok": true,
+   "py_target_ok": true,
+   "json_target_ok": true,
+   "cv_auroc": 0.802,
+   "comparator_exists": true,
+   "has_predict": true
+  }
+ },
+ "n_candidates": 5,
+ "final_all_cfg": {
+  "leads": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "epochs": 12,
+  "lr": 0.002,
+  "reg_weight": 0.5,
+  "batch": 128,
+  "population": "clean",
+  "seeds": [
+   0,
+   1,
+   2
+  ]
+ },
+ "final_I_II_V1_cfg": {
+  "leads": [
+   0,
+   1,
+   6
+  ],
+  "epochs": 12,
+  "lr": 0.002,
+  "reg_weight": 0.5,
+  "batch": 128,
+  "population": "clean",
+  "seeds": [
+   0,
+   1,
+   2
+  ]
+ },
+ "q2_I_II_V1_leads": [
+  0,
+  1,
+  6
+ ],
+ "q1_cfg": {
+  "leads": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "epochs": 12,
+  "lr": 0.002,
+  "reg_weight": 0.5,
+  "batch": 128,
+  "population": "clean"
+ },
+ "mtime": {
+  "preregistration.md": "2026-11-06 20:33:30",
+  "final_all/config.json": "2026-11-06 20:40:32",
+  "final_all/weights_seed0.pt": "2026-11-06 20:35:51",
+  "final_all/weights_seed1.pt": "2026-11-06 20:38:07",
+  "final_all/weights_seed2.pt": "2026-11-06 20:40:32",
+  "final_I_II_V1/config.json": "2026-11-06 20:44:22",
+  "final_I_II_V1/weights_seed0.pt": "2026-11-06 20:41:54",
+  "final_I_II_V1/weights_seed1.pt": "2026-11-06 20:43:08",
+  "final_I_II_V1/weights_seed2.pt": "2026-11-06 20:44:22",
+  "C1_shd_all/candidate.json": "2026-11-06 20:44:27",
+  "C1_shd_all/candidate.py": "2026-11-06 20:44:27",
+  "C2_lvef45_all/candidate.json": "2026-11-06 20:44:27",
+  "C2_lvef45_all/candidate.py": "2026-11-06 20:44:27",
+  "C3_rv_all/candidate.json": "2026-11-06 20:44:36",
+  "C3_rv_all/candidate.py": "2026-11-06 20:44:36",
+  "C4_as_all/candidate.json": "2026-11-06 20:44:29",
+  "C4_as_all/candidate.py": "2026-11-06 20:44:29",
+  "C5_shd_I_II_V1/candidate.json": "2026-11-06 20:44:30",
+  "C5_shd_I_II_V1/candidate.py": "2026-11-06 20:44:30"
+ },
+ "frozen_at": "2026-11-06 20:45:03",
+ "FROZEN2_mtime": "2026-11-06 20:45:03"
+}
