@@ -48,14 +48,15 @@
       "gate": true,
       "priority": 0,
       "goal": "Baseline tabulare sul target composito: età+sesso contro tutte le feature ECG, 5 modelli, CV per paziente.",
-      "status": "pending",
-      "attempts": 0,
-      "started": null,
-      "finished": null,
-      "summary": null,
+      "status": "done",
+      "attempts": 1,
+      "started": "2026-11-06 14:08:36",
+      "finished": "2026-11-06 14:08:37",
+      "summary": "STATUS OK",
       "kind": "planned",
       "approved": true,
-      "report": "reports/P1_baseline.md"
+      "report": "reports/P1_baseline.md",
+      "gate_pending": true
     },
     {
       "id": "P2",
