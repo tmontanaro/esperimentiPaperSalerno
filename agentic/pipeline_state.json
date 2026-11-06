@@ -15,7 +15,7 @@
       "min_n_val": 100,
       "min_pos_val": 25
     },
-    "tabular_signal": null,
+    "tabular_signal": true,
     "cluster_targets": [],
     "clusters_mode": "normal"
   },
@@ -56,7 +56,7 @@
       "kind": "planned",
       "approved": true,
       "report": "reports/P1_baseline.md",
-      "gate_pending": true
+      "gate_pending": false
     },
     {
       "id": "P2",
