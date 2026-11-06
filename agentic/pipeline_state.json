@@ -284,15 +284,16 @@
       "gate": false,
       "priority": 0,
       "goal": "Rifare bootstrap coppie per paziente eliminando coppie reciproche duplicate; correggere descrizione filtro 20% (MATCH_ON B n_pairs=23637 = tutti i pazienti) e candidate.json di lvef_lte45_global (addestrato su tutte le righe con flag)",
-      "status": "pending",
-      "attempts": 0,
-      "started": null,
-      "finished": null,
-      "summary": null,
+      "status": "done",
+      "attempts": 1,
+      "started": "2026-11-06 15:28:00",
+      "finished": "2026-11-06 15:30:17",
+      "summary": "STATUS OK",
       "kind": "followup",
       "revises": "P3",
       "approved": true,
-      "report": "reports/R1-P3_review-lvef-qrs.md"
+      "report": "reports/R1-P3_review-lvef-qrs.md",
+      "gate_pending": false
     }
   ],
   "followups_used": 0,

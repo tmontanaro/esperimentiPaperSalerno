@@ -14,3 +14,7 @@ ts,exp_id,phase,target,uses_val,n_configs,metric_val,description
 2026-11-06 14:38:25,E0013,P4,,1,1,,"CNN ResNet1D completa 12 epoche, solo forme d'onda, epoca finale (val usato per valutazione/monitoraggio, non per scegliere)"
 2026-11-06 14:44:09,E0014,P5,,0,78,,"selezione feature per il clustering (backward k=3,4,5: 69 set + sparse k-means 9 configurazioni), solo train, nessun uso del validation"
 2026-11-06 14:44:09,E0015,P5,,1,47,,"smoke test debug_n=2000: globale vs locali (4 modelli) per cluster x 3 target, subset validation"
+2026-11-06 15:29:25,E0016,R1-P3,,1,1,,"coppie dedup, bootstrap per paziente, MATCH_ON A età,sesso,freq (replica val)"
+2026-11-06 15:29:26,E0017,R1-P3,,1,1,,"coppie dedup, bootstrap per paziente, MATCH_ON B età,sesso (replica val)"
+2026-11-06 15:29:26,E0018,R1-P3,,1,1,,"coppie dedup, bootstrap per paziente, MATCH_ON C età,sesso,freq,PR,QTc (replica val)"
+2026-11-06 15:29:27,E0019,R1-P3,,1,1,,"coppie dedup, bootstrap per paziente, MATCH_ON D età,freq,PR,QTc (replica val)"
