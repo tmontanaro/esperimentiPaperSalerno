@@ -1,0 +1,47 @@
+{
+  "n_test_rows": 241,
+  "candidates": [
+    {
+      "name": "global_hist_gb",
+      "dir": "results/P1/candidates/global_hist_gb",
+      "target": "shd_moderate_or_greater_flag",
+      "kind": "global",
+      "val_metrics": {
+        "n": 252,
+        "n_pos": 159,
+        "prev": 0.6309523809523809,
+        "auroc": 0.4921890850071008,
+        "auroc_lo": 0.4237439193159871,
+        "auroc_hi": 0.5679171355449313,
+        "auprc": 0.643573633584918
+      },
+      "test_in_scope": {
+        "n": 241,
+        "n_pos": 157,
+        "prev": 0.6514522821576764,
+        "auroc": 0.5884895359417652,
+        "auroc_lo": 0.5190037470504087,
+        "auroc_hi": 0.6591165868466626,
+        "auprc": 0.7487157746323951
+      },
+      "test_all": {
+        "n": 241,
+        "n_pos": 157,
+        "prev": 0.6514522821576764,
+        "auroc": 0.5884895359417652,
+        "auroc_lo": 0.5190037470504087,
+        "auroc_hi": 0.6591165868466626,
+        "auprc": 0.7487157746323951
+      },
+      "comparator_in_scope": {
+        "n": 241,
+        "n_pos": 157,
+        "prev": 0.6514522821576764,
+        "auroc": 0.5884895359417652,
+        "auroc_lo": 0.5190037470504087,
+        "auroc_hi": 0.6591165868466626,
+        "auprc": 0.7487157746323951
+      }
+    }
+  ]
+}
