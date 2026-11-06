@@ -19,3 +19,4 @@
 | 2026-11-06 11:46:35 | P7 | final-evaluator | OK (OK) | 0.0 min | $0.00 | reports/P7_final-test.md |
 | 2026-11-06 11:46:35 | P8 | synthesizer | OK (OK) | 0.0 min | $0.00 | reports/P8_synthesis.md |
 | 2026-11-06 11:58:11 | P0 | data-auditor | OK (OK) | 0.1 min | $0.04 | reports/P0_data-audit.md |
+| 2026-11-06 11:58:20 | gate P0 | orchestrator | OK | 0.1 min | $0.05 | **Decisione:** Gate P0 superato senza modifiche, quindi si procede con P1.  **Azioni:** ho registrato due note con `state.py`, una `decision` e una `issue`. Non |

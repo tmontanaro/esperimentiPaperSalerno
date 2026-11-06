@@ -16,3 +16,5 @@
 | 2026-11-06 11:47:37 | config | - | pipeline inizializzata, data_dir=/tmp/echonext_synth |
 | 2026-11-06 11:48:13 | issue | P0 | fase interrotta: riparte dai file parziali in results/ e dal file .progress.md |
 | 2026-11-06 11:53:45 | issue | P0 | fase interrotta: riparte dai file parziali in results/ e dal file .progress.md |
+| 2026-11-06 11:58:17 | issue | P0 | Handoff P0 senza campi INTEGRITA e GPU (contiene solo risultato simulato): non posso applicare la clausola GPU:no; assunzione P4 non registrata. Attempts=3 con due interruzioni. |
+| 2026-11-06 11:58:17 | decision | P0 | Gate P0: STATUS=OK, nessun INTEGRITA: PROBLEMI riportato, GPU non indicata. Nessuna modifica a config/fasi; si procede con P1. |

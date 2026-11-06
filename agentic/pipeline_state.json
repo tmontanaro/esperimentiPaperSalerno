@@ -37,7 +37,7 @@
       "approved": true,
       "report": "reports/P0_data-audit.md",
       "interrupted": "2026-11-06 11:53:45",
-      "gate_pending": true
+      "gate_pending": false
     },
     {
       "id": "P1",
