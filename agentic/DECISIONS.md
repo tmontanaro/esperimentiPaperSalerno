@@ -34,3 +34,6 @@
 | 2026-11-06 15:38:22 | decision | P6 | congelati 2 candidati per la valutazione sul test |
 | 2026-11-06 15:38:25 | decision | P6 | Gate P6: VERDETTO PASS dopo round 2 (review_rounds 1/2). Congelati SOLO i 2 candidati ammessi: cnn_multilabel (SHD, AUROC val 0.823 [0.811-0.834]) e lvef_lte45_global (0.764 [0.748-0.782]); comparatore P1 global_best. 0 sottogruppi/cluster credibili. Per P7: riportare anche AUROC sulle righe con lvef_value non nullo (CNN 0.812, hist_gb 0.732, LVEF<=45 0.749 su val); ignorare comparatore per lvef_lte45_global. Per P8: SHD != scompenso, righe senza LVEF negative per costruzione, calibrazione non valutata, QRS inconclusiva. P7 attende approvazione umana. |
 | 2026-11-06 15:38:25 | issue | P6 | final_eval.py potrebbe non supportare la metrica sul sottoinsieme con lvef_value non nullo: se così, P7 deve dichiararlo. |
+| 2026-11-06 15:44:00 | decision | P7 | approvazione umana per l'esecuzione |
+| 2026-11-06 15:49:12 | decision | P7 | approvazione umana per l'esecuzione |
+| 2026-11-06 15:49:37 | decision | P7 | test set usato una volta su 2 candidati |

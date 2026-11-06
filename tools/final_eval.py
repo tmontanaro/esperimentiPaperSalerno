@@ -63,10 +63,15 @@ def main():
         res = load_predict(cdir)(d, lib)
         score, scope = res["score"].values, res["in_scope"].values.astype(bool)
         entry = {"name": c["name"], "dir": c["dir"], "target": tgt, "kind": meta.get("kind"),
-                 "val_metrics": meta.get("val_metrics"), "test_in_scope": None, "test_all": None, "comparator_in_scope": None}
+                 "val_metrics": meta.get("val_metrics"), "test_in_scope": None, "test_all": None, "comparator_in_scope": None, "test_lvef_known": None}
         if scope.sum() >= 20 and len(set(y[scope])) == 2:
             entry["test_in_scope"] = lib.metrics_binary(y[scope], score[scope])
         entry["test_all"] = lib.metrics_binary(y, score) if len(set(y)) == 2 else None
+        # metrica pre-specificata dal revisore: solo righe con lvef_value noto (le altre hanno tutte le etichette = 0 per costruzione)
+        if "lvef_value" in d.columns:
+            known = d["lvef_value"].notna().values
+            if known.sum() >= 20 and len(set(y[known])) == 2:
+                entry["test_lvef_known"] = lib.metrics_binary(y[known], score[known])
         if comp_fn is not None:
             cr = comp_fn(d, lib)
             cs = cr["score"].values
@@ -79,10 +84,10 @@ def main():
 
     def f(m):
         return "n/d" if not m else f"{m['auroc']:.3f} [{m['auroc_lo']:.3f}-{m['auroc_hi']:.3f}] (n={m['n']}, pos={m['n_pos']})"
-    lines = ["| Candidato | Target | Test nello scope | Globale sugli stessi pazienti | Test su tutti | AUROC val (da report) |", "|---|---|---|---|---|---|"]
+    lines = ["| Candidato | Target | Test nello scope | Globale sugli stessi pazienti | Test su tutti | Test su righe con LVEF noto | AUROC val (da report) |", "|---|---|---|---|---|---|---|"]
     for e in results["candidates"]:
         v = (e.get("val_metrics") or {}).get("auroc")
-        lines.append(f"| {e['name']} | {e['target']} | {f(e['test_in_scope'])} | {f(e['comparator_in_scope'])} | {f(e['test_all'])} | {v if v is None else round(v, 3)} |")
+        lines.append(f"| {e['name']} | {e['target']} | {f(e['test_in_scope'])} | {f(e['comparator_in_scope'])} | {f(e['test_all'])} | {f(e['test_lvef_known'])} | {v if v is None else round(v, 3)} |")
     (ROOT / "reports" / "final_test_table.md").write_text("\n".join(lines) + "\n")
 
     import state  # segna il test come usato
