@@ -1,0 +1,401 @@
+{
+ "quick": {
+  "celle_codice": 15,
+  "ok": 15,
+  "fallite": 0,
+  "sec": 10.1,
+  "dettaglio": [
+   {
+    "cella": 0,
+    "ok": true,
+    "sec": 0.7,
+    "righe_output": 1,
+    "errore": null
+   },
+   {
+    "cella": 1,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 26,
+    "errore": null
+   },
+   {
+    "cella": 2,
+    "ok": true,
+    "sec": 1.8,
+    "righe_output": 15,
+    "errore": null
+   },
+   {
+    "cella": 3,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 3,
+    "errore": null
+   },
+   {
+    "cella": 4,
+    "ok": true,
+    "sec": 3.3,
+    "righe_output": 13,
+    "errore": null
+   },
+   {
+    "cella": 5,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 3,
+    "errore": null
+   },
+   {
+    "cella": 6,
+    "ok": true,
+    "sec": 0.8,
+    "righe_output": 8,
+    "errore": null
+   },
+   {
+    "cella": 7,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 2,
+    "errore": null
+   },
+   {
+    "cella": 8,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 1,
+    "errore": null
+   },
+   {
+    "cella": 9,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 2,
+    "errore": null
+   },
+   {
+    "cella": 10,
+    "ok": true,
+    "sec": 3.2,
+    "righe_output": 16,
+    "errore": null
+   },
+   {
+    "cella": 11,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 1,
+    "errore": null
+   },
+   {
+    "cella": 12,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 2,
+    "errore": null
+   },
+   {
+    "cella": 13,
+    "ok": true,
+    "sec": 0.3,
+    "righe_output": 3,
+    "errore": null
+   },
+   {
+    "cella": 14,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 1,
+    "errore": null
+   }
+  ],
+  "metodo": "esecuzione in-process delle celle (nbclient non installato)",
+  "risultati": {
+   "prev_train": 0.5272,
+   "prev_val": 0.4302,
+   "n_train": 16279,
+   "n_val": 4626,
+   "p1_hgb_all_auroc": 0.7404,
+   "p1_best_agesex_auroc": 0.6541,
+   "p1_cv_auroc": 0.7226,
+   "p1_gain": 0.0864,
+   "p2_aortic_stenosis_auroc": 0.8347,
+   "p3_mae": 9.7133,
+   "p3_r2": 0.1311,
+   "p3_lte45_auroc": 0.761,
+   "p5_silhouette": 0.5625,
+   "p5_ari": 0.9985,
+   "p5_n_credible": 0,
+   "p6_hgb_with_lvef_auroc": 0.724
+  }
+ },
+ "quick_total_sec": 10.1,
+ "full": {
+  "celle_codice": 15,
+  "ok": 15,
+  "fallite": 0,
+  "sec": 37.0,
+  "dettaglio": [
+   {
+    "cella": 0,
+    "ok": true,
+    "sec": 0.7,
+    "righe_output": 1,
+    "errore": null
+   },
+   {
+    "cella": 1,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 26,
+    "errore": null
+   },
+   {
+    "cella": 2,
+    "ok": true,
+    "sec": 17.7,
+    "righe_output": 19,
+    "errore": null
+   },
+   {
+    "cella": 3,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 3,
+    "errore": null
+   },
+   {
+    "cella": 4,
+    "ok": true,
+    "sec": 8.3,
+    "righe_output": 13,
+    "errore": null
+   },
+   {
+    "cella": 5,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 3,
+    "errore": null
+   },
+   {
+    "cella": 6,
+    "ok": true,
+    "sec": 1.7,
+    "righe_output": 8,
+    "errore": null
+   },
+   {
+    "cella": 7,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 2,
+    "errore": null
+   },
+   {
+    "cella": 8,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 1,
+    "errore": null
+   },
+   {
+    "cella": 9,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 2,
+    "errore": null
+   },
+   {
+    "cella": 10,
+    "ok": true,
+    "sec": 7.8,
+    "righe_output": 16,
+    "errore": null
+   },
+   {
+    "cella": 11,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 1,
+    "errore": null
+   },
+   {
+    "cella": 12,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 2,
+    "errore": null
+   },
+   {
+    "cella": 13,
+    "ok": true,
+    "sec": 0.9,
+    "righe_output": 3,
+    "errore": null
+   },
+   {
+    "cella": 14,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 1,
+    "errore": null
+   }
+  ],
+  "metodo": "esecuzione in-process delle celle (nbclient non installato)",
+  "risultati": {
+   "prev_train": 0.5237,
+   "prev_val": 0.4302,
+   "n_train": 72475,
+   "n_val": 4626,
+   "p1_hgb_all_auroc": 0.7464,
+   "p1_best_agesex_auroc": 0.6587,
+   "p1_cv_auroc": 0.7278,
+   "p1_gain": 0.0877,
+   "p2_aortic_stenosis_auroc": 0.8435,
+   "p3_mae": 9.5382,
+   "p3_r2": 0.163,
+   "p3_lte45_auroc": 0.7643,
+   "p5_silhouette": 0.5692,
+   "p5_ari": 0.9911,
+   "p5_n_credible": 0,
+   "p6_hgb_with_lvef_auroc": 0.7318
+  }
+ },
+ "full_total_sec": 37.0,
+ "full_heavy": {
+  "celle_codice": 15,
+  "ok": 15,
+  "fallite": 0,
+  "sec": 130.8,
+  "dettaglio": [
+   {
+    "cella": 0,
+    "ok": true,
+    "sec": 0.6,
+    "righe_output": 1,
+    "errore": null
+   },
+   {
+    "cella": 1,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 26,
+    "errore": null
+   },
+   {
+    "cella": 2,
+    "ok": true,
+    "sec": 17.8,
+    "righe_output": 19,
+    "errore": null
+   },
+   {
+    "cella": 3,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 3,
+    "errore": null
+   },
+   {
+    "cella": 4,
+    "ok": true,
+    "sec": 8.3,
+    "righe_output": 13,
+    "errore": null
+   },
+   {
+    "cella": 5,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 3,
+    "errore": null
+   },
+   {
+    "cella": 6,
+    "ok": true,
+    "sec": 1.7,
+    "righe_output": 8,
+    "errore": null
+   },
+   {
+    "cella": 7,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 2,
+    "errore": null
+   },
+   {
+    "cella": 8,
+    "ok": true,
+    "sec": 68.4,
+    "righe_output": 15,
+    "errore": null
+   },
+   {
+    "cella": 9,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 2,
+    "errore": null
+   },
+   {
+    "cella": 10,
+    "ok": true,
+    "sec": 7.9,
+    "righe_output": 16,
+    "errore": null
+   },
+   {
+    "cella": 11,
+    "ok": true,
+    "sec": 25.2,
+    "righe_output": 1,
+    "errore": null
+   },
+   {
+    "cella": 12,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 2,
+    "errore": null
+   },
+   {
+    "cella": 13,
+    "ok": true,
+    "sec": 0.9,
+    "righe_output": 3,
+    "errore": null
+   },
+   {
+    "cella": 14,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 1,
+    "errore": null
+   }
+  ],
+  "metodo": "esecuzione in-process delle celle (nbclient non installato)",
+  "risultati": {
+   "prev_train": 0.5237,
+   "prev_val": 0.4302,
+   "n_train": 72475,
+   "n_val": 4626,
+   "p1_hgb_all_auroc": 0.7464,
+   "p1_best_agesex_auroc": 0.6587,
+   "p1_cv_auroc": 0.7278,
+   "p1_gain": 0.0877,
+   "p2_aortic_stenosis_auroc": 0.8435,
+   "p3_mae": 9.5382,
+   "p3_r2": 0.163,
+   "p3_lte45_auroc": 0.7643,
+   "p4_cnn_auroc": 0.8276,
+   "p5_silhouette": 0.5692,
+   "p5_ari": 0.9911,
+   "p5_n_credible": 0,
+   "p6_hgb_with_lvef_auroc": 0.7318
+  }
+ }
+}

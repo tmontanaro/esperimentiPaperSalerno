@@ -14,3 +14,4 @@
 | 2026-11-06 15:38:29 | gate P6 | orchestrator | OK | 0.3 min | $0.07 | **Decisione:** P6 ha dato verdetto PASS (round di revisione 1/2). Ho congelato i 2 candidati ammessi dal revisore.  **Azioni:** - Ho scritto `agentic/FROZEN.jso |
 | 2026-11-06 15:50:12 | P7 | final-evaluator | OK (OK) | 0.9 min | $0.18 | reports/P7_final-test.md |
 | 2026-11-06 15:53:25 | P8 | synthesizer | OK (OK) | 3.2 min | $0.69 | reports/P8_synthesis.md |
+| 2026-11-06 16:01:11 | P9 | notebook-builder | OK (PARZIALE) | 7.8 min | $1.38 | reports/P9_notebook.md |

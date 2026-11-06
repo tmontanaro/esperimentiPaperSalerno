@@ -1,0 +1,9 @@
+# Pacchetti importati dal notebook (versioni usate nella prova di verifica, lette con python3 -c "import x; print(x.__version__)")
+numpy==2.5.4
+pandas==3.1.1
+scikit-learn==1.9.1
+scipy==1.18.1
+# solo per RUN_HEAVY=True (cap. 5 CNN); non serve con RUN_HEAVY=False
+torch==2.15.0
+# Per APRIRE il notebook serve anche un ambiente Jupyter (jupyterlab o notebook + ipykernel): non è importato dal codice
+# e nella macchina di verifica non era installato (vedi reports/P9_notebook.md, Problemi aperti).
