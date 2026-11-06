@@ -1,161 +1,133 @@
 # Report P6 · review
 - Agente: skeptic-reviewer
-- Data: 2026-11-06 15:45
-- Stato: PARZIALE
+- Data: 2026-11-06 16:10
+- Stato: OK
 
 ## Obiettivo
-Revisione indipendente e scettica delle fasi P2-P5 prima dell'apertura (unica) del test set: cercare leakage (uso di informazioni che il modello non avrebbe nella realtà), ricalcolare i numeri chiave dai file, valutare quanto il validation è stato "consumato" da scelte multiple, verificare che le etichette "credibile"/"supportata" rispettino il PLAYBOOK e decidere quali candidati possono andare al test. Promemoria: SHD (cardiopatia strutturale moderata o più) NON coincide con lo scompenso cardiaco.
+Secondo round della revisione indipendente prima dell'apertura (unica) del test set. Verificare che le tre revisioni chieste al round 1 (R1-P4, R1-P5, R1-P3) siano state fatte davvero, rifare i controlli che al round 1 non era stato possibile eseguire (esecuzione di `candidate.predict`, ricalcolo dei numeri) e decidere quali candidati possono andare al test. Promemoria: SHD (cardiopatia strutturale moderata o più) NON coincide con lo scompenso cardiaco.
 
 ## Input letti
-- Handoff/report: `reports/P2_conditions.md`, `reports/P3_lvef-qrs.md`, `reports/P4_waveform.md`, `reports/P5_clusters.md`; stato in `agentic/pipeline_state.json`; `agentic/DECISIONS.md`; `results/registry.csv`; `agentic/PLAYBOOK.md`.
-- Script: `experiments/P2/conditions.py`, `experiments/P3/lvef_qrs.py`, `experiments/P4/train.py`, `experiments/P4/model_def.py`, `experiments/P5/select_cluster.py`, `experiments/P5/local_vs_global.py`; `lib/echonext_lib.py` (righe 26-41: `ECG_FEATURES`, `FLAG_COLS`, `ECHO_ONLY_COLS`); `tools/final_eval.py` (righe 47-75).
-- File di risultato aggregati (nessun file di dati paziente-livello aperto): `results/P2/c_rules_val.csv`; `results/P3/a_regression.csv`, `a_classification.csv`, `b1_stratification.csv`, `b2_interaction.csv`, `b3_pairs.csv`; `results/P4/val_per_target.csv`, `val_by_qrs.csv`, `history.json`; `results/P5/local_vs_global.csv`, `permutation.csv`, `chi2.csv`, `selection_summary.json`.
-- Candidati: `results/P1/candidates/global_best/candidate.py` (comparatore), `results/P3/candidates/lvef_lte45_global/{candidate.py,candidate.json}`, `results/P4/candidates/cnn_multilabel/{candidate.py,candidate.json,config.json}`.
+- Report del round 1: `reports/P6_review.md`, copiato senza modifiche in `reports/P6_review.round1.md`.
+- Handoff da `python3 tools/state.py brief`: P0-P5, R1-P3, R1-P4, R1-P5; report completi `reports/R1-P3_review-lvef-qrs.md`, `reports/R1-P4_review-waveform.md`, `reports/R1-P5_review-clusters.md`.
+- Script: `experiments/R1-P4/strat.py`, `experiments/R1-P3/pairs_dedup.py`; ricerca testuale su tutto `experiments/` di `allow_test`, `ALLOW_TEST`, `split == test`, `ECHO_ONLY`, `lvef_value`.
+- File aggregati: `results/registry.csv`, `results/P5/local_vs_global.csv`, `results/R1-P3/pairs_dedup.csv`, `results/R1-P4/val_stratified.csv`, `results/R1-P4/candidate_check.json`, `results/P4/val_pred_emb.npz` (predizioni, usate solo per calcolare aggregati).
+- Candidati: `results/P4/candidates/cnn_multilabel`, `results/P3/candidates/lvef_lte45_global`, `results/P1/candidates/global_best` (comparatore).
 
 ## Cosa è stato fatto
-Limite importante di questa sessione: l'esecuzione di comandi (Bash) è stata negata dall'ambiente. Quindi NON ho potuto eseguire `tools/state.py brief/handoff`, `tools/validate_report.py`, né rieseguire script o `candidate.predict` su un campione. Tutte le verifiche sono state fatte leggendo il codice e ricalcolando/confrontando i numeri dei report con i file CSV/JSON aggregati in `results/`. I report sono stati letti per intero (la loro sezione Handoff inclusa).
-1. Leakage: lettura riga per riga degli script di P2-P5 alla ricerca di colonne di `ECHO_ONLY_COLS` tra gli input, di CV non raggruppata, di accessi al test.
-2. Riproduzione: per ogni fase, 3-6 numeri chiave confrontati con i file di `results/` (tolleranza 0.01 AUROC).
-3. Multiplicità: somma delle configurazioni in `results/registry.csv` per fase e confronto con quanto dichiarato.
-4. Definizioni: controllo dei criteri del PLAYBOOK su ogni etichetta "credibile"/"promettente"/"supportata".
-5. Classificazione delle 27 righe RISULTATI_CHIAVE degli Handoff P2-P5.
-6. Contratto dei candidati: controllo statico di `candidate.py` rispetto al PLAYBOOK e a come `tools/final_eval.py` li chiama.
+Al round 1 l'esecuzione di comandi era negata; in questo round è stato possibile eseguire codice.
+1. Script `experiments/P6/verify_round2.py`: smoke test con `debug` (2000 righe, output in `results/P6/debug/`), poi esecuzione completa sul validation. Calcola: configurazioni per fase dal registro; conteggio dei confronti appaiati di P5; ristratificazione indipendente CNN vs hist_gb (bootstrap con seed 7, diverso da quello di R1-P4, 500 ricampionamenti); contratto dei 3 candidati su 300 righe di validation (seed 123, diverso dalle 500 righe di R1-P4); AUROC del candidato LVEF≤45 su tutto il validation; coerenza tra `lvef_lte_45_flag` e `lvef_value`.
+2. Dal punto 1 è emersa un'anomalia nelle etichette. Due controlli in linea, salvati in `results/P6/lvef_label_check.json` e `results/P6/missing_lvef_check.json`, ne misurano l'effetto: prevalenza di tutti i 12 flag nelle righe senza `lvef_value`, AUROC dei modelli con e senza quelle righe.
+3. Confronto riga per riga degli Handoff R1 con i file `results/R1-*` (tolleranza 0.01 AUROC).
 
 ## Risultati
-**1. Leakage: nessun leakage trovato (verifica statica del codice).**
+**A. Le revisioni del round 1 sono state fatte (verificate dai file, non dalle narrazioni).**
 
-| Fase | Input dei modelli | CV raggruppata per paziente | Test | Esito |
+| Revisione richiesta | Esito | Evidenza |
+|---|---|---|
+| P4: equità della CNN per etnia, setting, sesso ed età, con IC appaiato contro hist_gb | FATTA | `results/R1-P4/val_stratified.csv`: 16 strati. Il mio ricalcolo indipendente (`results/P6/strat_recalc.csv`) riproduce tutti gli AUROC della CNN entro 0.003 |
+| P4: `candidate.predict` su 500 righe di validation | FATTA e ripetuta | R1-P4: max\|Δ\| 1.96e-4. Il mio controllo su 300 righe diverse: colonne `score`,`in_scope`; indice identico; in_scope 100%; 0 NaN; max\|score − predizione salvata\| = 1.1e-4 |
+| P5: registrare le 43 configurazioni mancanti | FATTA | registro: P5 125 (di cui 47 con val), R1-P5 43 (E0021), cioè 168 |
+| P5: dichiarare i 2 IC appaiati positivi su 40 e il p=0.77 | FATTA | ricalcolo da `local_vs_global.csv`: 40 confronti, 2 con IC>0, 1 con IC<0 |
+| P5: ARI dominato dal sesso | FATTA, ma solo come interpretazione | nessuna analisi di sensibilità senza il sesso (lo ammettono) |
+| P3: coppie deduplicate, bootstrap per paziente, descrizione corretta del filtro 20% | FATTA | `pairs_dedup.py` r.35-36 (deduplica), r.57-58 (bootstrap multiway per paziente); i numeri del CSV coincidono con l'Handoff (es. A train 6 [4, 8], C val 4 [-2, 8], B frac. distanze nulle 1.000) |
+| P3: descrizione di `candidate.json` | FATTA | il json riporta "n=72475 ECG, di cui 6457 senza lvef_value"; il modello non è cambiato (AUROC val ricalcolato 0.7643) |
+
+**B. Leakage: nessun leakage nei dati di ingresso.** Gli script R1 non toccano il test: l'unico `allow_test` in `experiments/` è `P4/train.py` r.162, condizionato a `ECHONEXT_ALLOW_TEST=1`, che imposta solo `final_eval.py`. Nessuna colonna di `ECHO_ONLY_COLS` entra nei modelli: `lvef_value` compare solo come esito e come variabile di appaiamento in P3/R1-P3. Nessun modello è addestrato su righe di validation.
+
+**C. NUOVO RILIEVO: le righe senza `lvef_value` hanno tutti i flag a 0 per costruzione.** È un artefatto delle etichette, non un leakage di ingresso.
+
+| | train | validation |
+|---|---|---|
+| righe senza `lvef_value` | 6457 (8.9%) | 514 (11.1%) |
+| prevalenza di OGNUNO dei 12 flag (SHD incluso) in quelle righe | 0.000 | 0.000 |
+| età media senza / con LVEF | 57.6 / 61.6 | 57.2 / 63.3 |
+| `lvef_lte_45_flag` coerente con `lvef_value ≤ 45` dove c'è il valore | 100% | 100% |
+
+In queste righe nessuna misura è stata registrata e sono tutte "negative". Sono più giovani e più spesso ambulatoriali, quindi riconoscibili in parte anche dall'ECG: la CNN dà loro un punteggio medio di 0.222, contro 0.308 dei veri negativi con LVEF misurata. Effetto sulle metriche (validation):
+
+| Modello | Target | AUROC su tutte le righe [IC95%] | AUROC sulle sole righe con LVEF misurata [IC95%] | Differenza |
 |---|---|---|---|---|
-| P2 | `lib.get_xy` → 7 `ECG_FEATURES`; `location_setting`/`race_ethnicity` solo in `strata_vars` (conditions.py r.58) per stratificare; regole su sole feature ECG (r.85-89) | OOF con `lib.oof_proba(..., patient_key)` (r.104) | mai | OK |
-| P3 | `F = lib.ECG_FEATURES` (r.27, r.35); `lvef_value` solo come esito; interazioni `qrs×feature` su F (r.105-116) | `GroupKFold(5)` su `patient_key` (r.143); Wald con errori raggruppati per paziente (r.117-125) | mai | OK |
-| P4 | solo forme d'onda (`--use-tab` non usato; `assert a.use_tab is False`, train.py r.175); le altre 11 etichette eco sono **uscite** ausiliarie (multi-etichetta), non input: lecito | split predefinito train/val (pazienti disgiunti per P0) | candidato legge il test solo con `ECHONEXT_ALLOW_TEST=1`, impostato da `final_eval.py` r.47 | OK |
-| P5 | clustering su F (select_cluster.py r.16-22), modelli locali su F (local_vs_global.py r.71) | `GroupKFold(3)` su `patient_key` nella selezione dentro il cluster (r.53) | mai | OK |
+| CNN `cnn_multilabel` | SHD | 0.823 [0.811-0.834], n=4626, 1990 pos | 0.812 [0.798-0.824], n=4112, 1990 pos | −0.011 |
+| hist_gb `global_best` | SHD | 0.746 [0.733-0.761] | 0.732 [0.716-0.746] | −0.015 |
+| hist_gb `lvef_lte45_global` | LVEF≤45 | 0.764 [0.748-0.782], 866 pos | 0.749 [0.731-0.769], n=4112, 866 pos | −0.015 |
+| testa LVEF≤45 della CNN (non candidata) | LVEF≤45 | 0.889 | 0.881 | −0.008 |
 
-Uso del validation per l'addestramento: nessun modello è addestrato su righe di validation. Usi "morbidi" del validation (non leakage, ma ottimismo da selezione): P2 sceglie i 2 target focali e il "miglior modello" per target guardando l'AUROC di val (conditions.py r.41-46); P3 sceglie `best_cls` sul val (lvef_qrs.py r.79, 5 modelli entro 0.008 di AUROC); P4 monitora l'AUROC di val per epoca ma usa l'epoca finale fissata a priori (12); P5 decide l'eleggibilità dei cluster anche in base al numero di positivi in val (r.78, soglia 20), effetto trascurabile.
+Le conclusioni restano: la CNN batte il tabulare anche sulle righe con LVEF misurata (0.812 contro 0.732) e il candidato LVEF resta "moderato". Tutte le AUROC riportate in P1-P5 sono però gonfiate di circa 0.01-0.015 da un gruppo di negativi "facili" la cui etichetta è dubbia: potrebbero essere ecocardiogrammi incompleti, non cuori sani. Nessuna fase precedente l'aveva notato. P0 riportava solo l'8.9% di LVEF mancanti; R1-P3 scrive "non è stato verificato come il flag sia valorizzato".
 
-**2. Riproduzione dai file (tutte entro tolleranza, 0 discrepanze di AUROC).**
+**D. Riproduzione dei numeri R1 (tolleranza 0.01 AUROC): 0 discrepanze.** R1-P4: AUROC CNN per strato identici (asian 0.788, procedurale 0.748, ≥75 0.788, 65-74 0.802). R1-P3: le 8 righe di `pairs_dedup.csv` coincidono con le tabelle del report. R1-P5: 40/2/1 confermato. Unica fragilità: l'IC appaiato "asian" di R1-P4 vale +0.007..+0.170 con il loro seed e −0.001..+0.185 con il mio (n=134, 62 positivi). La frase "IC>0 in 15/16 strati" dipende quindi dal seed del bootstrap: con il mio sono 14/16. La CNN resta sopra hist_gb in 16/16 come stima puntuale.
 
-| Fase | Affermazione nel report | Valore nel file | File |
-|---|---|---|---|
-| P2 | composito globale val 0.746 [0.733-0.759] | 0.7464 [0.7331-0.7595] | P5/local_vs_global.csv r.2, P2/c_rules_val.csv |
-| P2 | regola 2 composito: 0.779 [0.731-0.832], n=425, margine +0.033, non credibile | 0.7793 [0.7315-0.8315], n=425, 157 pos, margine 0.0329; IC inf 0.731 < 0.746 | P2/c_rules_val.csv r.3 |
-| P2 | stenosi aortica regola 1: 0.950, 8 positivi | 0.9496, 8 pos | P2/c_rules_val.csv r.7 |
-| P2 | 650 regole/target | 38 atomi + C(38,2) − 91 coppie sulla stessa feature = 38 + 612 = 650 (×3 = 1950) | ricalcolo da conditions.py r.83-97 |
-| P3 | LVEF<=45 AUROC 0.764 [0.748-0.782] | 0.7643 [0.7478-0.7815] | P3/a_classification.csv r.2 |
-| P3 | LVEF MAE 9.54 [9.31-9.79], R² 0.163 | 9.538 [9.308-9.794], 0.1630 | P3/a_regression.csv r.5 |
-| P3 | Wald per paziente p<1e-4 / 0.0069; CV ΔMSE +0.28 [-0.03,0.56]; R² 0.1400→0.1413 | p=3.6e-8 / 0.00686; 0.276 [-0.028, 0.557]; 0.14005→0.14128 | P3/b2_interaction.csv |
-| P3 | ΔR² <100: +0.007 [0.001,0.013] | 0.00668 [0.00069, 0.01330] | P3/b1_stratification.csv |
-| P4 | CNN composito 0.823 [0.811-0.834]; gain +0.077 [0.063,0.091] | 0.8232 [0.8110-0.8336]; 0.0768 [0.0625, 0.0909] | P4/val_per_target.csv r.2 |
-| P4 | epoca 12 = 0.823, picco 0.831 all'epoca 8 | 0.8232 (ep.12), 0.8307 (ep.8) | P4/history.json |
-| P4 | QRS>=120: CNN 0.845 vs tab 0.752 | 0.8452 [0.814-0.883] vs 0.7517 [0.710-0.798] | P4/val_by_qrs.csv |
-| P5 | SHD cluster 3: Lasso 0.685, Δ +0.034 [-0.046,+0.114] | 0.6854, +0.0341 [-0.0457, 0.1141] | P5/local_vs_global.csv r.20 |
-| P5 | stenosi aortica cluster 2: logreg 0.812, Δ +0.021 [+0.003,+0.038] | 0.8124, +0.0206 [0.0030, 0.0377] | P5/local_vs_global.csv r.35 |
-| P5 | p empirico guadagno 0.52/0.77/0.94; p max-AUROC 0.032 | 0.516/0.774/0.935; 0.0323 (30 perm.) | P5/permutation.csv |
-| P5 | χ² SHD val 281.7, p 9e-61; K=4, silhouette 0.569, ARI 0.999 | 281.66, 9.3e-61; 0.5692, 0.9992 | P5/chi2.csv, selection_summary.json |
+**E. Multiplicità e uso del validation.** Registro attuale: P1 10, P2 308, P3 17, P4 2, P5 125 (47 con val), R1-P3 4, R1-P4 1, R1-P5 43, P6 1 (E0022, questa verifica descrittiva). Configurazioni che hanno usato il validation: 433. Restano fuori dal validation 1950 regole P2 e 78 configurazioni di clustering P5, valutate solo sul train. Sottogruppi e cluster sono stati definiti sul solo train e verificati in validation (procedura corretta). Il p empirico di P5 include la selezione delle feature locali e il massimo su cluster e modelli. Gli IC del validation sono per paziente (1 ECG per paziente); le coppie R1-P3 usano ora un bootstrap per paziente.
 
-Discrepanze NON numeriche trovate:
-- P3, coppie: il report dice "tenuto il 20% di coppie più vicine", ma per MATCH_ON A e B quasi tutte le distanze sono 0 (appaiamento esatto su età intera e sesso) e il filtro al quantile 20% non elimina nulla: B train ha `n_pairs` = 23637 = tutti i pazienti del pool (b3_pairs.csv r.4). Inoltre le coppie sono "vicino più prossimo" orientate, quindi coppie reciproche compaiono due volte: insieme al bootstrap per coppia (non per paziente) gli IC sono troppo stretti (es. train A: differenza 6 [6-6] ms, IC degenere).
-- P3, `candidate.json` di `lvef_lte45_global`: la descrizione dice "addestrato sul train (solo righe con LVEF)", ma il codice addestra su tutte le righe di train con `lvef_lte_45_flag` disponibile (lvef_qrs.py r.74 usa `tr_all`; in val 4626 righe con flag vs 4112 con LVEF). Il modello è corretto, la descrizione no.
-- P5: nel testo "Il modello locale con selezione all'indietro non batte mai il globale in modo significativo" è vero solo per `local_sel_logreg`; nello stesso cluster 2 della stenosi aortica due modelli locali hanno IC appaiato interamente sopra 0 (logreg +0.021 [0.003, 0.038]; lasso +0.018 [0.002, 0.034], local_vs_global.csv r.35-36). Su 40 confronti locale-globale e con p empirico del massimo guadagno 0.77 è compatibile col caso, ma va detto esplicitamente, non nascosto in tabella.
+**F. Definizioni.** Nessuna etichetta "credibile" assegnata (0 regole P2, 0 cluster P5), e i controlli lo confermano: stenosi aortica cluster 2 ha AUROC locale 0.812 [0.761-0.868], sotto il globale 0.844, e p=0.77. `QRS_MODIFICA` = "inconclusiva": i tre test non concordano. (i) Nessun beneficio dalla stratificazione (ΔR² ≤ 0.009). (ii) Interazione significativa come p ma con R² in CV da 0.1401 a 0.1413. (iii) Associazione marginale di 2-8 ms, con IC che in validation include 0 per A, C e D. L'etichetta è corretta, anzi generosa.
 
-**3. Selezione sul validation e multiplicità.**
-
-| Fase | Configurazioni registrate con uso del val | Senza val | Dichiarate nel report | Note |
-|---|---|---|---|---|
-| P1 | 10 | - | 10 | smoke test non registrato (DECISIONS 14:21:37) |
-| P2 | 308 (E0002 148 + E0003 160) | 1950 regole su train/OOF | 308 + 1950 | 15 regole verificate su val |
-| P3 | 17 (E0004-E0011) | test di interazione su train | 17 | coerente |
-| P4 | 2 (E0012-E0013) | - | 2 | una sola configurazione, epoca fissata |
-| P5 | 47 (E0015) | 78 (E0014) | 47 + 43 + 78 = 168 | **43 configurazioni su val NON registrate** |
-| Totale | 384 registrate (427 reali) | 2028 | | |
-
-- Sottogruppi (P2): regole definite solo su OOF del train, poi verificate su val: procedura corretta (criterio 1 del PLAYBOOK rispettato). Gate: 1950 regole > 500 senza replica indipendente; non produce danni perché nessuna regola è stata dichiarata credibile.
-- Cluster (P5): definiti solo su train (feature e k scelti senza target né val). Il p empirico include la selezione all'indietro delle feature predittive e la scelta del massimo tra cluster e modelli (la statistica è il massimo su tutti i cluster e i 4 modelli, local_vs_global.py r.89-96, ricalcolata in ogni permutazione r.134-142): corretto. Non include la selezione delle feature del clustering, ma questa non usa l'esito, quindi è legittimo tenerla fissa. Limite: 30 permutazioni → risoluzione minima 0.032.
-- IC su pazienti indipendenti: in val 1 ECG per paziente (P0), quindi il bootstrap per riga in val è per paziente: corretto per P2, P3 (classificazione, regressione, stratificazione), P4, P5. Eccezione: le coppie di P3 (paziente presente in più coppie), vedi sopra.
-
-**4. Definizioni.** Nessuna etichetta "credibile" è stata assegnata in P2 (0 su 15 regole) e P5 (0 su 10 cluster×target). Verifica dei casi limite: composito regola 2 (margine +0.033 ma IC inferiore 0.731 < 0.746 → criterio 3 fallito); stenosi aortica regole 1-5 (8-18 positivi < 25 → criterio 2 fallito); stenosi aortica cluster 2 (AUROC 0.812 < globale 0.844 → criterio 3 fallito; p empirico 0.77 → criterio 5 fallito). Le assenze di credibilità sono quindi corrette. "Target promettente": verificato per stenosi aortica (IC inf 0.819 ≥ 0.65, 252 pos) e LVEF<=45 (0.748, 866 pos).
-Stabilità ARI 0.999 di P5: formalmente ≥ 0.6, ma è quasi automatica perché il sesso (binario) domina 2 dei 4 cluster; non è un'evidenza di struttura clinica.
-
-**5. Affermazioni vs dati (27 righe RISULTATI_CHIAVE).**
+**G. Affermazioni (Handoff R1, 19 righe).**
 
 | Fase | Riga | Giudizio | Motivo |
 |---|---|---|---|
-| P2 | TARGET_PROMETTENTI | SUPPORTATA | AS e LVEF<=45 ricalcolati; scelta del miglior modello su val = lieve ottimismo dichiarato |
-| P2 | Non promettenti | SUPPORTATA | IC inf < 0.65 o < 25 positivi |
-| P2 | SOTTOGRUPPI_CREDIBILI: [] | SUPPORTATA | c_rules_val.csv: nessuna riga soddisfa n/pos/margine/IC |
-| P2 | N_REGOLE_PROVATE 1950 | SUPPORTATA | ricalcolato 650×3 |
-| P2 | locale vs globale per strati | SUPPORTATA | coerente con lo script; b_strata.csv non riletto riga per riga |
-| P2 | composito 0.746 [0.733-0.759] | SUPPORTATA | ricalcolato |
-| P3 | QRS_MODIFICA: inconclusiva | SUPPORTATA | vedi sotto |
-| P3 | (i) stratificazione | SUPPORTATA | b1_stratification.csv |
-| P3 | (ii) interazione | SUPPORTATA | b2_interaction.csv |
-| P3 | (iii) coppie, IC sopra 50% | DEBOLE | IC per coppia non per paziente, coppie reciproche duplicate, filtro 20% non applicato in A/B; misura associazione marginale, non modifica d'effetto |
-| P3 | MATCH_ON_TESTATI | SUPPORTATA | 4 insiemi in b3_pairs.csv |
-| P3 | LVEF_REG | SUPPORTATA | a_regression.csv |
-| P3 | LVEF_LTE45_AUROC | SUPPORTATA | a_classification.csv |
-| P4 | CNN_AUROC_VAL_COMPOSITO | SUPPORTATA | val_per_target.csv |
-| P4 | GAIN_VS_TABULARE | SUPPORTATA | val_per_target.csv |
-| P4 | GPU_USATA | SUPPORTATA | ~4-6 s/epoca in history.json, compatibile con GPU |
-| P4 | TARGET_MIGLIORI | SUPPORTATA | val_per_target.csv |
-| P4 | EPOCHE 12, picco ep. 8 | SUPPORTATA | history.json |
-| P4 | CNN > tabulare per QRS | SUPPORTATA | val_by_qrs.csv, IC non sovrapposti in tutte e 3 le fasce |
-| P4 | CANDIDATO | SUPPORTATA | file presenti; predict non eseguito da me (vedi Problemi aperti) |
-| P5 | FEATURE_PER_CLUSTER | SUPPORTATA | selection_summary.json |
-| P5 | K=4 | SUPPORTATA | selection_summary.json |
-| P5 | STABILITA_ARI 0.999 | DEBOLE | numero corretto ma quasi automatico per il sesso binario |
-| P5 | CLUSTER_CREDIBILI: [] | SUPPORTATA | local_vs_global.csv |
-| P5 | P_EMPIRICO | SUPPORTATA | permutation.csv |
-| P5 | N_CONFIGURAZIONI 168 | DEBOLE | il registro ne contiene 125; 43 non registrate |
-| P5 | χ² 281.7 | SUPPORTATA | chi2.csv |
+| R1-P4 | CNN > hist_gb 16/16, IC>0 15/16 | DEBOLE | 16/16 regge; 15/16 dipende dal seed (asian −0.001 con seed 7) |
+| R1-P4 | AUROC più bassa/alta per strato | SUPPORTATA | riprodotta |
+| R1-P4 | vantaggio da +0.054 a +0.120 | SUPPORTATA | riprodotto (IC simili) |
+| R1-P4 | sesso 0.817 / 0.822 | SUPPORTATA | riprodotto |
+| R1-P4 | candidate.predict | SUPPORTATA | ripetuto su 300 righe diverse, max\|Δ\| 1.1e-4 |
+| R1-P4 | configurazioni +1 | SUPPORTATA | E0020 |
+| R1-P5 | N_CONFIGURAZIONI 168 | SUPPORTATA | 125 + 43 nel registro |
+| R1-P5 | 40 confronti, 2 IC>0, 1 IC<0 | SUPPORTATA | ricalcolato |
+| R1-P5 | P_EMPIRICO 0.77/0.52/0.94 | SUPPORTATA | permutation.csv (round 1) |
+| R1-P5 | CLUSTER_CREDIBILI [] | SUPPORTATA | 0.761 < 0.844 |
+| R1-P5 | ARI dominato dal sesso | DEBOLE | plausibile ma non testato (nessun ARI senza sesso) |
+| R1-P3 | QRS_MODIFICA inconclusiva | SUPPORTATA | vedi F |
+| R1-P3 | differenze \|ΔQRS\| | SUPPORTATA | pairs_dedup.csv |
+| R1-P3 | frazione QRS più largo | SUPPORTATA | train 58.2-66.3%, IC inferiori ≥ 0.523 |
+| R1-P3 | filtro 20% | SUPPORTATA | frac_tenute 0.767/1.000/0.200/0.200 |
+| R1-P3 | coppie reciproche rimosse | SUPPORTATA | n_dirette → n_uniche |
+| R1-P3 | MATCH_ON A-D | SUPPORTATA | 4 insiemi nel CSV |
+| R1-P3 | candidato lvef_lte45: 72475 righe, AUROC 0.764 | DEBOLE | numeri esatti, ma le 6457 righe senza LVEF sono tutte negative per costruzione; sulle righe con LVEF l'AUROC è 0.749 |
+| R1-P3 | configurazioni +4 | SUPPORTATA | E0016-E0019 |
 
-Totale: 24 supportate, 3 deboli, 0 non supportate.
+Round 2: 16 supportate, 3 deboli, 0 non supportate. Aggiornamento delle 27 righe del round 1: "P3 coppie" e "P5 N_CONFIGURAZIONI" diventano supportate grazie alle revisioni. "P3 LVEF_LTE45_AUROC" scende a debole per il rilievo C. "P5 ARI" resta debole. Round 1 aggiornato: 25/2/0. **Totale: 41 supportate / 5 deboli / 0 non supportate (46 righe).**
 
-`QRS_MODIFICA`: i tre test NON concordano. (i) stratificazione: nessun beneficio (ΔMAE con IC che include 0 in tutte le fasce; ΔR² ≤ 0.009). (ii) interazione: statisticamente non nulla (Wald raggruppato p=3.6e-8 con QRS continuo) ma praticamente irrilevante (R² in CV 0.1401→0.1413, ΔMSE con IC che include 0). (iii) coppie: misura l'associazione marginale QRS-LVEF, non la modifica d'effetto (lo ammette il report), e si riduce a 2 ms [-2, 4] nella replica val con MATCH_ON C. Applicando la regola "≥2 test su 3 concordi" in modo letterale si potrebbero contare (ii) e (iii) come "concordi"; ma (iii) non testa l'ipotesi e (ii) non ha rilevanza pratica, quindi "inconclusiva" è un'etichetta difendibile, anzi generosa: l'evidenza di una modifica d'effetto clinicamente rilevante con 7 feature tabulari è sostanzialmente nulla.
+**H. Senso clinico ed equità.**
+- SHD ≠ scompenso. L'etichetta è composita: AS tabulare 0.844 contro versamento pericardico 0.678. Centro unico. Solo pazienti con un ecocardiogramma (bias di selezione: prevalenza 43-52%, lontana da uno screening).
+- Equità della CNN (R1-P4, verificata): nessun gruppo in cui la CNN fallisce. La CNN cala con l'età (<50: 0.831; ≥75: 0.788 [0.761-0.813]) ed è più bassa nel setting procedurale (0.748 [0.674-0.818], n=177). Gli IC si sovrappongono e non sono confronti formali tra gruppi.
+- Calibrazione grezza sul validation (prevalenza 0.430): punteggio medio CNN 0.455, hist_gb 0.503 (risente dello spostamento di prevalenza tra train, 0.524, e validation). La calibrazione non è stata valutata formalmente da nessuna fase.
 
-**6. Senso clinico e limiti.**
-- SHD ≠ scompenso: ricordato in tutti i report P2-P5. Composito: 1990/4626 positivi in val (43%); un AUROC del composito mescola condizioni con segnale ECG molto diverso (AS 0.84 tabulare vs pericardial effusion 0.68).
-- Centro unico, solo pazienti con un ecocardiogramma (bias di selezione: popolazione già con sospetto clinico, prevalenza 43-52% lontana da quella di uno screening): nessuna fase lo discute esplicitamente come limite di generalizzazione; va detto in P8.
-- Shift train/val (prevalenza 0.524 vs 0.430, setting diverso): calibrazione non valutata da nessuna fase.
-- Equità: per il modello tabulare (P2, composito) l'AUROC varia per etnia 0.698 [0.611-0.785] (asian, n=134) - 0.779 (unknown) e per setting 0.676 [0.595-0.742] (procedural, n=177) - 0.765 (emergency); per età la stenosi aortica scende a 0.634 [0.542-0.734] a 65-74 anni. **Per il candidato principale (CNN) non esiste alcuna analisi per etnia, setting, sesso o età**: P4 stratifica solo per QRS. Non è possibile dire se la CNN degrada in un gruppo.
-
-**7. Contratto dei candidati (verifica statica; esecuzione non possibile).**
-
-| Candidato | Contratto | Indice/colonne | Note |
-|---|---|---|---|
-| `results/P4/candidates/cnn_multilabel` | carica `weights.pt`, `model_def.py`, `config.json` relativi a `__file__`; restituisce `score` = sigmoid dell'uscita 0 (`config.json`: indice 0 = `shd_moderate_or_greater_flag`, coerente con `candidate.json`), `in_scope=True` | `index=df.index` | richiede le colonne `split` e `row_in_split` in `df`: `final_eval.py` passa il `df` di test completo (r.50, r.61-63), quindi presenti; il test si apre solo con `ECHONEXT_ALLOW_TEST=1` |
-| `results/P3/candidates/lvef_lte45_global` | identico all'esempio del PLAYBOOK | `index=df.index` | descrizione in candidate.json imprecisa (vedi sopra) |
-| `results/P1/candidates/global_best` (comparatore) | identico all'esempio | `index=df.index` | è un modello del **composito**: in `final_eval.py` (r.70-74) viene usato come comparatore anche per il candidato LVEF<=45, dove il confronto non ha senso |
+**I. Contratto dei candidati.** Tutti e tre i `candidate.py` sono stati eseguiti su 300 righe di validation. Restituiscono `score` e `in_scope` con indice identico al DataFrame in ingresso, 0 NaN, in_scope 100%. Ricalcolata su tutto il validation, l'AUROC di `lvef_lte45_global` coincide con quella dichiarata (0.7643).
 
 ## Decisioni e motivazioni
-- VERDETTO REVISE e non PASS: non ci sono problemi di leakage e due candidati sono ammissibili, ma ci sono lacune correggibili a basso costo che riguardano proprio il candidato principale (equità della CNN mai valutata; esecuzione di `predict` non verificata in modo indipendente) e la contabilità del validation (43 configurazioni non registrate, regola 4 di CLAUDE.md). Nessuna revisione richiede nuovi addestramenti né nuove scelte sul validation.
-- Candidati ammessi (provvisoriamente, in attesa delle revisioni): `results/P4/candidates/cnn_multilabel` (una sola configurazione, epoca fissata a priori, AUROC val 0.823 [0.811-0.834]: la stima di validation è poco ottimistica) e `results/P3/candidates/lvef_lte45_global` (modello globale tabulare, scelto tra 5 modelli sul val con differenze ≤ 0.008: ottimismo trascurabile; accuratezza solo moderata).
-- Nessun sottogruppo né cluster è ammesso: nessuno soddisfa i criteri, e la verifica lo conferma.
-- Non ho modificato report, dati o registro di altre fasi; non ho toccato il test.
+- **VERDETTO PASS.** Le revisioni richieste al round 1 sono fatte e riprodotte, non c'è leakage di ingresso e i contratti dei candidati funzionano. Il rilievo C non è un leakage: è una proprietà delle etichette del dataset, che vale identica in train, validation e (presumibilmente) test. Non cambia nessuna conclusione: la CNN supera il tabulare anche sulle righe con LVEF misurata (0.812 contro 0.732) e nessun candidato va cambiato. L'ho quantificato qui, quindi non serve un'altra fase. Lo rendo un'analisi **pre-specificata prima dell'apertura del test** (nota in DECISIONS.md): P7/P8 devono riportare anche la metrica sulle righe con `lvef_value` non nullo.
+- **Candidati ammessi:**
+  - `results/P4/candidates/cnn_multilabel`: una configurazione, epoca fissata a priori, stima di validation poco ottimistica. Validation 0.823 [0.811-0.834]; 0.812 [0.798-0.824] sulle righe con LVEF.
+  - `results/P3/candidates/lvef_lte45_global`: scelto fra 5 modelli sul validation, ottimismo piccolo; accuratezza solo moderata, 0.749 [0.731-0.769] sulle righe con LVEF.
+- **Nessun sottogruppo né cluster ammesso**: nessuno soddisfa i criteri del PLAYBOOK.
+- Non ho modificato report, dati o candidati di altre fasi; non ho toccato il test.
 
 ## Configurazioni provate
-0 configurazioni nuove: questa revisione non ha addestrato modelli né valutato nulla sul validation (solo lettura di codice e di file aggregati). Nessuna registrazione `log-exp` necessaria.
+1 valutazione descrittiva sul validation (E0022, `--uses-val --n-configs 1`): ristratificazione, contratto dei candidati, analisi di sensibilità sulle righe senza LVEF. Nessun modello è stato addestrato né scelto: questa verifica non introduce ottimismo da selezione.
 
 ## Artefatti
-- `reports/P6_review.md` (questo file). Nessun file in `results/P6/` (non è stato possibile eseguire codice).
+- `reports/P6_review.md` (questo file); `reports/P6_review.round1.md` (round 1, invariato).
+- `experiments/P6/verify_round2.py`
+- `results/P6/verify_round2.json`, `results/P6/strat_recalc.csv`, `results/P6/lvef_label_check.json`, `results/P6/missing_lvef_check.json`; smoke test in `results/P6/debug/`.
 
 ## Problemi aperti
-- L'ambiente ha negato l'esecuzione di comandi: non ho potuto eseguire `python3 tools/state.py brief`/`handoff`, `python3 tools/validate_report.py reports/P6_review.md`, né rieseguire script o `candidate.predict` su un campione di validation (punto 7 della checklist verificato solo staticamente; punto 2 verificato contro i file, non rieseguendo). Va lanciato il validatore su questo report.
-- Comparatore unico in `FROZEN.json` (`comparator_dir` = modello del composito di P1): per il candidato LVEF<=45 il campo `comparator_in_scope` di `final_eval.py` confronterà un modello SHD con etichette LVEF; P7 deve ignorarlo o segnalarlo.
-- La testa LVEF<=45 della CNN (val 0.889 [0.876-0.902], gain +0.125 sul tabulare) è molto migliore del candidato tabulare LVEF ma non è un candidato (il candidato CNN espone solo l'uscita 0). Promuoverla ora sarebbe una scelta fatta guardando il validation tra 12 teste (lieve ottimismo, da dichiarare): decisione lasciata all'orchestratore/umano.
-- Una sola esecuzione della CNN (un seed): variabilità tra addestramenti ignota.
-- Calibrazione e bias di selezione (solo pazienti con eco, centro unico) non valutati da nessuna fase.
+- **Etichette con LVEF mancante** (rilievo C): non sappiamo se le 514 righe di validation (e le 6457 di train) siano cuori sani o ecocardiogrammi incompleti codificati come 0. Va chiesto ai partner clinici o al dizionario dati di EchoNext. Tutte le AUROC del progetto andrebbero lette anche sul sottoinsieme con LVEF misurata (circa −0.01/−0.015).
+- `tools/final_eval.py` (che non posso modificare) probabilmente calcola le metriche solo su tutte le righe di test. Se P7 non può ottenere anche il sottoinsieme con LVEF misurata, P8 deve dichiarare l'effetto stimato qui sul validation.
+- Comparatore unico in FROZEN (modello del composito): per `lvef_lte45_global` il confronto con il comparatore non ha senso.
+- La testa LVEF≤45 della CNN (0.881 sulle righe con LVEF) è molto migliore del candidato tabulare ma non è un candidato: promuoverla ora sarebbe una scelta fatta guardando il validation; decisione lasciata all'umano.
+- Un solo seed della CNN; calibrazione non valutata; ARI dei cluster senza il sesso non testato; centro unico.
 
 ## Handoff
-STATUS: PARZIALE
+STATUS: OK
 RISULTATI_CHIAVE:
-- VERDETTO: REVISE (nessun leakage trovato in P2-P5; numeri chiave riprodotti dai file entro 0.001 di AUROC, 0 discrepanze numeriche)
-- CANDIDATI_AMMESSI: [results/P4/candidates/cnn_multilabel, results/P3/candidates/lvef_lte45_global] (CNN composito val 0.823 [0.811-0.834]; LVEF<=45 tabulare 0.764 [0.748-0.782]); 0 sottogruppi, 0 cluster
-- REVISIONI_RICHIESTE: [P4: stratificare il candidato CNN su validation per race_ethnicity, location_setting, sex, age_bin (AUROC con IC, n, positivi, CNN vs hist_gb tabulare sugli stessi pazienti con IC appaiato) usando val_pred_emb.npz senza riaddestrare, e documentare un'esecuzione di candidate.predict su 500 righe di val (colonne, indice uguale a df, max |score - predizione salvata|); P5: registrare con log-exp le 43 configurazioni su validation mancanti, correggere Configurazioni provate/N_CONFIGURAZIONI e dichiarare esplicitamente che in stenosi aortica cluster 2 logreg +0.021 [0.003,0.038] e lasso +0.018 [0.002,0.034] sono gli unici IC appaiati >0 su 40 confronti, non confermati dalla permutazione (p=0.77), e che ARI 0.999 è dominato dal sesso binario; P3: rifare il bootstrap delle coppie per paziente eliminando le coppie reciproche duplicate, correggere la descrizione del filtro 20% (in MATCH_ON B n_pairs=23637 = tutti i pazienti) e la descrizione di candidate.json di lvef_lte45_global (addestrato su tutte le righe con flag, non solo con LVEF)]
-- AFFERMAZIONI: 24/3/0 (deboli: P3 coppie, P5 ARI, P5 N_CONFIGURAZIONI)
-- QRS_MODIFICA: i tre test non concordano ((i) ΔR² ≤0.009; (ii) Wald p=3.6e-8 ma R² CV 0.1401→0.1413; (iii) associazione marginale, 2 [-2,4] ms in val con MATCH_ON C): "inconclusiva" difendibile, di fatto nessuna modifica clinicamente rilevante
-- Multiplicità: 384 configurazioni su val registrate (427 reali) + 1950 regole e 78 configurazioni di clustering solo su train
-- Equità: tabulare composito per etnia 0.698-0.779, per setting 0.676-0.765 (IC ampi); per la CNN nessuna analisi di equità disponibile
+- VERDETTO: PASS (revisioni R1-P4, R1-P5, R1-P3 fatte e riprodotte; nessun leakage di ingresso; 0 discrepanze numeriche oltre 0.01 AUROC)
+- CANDIDATI_AMMESSI: [results/P4/candidates/cnn_multilabel, results/P3/candidates/lvef_lte45_global]; 0 sottogruppi, 0 cluster
+- AFFERMAZIONI: 41/5/0 (round 2: 16/3/0; deboli: R1-P4 "IC>0 15/16" dipende dal seed, asian −0.001 con seed 7; ARI senza sesso non testato; AUROC LVEF≤45 gonfiata)
+- NUOVO: righe senza lvef_value (train 6457, val 514) hanno tutti i 12 flag = 0; AUROC val sulle sole righe con LVEF: CNN 0.812 [0.798-0.824], hist_gb 0.732 [0.716-0.746], LVEF≤45 0.749 [0.731-0.769] (−0.011/−0.015)
+- candidate.predict (300 righe val, 3 candidati): score+in_scope, indice identico, 0 NaN; CNN max|Δ| vs salvato 1.1e-4
+- QRS_MODIFICA: inconclusiva confermata ((i) ΔR² ≤ 0.009; (ii) R² CV 0.1401→0.1413; (iii) 2-8 ms, IC val con 0 per A, C, D)
+- Equità CNN: 16/16 strati sopra hist_gb; minimi procedurale 0.748 [0.674-0.818] e ≥75 anni 0.788 [0.761-0.813]
+- Multiplicità: 433 configurazioni sul validation (E0001-E0022) + 1950 regole e 78 clustering solo sul train
 RACCOMANDAZIONE:
-- Orchestratore: creare le 3 fasi di revisione R1-P4, R1-P5, R1-P3 (in quest'ordine di importanza) e riaprire P6; nessuna richiede riaddestramento.
-- P7: per lvef_lte45_global il comparatore di FROZEN.json (modello del composito) non è pertinente; leggere il confronto solo per cnn_multilabel.
-- P8: ribadire SHD ≠ scompenso, centro unico, solo pazienti con eco, calibrazione non valutata.
+- Orchestratore/umano: approvare P7 con i 2 candidati; congelare in FROZEN.json.
+- P7: oltre all'AUROC su tutto il test, riportare (pre-specificato qui) quella sulle righe con lvef_value non nullo; se final_eval.py non lo consente, dichiararlo. Ignorare il comparatore per lvef_lte45_global.
+- P8: SHD ≠ scompenso; righe senza LVEF tutte negative per costruzione; centro unico, solo pazienti con eco; calibrazione non valutata.

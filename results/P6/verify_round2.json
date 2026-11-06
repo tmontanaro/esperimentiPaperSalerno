@@ -1,0 +1,184 @@
+{
+ "registry_cols": [
+  "ts",
+  "exp_id",
+  "phase",
+  "target",
+  "uses_val",
+  "n_configs",
+  "metric_val",
+  "description"
+ ],
+ "registry": {
+  "P1": {
+   "n_exp": 1,
+   "n_configs": 10,
+   "configs_uses_val": 10
+  },
+  "P2": {
+   "n_exp": 2,
+   "n_configs": 308,
+   "configs_uses_val": 308
+  },
+  "P3": {
+   "n_exp": 8,
+   "n_configs": 17,
+   "configs_uses_val": 17
+  },
+  "P4": {
+   "n_exp": 2,
+   "n_configs": 2,
+   "configs_uses_val": 2
+  },
+  "P5": {
+   "n_exp": 2,
+   "n_configs": 125,
+   "configs_uses_val": 47
+  },
+  "R1-P3": {
+   "n_exp": 4,
+   "n_configs": 4,
+   "configs_uses_val": 4
+  },
+  "R1-P4": {
+   "n_exp": 1,
+   "n_configs": 1,
+   "configs_uses_val": 1
+  },
+  "R1-P5": {
+   "n_exp": 1,
+   "n_configs": 43,
+   "configs_uses_val": 43
+  }
+ },
+ "lvg_cols": [
+  "target",
+  "cluster",
+  "model",
+  "n",
+  "n_pos",
+  "prev",
+  "auroc",
+  "auroc_lo",
+  "auroc_hi",
+  "auprc",
+  "diff_vs_global_same_pts",
+  "global_full_val_auroc",
+  "diff_lo",
+  "diff_hi",
+  "global_full_val_lo"
+ ],
+ "p5_paired": {
+  "n": 40,
+  "pos": 2,
+  "neg": 1
+ },
+ "calib": {
+  "prev_val": 0.4301772589710333,
+  "mean_cnn": 0.45469129535971936,
+  "mean_tab": 0.503455435568773
+ },
+ "cand_cnn_multilabel": {
+  "cols": [
+   "score",
+   "in_scope"
+  ],
+  "index_equal": true,
+  "n": 300,
+  "in_scope_frac": 1.0,
+  "score_min": 0.011158031411468983,
+  "score_max": 0.9996125102043152,
+  "nan_scores": 0,
+  "max_abs_diff_vs_saved": 0.00011213123798370361,
+  "json": {
+   "name": "cnn_multilabel",
+   "target": "shd_moderate_or_greater_flag",
+   "kind": "model",
+   "description": "ResNet 1D multi-etichetta su forme d'onda, epoca finale",
+   "val_metrics": {
+    "auroc_cnn": 0.8231523703494712,
+    "cnn_lo": 0.8110217703907018,
+    "cnn_hi": 0.8336174429331608
+   }
+  }
+ },
+ "cand_lvef_lte45_global": {
+  "cols": [
+   "score",
+   "in_scope"
+  ],
+  "index_equal": true,
+  "n": 300,
+  "in_scope_frac": 1.0,
+  "score_min": 0.024359118114454268,
+  "score_max": 0.8971378744858148,
+  "nan_scores": 0,
+  "json": {
+   "name": "lvef_lte45_global",
+   "target": "lvef_lte_45_flag",
+   "kind": "global",
+   "description": "Modello globale hist_gb su 7 feature ECG, addestrato sul solo train su tutte le righe con lvef_lte_45_flag disponibile (n=72475 ECG, di cui 6457 senza lvef_value), NON solo sulle righe con LVEF numerico. Valutato su tutte le 4626 righe val con flag. Accuratezza moderata (<0.80). Modello scelto tra 5 guardando il validation: AUROC ottimistica.",
+   "val_metrics": {
+    "n": 4626,
+    "n_pos": 866,
+    "prev": 0.18720276696930394,
+    "auroc": 0.7643256166773131,
+    "auroc_lo": 0.747779316552103,
+    "auroc_hi": 0.7815464257333136,
+    "auprc": 0.443438780294408,
+    "split": "val",
+    "model": "hist_gb"
+   }
+  }
+ },
+ "cand_global_best": {
+  "cols": [
+   "score",
+   "in_scope"
+  ],
+  "index_equal": true,
+  "n": 300,
+  "in_scope_frac": 1.0,
+  "score_min": 0.10037253047727662,
+  "score_max": 0.9830877751205509,
+  "nan_scores": 0,
+  "json": {
+   "name": "global_best",
+   "target": "shd_moderate_or_greater_flag",
+   "kind": "global",
+   "description": "Modello globale hist_gb su 7 feature ECG, addestrato su train",
+   "val_metrics": {
+    "n": 4626.0,
+    "n_pos": 1990.0,
+    "auroc": 0.7463896683722101,
+    "auroc_lo": 0.7330934468845018,
+    "auroc_hi": 0.7594859312404367,
+    "auprc": 0.6987684731497075
+   }
+  }
+ },
+ "lvef45_full_val": {
+  "n": 4626,
+  "n_pos": 866,
+  "prev": 0.18720276696930394,
+  "auroc": 0.7643256166773131,
+  "auroc_lo": 0.7477094702556776,
+  "auroc_hi": 0.781840379329268,
+  "auprc": 0.443438780294408,
+  "pos": 866
+ },
+ "lvef_flag_train": {
+  "n": 72475,
+  "n_flag": 72475,
+  "n_no_lvef": 6457,
+  "flag_prev_no_lvef": 0.0,
+  "agree_with_value": 1.0
+ },
+ "lvef_flag_val": {
+  "n": 4626,
+  "n_flag": 4626,
+  "n_no_lvef": 514,
+  "flag_prev_no_lvef": 0.0,
+  "agree_with_value": 1.0
+ }
+}

@@ -1,0 +1,90 @@
+{
+ "train_flag_prev_no_lvef": {
+  "shd_moderate_or_greater_flag": 0.0,
+  "lvef_lte_45_flag": 0.0,
+  "lvwt_gte_13_flag": 0.0,
+  "aortic_stenosis_moderate_or_greater_flag": 0.0,
+  "aortic_regurgitation_moderate_or_greater_flag": 0.0,
+  "mitral_regurgitation_moderate_or_greater_flag": 0.0,
+  "tricuspid_regurgitation_moderate_or_greater_flag": 0.0,
+  "pulmonary_regurgitation_moderate_or_greater_flag": 0.0,
+  "rv_systolic_dysfunction_moderate_or_greater_flag": 0.0,
+  "pericardial_effusion_moderate_large_flag": 0.0,
+  "pasp_gte_45_flag": 0.0,
+  "tr_max_gte_32_flag": 0.0
+ },
+ "train_n_no_lvef": 6457,
+ "train_setting_no_lvef": {
+  "emergency": 0.436,
+  "outpatient": 0.305,
+  "inpatient": 0.224,
+  "procedural": 0.035
+ },
+ "train_age_mean_no_vs_with": [
+  57.6,
+  61.6
+ ],
+ "val_flag_prev_no_lvef": {
+  "shd_moderate_or_greater_flag": 0.0,
+  "lvef_lte_45_flag": 0.0,
+  "lvwt_gte_13_flag": 0.0,
+  "aortic_stenosis_moderate_or_greater_flag": 0.0,
+  "aortic_regurgitation_moderate_or_greater_flag": 0.0,
+  "mitral_regurgitation_moderate_or_greater_flag": 0.0,
+  "tricuspid_regurgitation_moderate_or_greater_flag": 0.0,
+  "pulmonary_regurgitation_moderate_or_greater_flag": 0.0,
+  "rv_systolic_dysfunction_moderate_or_greater_flag": 0.0,
+  "pericardial_effusion_moderate_large_flag": 0.0,
+  "pasp_gte_45_flag": 0.0,
+  "tr_max_gte_32_flag": 0.0
+ },
+ "val_n_no_lvef": 514,
+ "val_setting_no_lvef": {
+  "emergency": 0.383,
+  "outpatient": 0.36,
+  "inpatient": 0.214,
+  "procedural": 0.043
+ },
+ "val_age_mean_no_vs_with": [
+  57.2,
+  63.3
+ ],
+ "cnn_all": {
+  "n": 4626,
+  "n_pos": 1990,
+  "prev": 0.4301772589710333,
+  "auroc": 0.8231523703494712,
+  "auroc_lo": 0.8109650480927394,
+  "auroc_hi": 0.8344453968786798,
+  "auprc": 0.8043700644319324
+ },
+ "cnn_with_lvef": {
+  "n": 4112,
+  "n_pos": 1990,
+  "prev": 0.48394941634241245,
+  "auroc": 0.8116306082722755,
+  "auroc_lo": 0.79754287648918,
+  "auroc_hi": 0.8241180205865002,
+  "auprc": 0.8219325123162947
+ },
+ "tab_all": {
+  "n": 4626,
+  "n_pos": 1990,
+  "prev": 0.4301772589710333,
+  "auroc": 0.7463896683722101,
+  "auroc_lo": 0.733113501537749,
+  "auroc_hi": 0.7608638821739616,
+  "auprc": 0.6987684731497075
+ },
+ "tab_with_lvef": {
+  "n": 4112,
+  "n_pos": 1990,
+  "prev": 0.48394941634241245,
+  "auroc": 0.7317526605695773,
+  "auroc_lo": 0.7157471374226606,
+  "auroc_hi": 0.7461603760565345,
+  "auprc": 0.7243548697504607
+ },
+ "mean_cnn_no_lvef": 0.22234252922631917,
+ "mean_cnn_neg_with_lvef": 0.30788785054433554
+}

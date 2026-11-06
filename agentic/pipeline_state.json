@@ -163,15 +163,15 @@
       "gate": true,
       "priority": 0,
       "goal": "Revisione indipendente: leakage, riproduzione dei numeri, selezione sul validation, affermazioni non supportate.",
-      "status": "pending",
-      "attempts": 1,
-      "started": "2026-11-06 15:23:22",
-      "finished": null,
-      "summary": "STATUS PARZIALE",
+      "status": "done",
+      "attempts": 2,
+      "started": "2026-11-06 15:33:28",
+      "finished": "2026-11-06 15:38:14",
+      "summary": "STATUS OK",
       "kind": "planned",
       "approved": true,
       "report": "reports/P6_review.md",
-      "gate_pending": false
+      "gate_pending": true
     },
     {
       "id": "P7",
