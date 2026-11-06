@@ -13,6 +13,7 @@ import argparse
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 import time
@@ -205,6 +206,29 @@ def run_gate(p: dict, a) -> str:
     return "OK"
 
 
+def resolve_claude(name: str) -> str | None:
+    """Trova l'eseguibile di Claude Code: PATH, poi posizioni di installazione comuni."""
+    found = shutil.which(name)
+    if found:
+        return found
+    if os.sep in name and os.access(name, os.X_OK):
+        return name
+    home = Path.home()
+    for c in (home / ".local/bin/claude", home / ".claude/local/claude", home / ".npm-global/bin/claude",
+              Path("/usr/local/bin/claude"), Path("/opt/homebrew/bin/claude")):
+        if c.exists() and os.access(c, os.X_OK):
+            return str(c)
+    return None
+
+
+NOT_FOUND_MSG = ("Non trovo il programma `claude` (Claude Code). Il driver gira in Python e usa il PATH del suo ambiente.\n"
+                 "  1. Verifica in questo stesso terminale: `which claude` e `claude --version`.\n"
+                 "  2. Se non è installato: vedi il passo 1 di GUIDA.md.\n"
+                 "  3. Se è installato ma non nel PATH: rilancia con `--claude-bin /percorso/di/claude` (lo mostra `which claude`\n"
+                 "     da un terminale fuori dal venv) oppure aggiungi la cartella al PATH (di solito ~/.local/bin).\n"
+                 "Nessuna fase è stata avviata; lo stato su disco è intatto.")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--claude-bin", default=os.environ.get("CLAUDE_BIN", "claude"))
@@ -217,6 +241,12 @@ def main() -> int:
     ap.add_argument("--no-gates", action="store_true", help="salta le chiamate dell'orchestratore tra le fasi")
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
+    if not a.dry_run:
+        exe = resolve_claude(a.claude_bin)
+        if not exe:
+            print(NOT_FOUND_MSG, file=sys.stderr)
+            return 4
+        a.claude_bin = exe
 
     st = S.load()
     if not a.dry_run:

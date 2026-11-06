@@ -137,6 +137,8 @@ python3 tools/state.py init --data-dir /home/idalab/Desktop/Teo/physionet.org/fi
 ```
 `init` scrive anche una regola in `.claude/settings.local.json` che impedisce agli agenti di aprire i file della cartella dati con lo strumento di lettura.
 
+**Controllo obbligatorio prima di proseguire:** `python3 tools/state.py brief | head -5`. Deve mostrare il TUO `data_dir` (non `/tmp/echonext_synth`) e tutte le fasi `pending`. Se vedi fasi già `done`, o un Handoff con «risultato simulato», lo stato è un residuo delle prove: ripeti `reset` e `init --force` (e `rm -f .claude/settings.local.json`). Segnale d'allarme sui risultati: numeri identici a quelli della prova sintetica (es. AUROC 0.574 con età+sesso 0.588) = stai ancora lavorando sui dati finti.
+
 **Passo obbligatorio prima di tutto: approva la cartella.** Apri `claude` una volta nella cartella del progetto (`cd echonext-agentic && claude`) e accetta la richiesta «Do you trust this folder?». Senza questo passo, in modalità non interattiva (`-p`, usata dal driver) Claude Code **ignora le regole di permesso** del progetto e gli agenti non possono lavorare: il driver se ne accorge e termina con codice 3. Poi esci (`/exit`).
 
 ### Modo A: interattivo (consigliato la prima volta)
@@ -160,7 +162,9 @@ until python3 tools/run_pipeline.py; do
   echo "limite raggiunto: riprovo tra 30 minuti"; sleep 1800
 done
 ```
-Codici di uscita: **0** finita · **2** fase fallita o bloccata · **3** cartella non approvata (vedi sopra) · **10** attende la tua approvazione · **75** limite d'uso.
+Codici di uscita: **0** finita · **2** fase fallita o bloccata · **4** programma `claude` non trovato (vedi sotto) · **3** cartella non approvata (vedi sopra) · **10** attende la tua approvazione · **75** limite d'uso.
+
+Se vedi «Non trovo il programma `claude`» (o `FileNotFoundError: ... 'claude'`): il driver non lo trova nel PATH del terminale in cui lo lanci (tipico con un ambiente virtuale `.venv` attivo o con installazione in `~/.local/bin`). Controlla con `which claude`; se non risponde, installa Claude Code (passo 1) o aggiungi `~/.local/bin` al PATH (`export PATH="$HOME/.local/bin:$PATH"`), oppure usa `--claude-bin /percorso/di/claude`.
 Opzioni utili: `--until P3`, `--model sonnet`, `--max-turns`, `--max-budget-usd`, `--timeout-min`, `--no-gates`, `--dry-run`.
 
 ---
@@ -202,6 +206,16 @@ Il test si apre **una sola volta**: se un candidato va male lo si riporta così 
 il risultato è esso stesso utile: le sole misure ECG tabulari non bastano e la strada sono le forme d'onda. Ricorda sempre che SHD non coincide con scompenso cardiaco.
 
 ---
+
+### Fase finale P9: notebook per i partner
+L'ultima fase (agente `notebook-builder`) genera `reports/P9_notebook/replica_analisi.ipynb`: un notebook autonomo che rifà passo passo le analisi, con obiettivo, risultato atteso e decisione presa in ogni capitolo (e la regola di decisione ricalcolata, così si vede come un risultato guida il passo successivo). Il test set non è incluso; cartella dati in un parametro (`DATA_DIR`), modalità `QUICK` per provarlo in pochi minuti. Accanto ci sono `LEGGIMI.md` e `requirements.txt`.
+- Con una pipeline appena inizializzata la fase c'è già.
+- Se hai già inizializzato prima di questo aggiornamento, aggiungila una volta sola (dopo aver copiato `.claude/agents/notebook-builder.md`):
+```bash
+python3 tools/state.py set-config max_followups 5
+python3 tools/state.py add-phase --id P9 --name notebook --agent notebook-builder --depends-on P8 --goal "Notebook Jupyter per i partner"
+```
+- Per eseguire solo questa fase a pipeline finita: `python3 tools/run_pipeline.py` (parte da P9).
 
 ## 8. Personalizzare
 

@@ -68,6 +68,8 @@ DEFAULT_PHASES = [
          goal="Valutazione UNA SOLA VOLTA dei candidati congelati sul test set e interpretazione."),
     dict(id="P8", name="synthesis", agent="synthesizer", depends_on=["P7"], gate=False, priority=0,
          goal="Report finale spiegato per i partner: risultati, limiti, cosa funziona e cosa no."),
+    dict(id="P9", name="notebook", agent="notebook-builder", depends_on=["P8"], gate=False, priority=0,
+         goal="Notebook Jupyter autonomo che permette ai partner di rifare passo passo le analisi, con obiettivo, scelte e risultati attesi."),
 ]
 
 
