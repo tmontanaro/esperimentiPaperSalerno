@@ -13,3 +13,4 @@
 | 2026-11-06 14:08:38 | P4 | waveform-modeler | OK (OK) | 0.0 min | $0.00 | reports/P4_waveform.md |
 | 2026-11-06 14:08:38 | gate P4 | orchestrator | OK | 0.0 min | $0.00 | gate P4 simulato |
 | 2026-11-06 14:08:38 | P5 | cluster-analyst | OK (OK) | 0.0 min | $0.00 | reports/P5_clusters.md |
+| 2026-11-06 14:08:38 | gate P5 | orchestrator | OK | 0.0 min | $0.00 | gate P5 simulato |

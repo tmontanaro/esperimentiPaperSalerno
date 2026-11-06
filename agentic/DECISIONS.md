@@ -8,3 +8,4 @@
 | 2026-11-06 14:08:37 | decision | P2 | gate P2 simulato: nessuna modifica |
 | 2026-11-06 14:08:38 | decision | P3 | gate P3 simulato: nessuna modifica |
 | 2026-11-06 14:08:38 | decision | P4 | gate P4 simulato: nessuna modifica |
+| 2026-11-06 14:08:38 | decision | P5 | gate P5 simulato: nessuna modifica |
