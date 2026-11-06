@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "created": "2026-11-06 14:10:04",
+  "created": "2026-11-06 14:14:51",
   "config": {
-    "data_dir": "/tmp/echonext_synth",
+    "data_dir": "/home/idalab/Desktop/Teo/physionet.org/files/echonext/1.1.1",
     "primary_target": "shd_moderate_or_greater_flag",
     "max_followups": 4,
     "max_review_rounds": 2,
@@ -15,9 +15,14 @@
       "min_n_val": 100,
       "min_pos_val": 25
     },
-    "tabular_signal": false,
-    "cluster_targets": [],
-    "clusters_mode": "reduced"
+    "tabular_signal": true,
+    "cluster_targets": [
+      "shd_moderate_or_greater_flag",
+      "aortic_stenosis_moderate_or_greater_flag",
+      "mitral_regurgitation_moderate_or_greater_flag"
+    ],
+    "clusters_mode": "normal",
+    "waveform_dominant": true
   },
   "phases": [
     {
@@ -30,9 +35,9 @@
       "goal": "Trovare i file, verificare l'integrità del dataset (split, pazienti, mancanti, forme d'onda) e profilare le etichette.",
       "status": "done",
       "attempts": 1,
-      "started": "2026-11-06 14:10:12",
-      "finished": "2026-11-06 14:11:31",
-      "summary": "STATUS OK",
+      "started": "2026-11-06 14:17:23",
+      "finished": "2026-11-06 14:19:21",
+      "summary": "STATUS OK: integrità OK, 72475 ECG train/4626 val, prev target 0.524/0.430, GPU sì",
       "kind": "planned",
       "approved": true,
       "report": "reports/P0_data-audit.md",
@@ -50,9 +55,9 @@
       "goal": "Baseline tabulare sul target composito: età+sesso contro tutte le feature ECG, 5 modelli, CV per paziente.",
       "status": "done",
       "attempts": 1,
-      "started": "2026-11-06 14:11:39",
-      "finished": "2026-11-06 14:13:07",
-      "summary": "STATUS OK",
+      "started": "2026-11-06 14:19:31",
+      "finished": "2026-11-06 14:21:32",
+      "summary": "STATUS OK: TABULAR_SIGNAL yes, AUROC val tutte 0.746 [0.733-0.760] vs età+sesso 0.659, hist_gb",
       "kind": "planned",
       "approved": true,
       "report": "reports/P1_baseline.md",
@@ -68,14 +73,15 @@
       "gate": true,
       "priority": 0,
       "goal": "Predizione per singola condizione, stratificazione per gruppi noti, scoperta di sottogruppi validata.",
-      "status": "pending",
-      "attempts": 0,
-      "started": null,
-      "finished": null,
-      "summary": null,
+      "status": "done",
+      "attempts": 1,
+      "started": "2026-11-06 14:21:42",
+      "finished": "2026-11-06 14:27:42",
+      "summary": "STATUS OK: 8 target promettenti (AS 0.844, MR 0.770, LVEF<=45 0.764...), nessun sottogruppo credibile, 1950 regole su train",
       "kind": "planned",
       "approved": true,
-      "report": "reports/P2_conditions.md"
+      "report": "reports/P2_conditions.md",
+      "gate_pending": false
     },
     {
       "id": "P3",
@@ -88,14 +94,15 @@
       "gate": true,
       "priority": 0,
       "goal": "LVEF (regressione e <=45%) e ipotesi dei medici sul QRS come modificatore d'effetto.",
-      "status": "pending",
-      "attempts": 0,
-      "started": null,
-      "finished": null,
-      "summary": null,
+      "status": "done",
+      "attempts": 1,
+      "started": "2026-11-06 14:28:00",
+      "finished": "2026-11-06 14:32:13",
+      "summary": "STATUS OK: QRS_MODIFICA inconclusiva; LVEF MAE 9.54 R2 0.163; LVEF<=45 AUROC 0.764 [0.748-0.782]",
       "kind": "planned",
       "approved": true,
-      "report": "reports/P3_lvef-qrs.md"
+      "report": "reports/P3_lvef-qrs.md",
+      "gate_pending": false
     },
     {
       "id": "P4",
@@ -106,16 +113,17 @@
         "P1"
       ],
       "gate": true,
-      "priority": 10,
+      "priority": 0,
       "goal": "CNN 1D multi-etichetta sulle forme d'onda, confronto con la baseline tabulare.",
-      "status": "pending",
-      "attempts": 0,
-      "started": null,
-      "finished": null,
-      "summary": null,
+      "status": "done",
+      "attempts": 1,
+      "started": "2026-11-06 14:34:06",
+      "finished": "2026-11-06 14:39:12",
+      "summary": "STATUS OK: CNN composito AUROC 0.823 [0.811-0.834], GAIN_VS_TABULARE +0.077 [0.063,0.091]",
       "kind": "planned",
       "approved": true,
-      "report": "reports/P4_waveform.md"
+      "report": "reports/P4_waveform.md",
+      "gate_pending": false
     },
     {
       "id": "P5",
@@ -128,14 +136,16 @@
       "gate": true,
       "priority": 0,
       "goal": "Cluster con selezione incrementale delle feature e predizione dentro i cluster, con soglia di rumore.",
-      "status": "pending",
-      "attempts": 0,
-      "started": null,
-      "finished": null,
-      "summary": null,
+      "status": "done",
+      "attempts": 2,
+      "started": "2026-11-06 15:21:44",
+      "finished": "2026-11-06 15:23:11",
+      "summary": "STATUS PARZIALE",
       "kind": "planned",
       "approved": true,
-      "report": "reports/P5_clusters.md"
+      "report": "reports/P5_clusters.md",
+      "interrupted": "2026-11-06 15:21:15",
+      "gate_pending": true
     },
     {
       "id": "P6",

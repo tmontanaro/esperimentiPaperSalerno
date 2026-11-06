@@ -1,0 +1,15 @@
+{
+ "k": 4,
+ "features": [
+  "sex",
+  "atrial_rate",
+  "qrs_duration"
+ ],
+ "silhouette": 0.5612092801182381,
+ "ari": 0.9912548950268207,
+ "score": 0.7762320875725295,
+ "n_selection_configs": 78,
+ "n_pool": 1833,
+ "full_set_ari_same_k": 0.8405633323366526,
+ "full_set_sil_same_k": 0.19886386835579245
+}

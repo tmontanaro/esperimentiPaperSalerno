@@ -1,0 +1,35 @@
+{
+  "val_configs": {
+    "regressione_4_modelli": 4,
+    "classificazione_5_modelli": 5,
+    "stratificazione_3_modelli_locali": 3,
+    "pairs_A_eta_sesso_freq": 1,
+    "pairs_B_eta_sesso": 1,
+    "pairs_C_eta_sesso_freq_PR_QTc": 1,
+    "pairs_D_eta_freq_PR_QTc_senza_sesso": 1
+  },
+  "best_reg": "hist_gb",
+  "mae_gain_vs_baseline": [
+    1.6521535253415487,
+    1.500747406138456,
+    1.8029079928545872
+  ],
+  "best_cls": "hist_gb",
+  "candidate_auroc": {
+    "n": 4626,
+    "n_pos": 866,
+    "prev": 0.18720276696930394,
+    "auroc": 0.7643256166773131,
+    "auroc_lo": 0.747779316552103,
+    "auroc_hi": 0.7815464257333136,
+    "auprc": 0.443438780294408
+  },
+  "N": {
+    "n_train_tot": 72475,
+    "n_train": 66018,
+    "n_val_tot": 4626,
+    "n_val": 4112,
+    "pat_train": 23637,
+    "pat_val": 4112
+  }
+}

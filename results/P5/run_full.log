@@ -1,0 +1,92 @@
+Profilo cluster:
+   cluster  n_train_ecg  n_pool_pazienti  n_val  sex_mean_pool  ventricular_rate_mean_pool  atrial_rate_mean_pool  pr_interval_mean_pool  qrs_duration_mean_pool  qt_corrected_mean_pool  age_at_ecg_mean_pool  prev_train_shd_moderate  prev_val_shd_moderate  prev_train_aortic_steno  prev_val_aortic_steno  prev_train_mitral_regur  prev_val_mitral_regur
+0        0        29650            11926   2104          0.000                      80.593                 80.663                155.146                  84.210                 444.207                60.982                    0.432                  0.336                    0.035                  0.043                    0.075                  0.056
+1        1        31026            10583   1824          1.000                      80.072                 80.020                162.557                  90.693                 440.427                60.580                    0.528                  0.437                    0.032                  0.042                    0.062                  0.036
+2        2         9358             2971    563          0.651                      78.514                 78.603                178.584                 140.361                 483.451                70.208                    0.735                  0.705                    0.081                  0.130                    0.163                  0.146
+3        3         2441              738    135          0.615                      93.866                288.038                180.105                  98.179                 452.585                71.264                    0.779                  0.667                    0.062                  0.089                    0.191                  0.126
+chi-quadro:
+                                          target                           set       chi2  dof    p      n  prev_min  prev_max
+0                   shd_moderate_or_greater_flag  pool_train_1ECG_per_paziente  1630.7368    3  0.0  26218    0.3440    0.7317
+1                   shd_moderate_or_greater_flag                    validation   281.6605    3  0.0   4626    0.3356    0.7052
+2       aortic_stenosis_moderate_or_greater_flag  pool_train_1ECG_per_paziente   353.1412    3  0.0  26218    0.0425    0.1245
+3       aortic_stenosis_moderate_or_greater_flag                    validation    75.8517    3  0.0   4626    0.0417    0.1297
+4  mitral_regurgitation_moderate_or_greater_flag  pool_train_1ECG_per_paziente   625.1881    3  0.0  26218    0.0482    0.2073
+5  mitral_regurgitation_moderate_or_greater_flag                    validation   101.1042    3  0.0   4626    0.0362    0.1456
+shd_moderate_or_greater_flag procedura: 4 s
+shd_moderate_or_greater_flag permutazioni: 30 29 s
+aortic_stenosis_moderate_or_greater_flag procedura: 4 s
+aortic_stenosis_moderate_or_greater_flag permutazioni: 30 26 s
+mitral_regurgitation_moderate_or_greater_flag procedura: 4 s
+mitral_regurgitation_moderate_or_greater_flag permutazioni: 30 25 s
+Locale vs globale (validation):
+                                           target         cluster                            model     n  n_pos  auroc  auroc_lo  auroc_hi  diff_vs_global_same_pts
+0                    shd_moderate_or_greater_flag  tutti(globale)                   global_hist_gb  4626   1990  0.746     0.733     0.759                    0.000
+1                    shd_moderate_or_greater_flag               0  global_hist_gb(stessi pazienti)  2104    706  0.722     0.699     0.744                    0.000
+2                    shd_moderate_or_greater_flag               0                           logreg  2104    706  0.715     0.691     0.738                   -0.006
+3                    shd_moderate_or_greater_flag               0                     lasso_logreg  2104    706  0.715     0.691     0.738                   -0.006
+4                    shd_moderate_or_greater_flag               0                          hist_gb  2104    706  0.723     0.700     0.744                    0.001
+5                    shd_moderate_or_greater_flag               0                 local_sel_logreg  2104    706  0.715     0.691     0.738                   -0.006
+6                    shd_moderate_or_greater_flag               1  global_hist_gb(stessi pazienti)  1824    797  0.702     0.679     0.723                    0.000
+7                    shd_moderate_or_greater_flag               1                           logreg  1824    797  0.697     0.673     0.718                   -0.005
+8                    shd_moderate_or_greater_flag               1                     lasso_logreg  1824    797  0.697     0.673     0.718                   -0.005
+9                    shd_moderate_or_greater_flag               1                          hist_gb  1824    797  0.692     0.668     0.718                   -0.010
+10                   shd_moderate_or_greater_flag               1                 local_sel_logreg  1824    797  0.697     0.673     0.719                   -0.005
+11                   shd_moderate_or_greater_flag               2  global_hist_gb(stessi pazienti)   563    397  0.750     0.709     0.790                    0.000
+12                   shd_moderate_or_greater_flag               2                           logreg   563    397  0.736     0.692     0.775                   -0.014
+13                   shd_moderate_or_greater_flag               2                     lasso_logreg   563    397  0.736     0.691     0.775                   -0.014
+14                   shd_moderate_or_greater_flag               2                          hist_gb   563    397  0.740     0.701     0.783                   -0.009
+15                   shd_moderate_or_greater_flag               2                 local_sel_logreg   563    397  0.732     0.688     0.773                   -0.018
+16                   shd_moderate_or_greater_flag               3  global_hist_gb(stessi pazienti)   135     90  0.651     0.566     0.741                    0.000
+17                   shd_moderate_or_greater_flag               3                           logreg   135     90  0.683     0.601     0.770                    0.032
+18                   shd_moderate_or_greater_flag               3                     lasso_logreg   135     90  0.685     0.604     0.772                    0.034
+19                   shd_moderate_or_greater_flag               3                          hist_gb   135     90  0.640     0.539     0.742                   -0.011
+20                   shd_moderate_or_greater_flag               3                 local_sel_logreg   135     90  0.672     0.593     0.758                    0.021
+21       aortic_stenosis_moderate_or_greater_flag  tutti(globale)                   global_hist_gb  4626    252  0.844     0.819     0.868                    0.000
+22       aortic_stenosis_moderate_or_greater_flag               0  global_hist_gb(stessi pazienti)  2104     91  0.835     0.798     0.874                    0.000
+23       aortic_stenosis_moderate_or_greater_flag               0                           logreg  2104     91  0.834     0.797     0.873                   -0.001
+24       aortic_stenosis_moderate_or_greater_flag               0                     lasso_logreg  2104     91  0.834     0.796     0.873                   -0.001
+25       aortic_stenosis_moderate_or_greater_flag               0                          hist_gb  2104     91  0.829     0.786     0.868                   -0.007
+26       aortic_stenosis_moderate_or_greater_flag               0                 local_sel_logreg  2104     91  0.834     0.796     0.871                   -0.002
+27       aortic_stenosis_moderate_or_greater_flag               1  global_hist_gb(stessi pazienti)  1824     76  0.852     0.809     0.889                    0.000
+28       aortic_stenosis_moderate_or_greater_flag               1                           logreg  1824     76  0.857     0.819     0.889                    0.005
+29       aortic_stenosis_moderate_or_greater_flag               1                     lasso_logreg  1824     76  0.857     0.819     0.889                    0.005
+30       aortic_stenosis_moderate_or_greater_flag               1                          hist_gb  1824     76  0.855     0.814     0.892                    0.002
+31       aortic_stenosis_moderate_or_greater_flag               1                 local_sel_logreg  1824     76  0.855     0.818     0.887                    0.003
+32       aortic_stenosis_moderate_or_greater_flag               2  global_hist_gb(stessi pazienti)   563     73  0.792     0.739     0.850                    0.000
+33       aortic_stenosis_moderate_or_greater_flag               2                           logreg   563     73  0.812     0.761     0.868                    0.021
+34       aortic_stenosis_moderate_or_greater_flag               2                     lasso_logreg   563     73  0.810     0.758     0.864                    0.018
+35       aortic_stenosis_moderate_or_greater_flag               2                          hist_gb   563     73  0.784     0.721     0.842                   -0.008
+36       aortic_stenosis_moderate_or_greater_flag               2                 local_sel_logreg   563     73  0.804     0.755     0.858                    0.013
+37  mitral_regurgitation_moderate_or_greater_flag  tutti(globale)                   global_hist_gb  4626    282  0.767     0.735     0.789                    0.000
+38  mitral_regurgitation_moderate_or_greater_flag               0  global_hist_gb(stessi pazienti)  2104    117  0.769     0.728     0.817                    0.000
+39  mitral_regurgitation_moderate_or_greater_flag               0                           logreg  2104    117  0.766     0.728     0.814                   -0.003
+40  mitral_regurgitation_moderate_or_greater_flag               0                     lasso_logreg  2104    117  0.766     0.728     0.814                   -0.003
+41  mitral_regurgitation_moderate_or_greater_flag               0                          hist_gb  2104    117  0.760     0.718     0.808                   -0.009
+42  mitral_regurgitation_moderate_or_greater_flag               0                 local_sel_logreg  2104    117  0.768     0.730     0.815                   -0.001
+43  mitral_regurgitation_moderate_or_greater_flag               1  global_hist_gb(stessi pazienti)  1824     66  0.748     0.691     0.798                    0.000
+44  mitral_regurgitation_moderate_or_greater_flag               1                           logreg  1824     66  0.739     0.682     0.794                   -0.009
+45  mitral_regurgitation_moderate_or_greater_flag               1                     lasso_logreg  1824     66  0.740     0.683     0.793                   -0.009
+46  mitral_regurgitation_moderate_or_greater_flag               1                          hist_gb  1824     66  0.741     0.687     0.791                   -0.007
+47  mitral_regurgitation_moderate_or_greater_flag               1                 local_sel_logreg  1824     66  0.716     0.648     0.772                   -0.032
+48  mitral_regurgitation_moderate_or_greater_flag               2  global_hist_gb(stessi pazienti)   563     82  0.678     0.608     0.740                    0.000
+49  mitral_regurgitation_moderate_or_greater_flag               2                           logreg   563     82  0.656     0.590     0.724                   -0.021
+50  mitral_regurgitation_moderate_or_greater_flag               2                     lasso_logreg   563     82  0.656     0.588     0.723                   -0.022
+51  mitral_regurgitation_moderate_or_greater_flag               2                          hist_gb   563     82  0.662     0.587     0.722                   -0.015
+52  mitral_regurgitation_moderate_or_greater_flag               2                 local_sel_logreg   563     82  0.653     0.587     0.716                   -0.024
+Permutazioni:
+                                          target  n_perm  obs_max_auroc  null_max_auroc_mean  null_max_auroc_p95  null_max_auroc_max  p_emp_max_auroc  obs_max_gain  null_max_gain_mean  null_max_gain_p95  p_emp_max_gain
+0                   shd_moderate_or_greater_flag      30          0.740                0.550               0.629               0.674            0.032         0.034               0.059              0.132           0.516
+1       aortic_stenosis_moderate_or_greater_flag      30          0.857                0.556               0.592               0.616            0.032         0.021               0.040              0.098           0.774
+2  mitral_regurgitation_moderate_or_greater_flag      30          0.768                0.541               0.587               0.602            0.032        -0.001               0.052              0.108           0.935
+Selezione locale:
+                                          target  cluster                                                   selected_features
+0                   shd_moderate_or_greater_flag        0   ventricular_rate|pr_interval|qrs_duration|qt_corrected|age_at_ecg
+1                   shd_moderate_or_greater_flag        1   ventricular_rate|pr_interval|qrs_duration|qt_corrected|age_at_ecg
+2                   shd_moderate_or_greater_flag        2                   atrial_rate|pr_interval|qrs_duration|qt_corrected
+3                   shd_moderate_or_greater_flag        3  ventricular_rate|atrial_rate|pr_interval|qrs_duration|qt_corrected
+4       aortic_stenosis_moderate_or_greater_flag        0                                             qrs_duration|age_at_ecg
+5       aortic_stenosis_moderate_or_greater_flag        1                                             qrs_duration|age_at_ecg
+6       aortic_stenosis_moderate_or_greater_flag        2                                              pr_interval|age_at_ecg
+7  mitral_regurgitation_moderate_or_greater_flag        0        atrial_rate|pr_interval|qrs_duration|qt_corrected|age_at_ecg
+8  mitral_regurgitation_moderate_or_greater_flag        1                               pr_interval|qrs_duration|qt_corrected
+9  mitral_regurgitation_moderate_or_greater_flag        2                     atrial_rate|pr_interval|qt_corrected|age_at_ecg

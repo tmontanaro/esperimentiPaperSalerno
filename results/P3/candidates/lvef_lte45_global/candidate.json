@@ -1,0 +1,17 @@
+{
+  "name": "lvef_lte45_global",
+  "target": "lvef_lte_45_flag",
+  "kind": "global",
+  "description": "Modello globale hist_gb su 7 feature ECG, addestrato sul train (solo righe con LVEF). Accuratezza moderata (<0.80).",
+  "val_metrics": {
+    "n": 4626,
+    "n_pos": 866,
+    "prev": 0.18720276696930394,
+    "auroc": 0.7643256166773131,
+    "auroc_lo": 0.747779316552103,
+    "auroc_hi": 0.7815464257333136,
+    "auprc": 0.443438780294408,
+    "split": "val",
+    "model": "hist_gb"
+  }
+}

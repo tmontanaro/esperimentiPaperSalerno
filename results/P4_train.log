@@ -1,0 +1,30 @@
+epoca 1/12 loss=0.3400 val AUROC composito=0.8017 (6s)
+epoca 2/12 loss=0.2842 val AUROC composito=0.8027 (4s)
+epoca 3/12 loss=0.2747 val AUROC composito=0.8226 (4s)
+epoca 4/12 loss=0.2694 val AUROC composito=0.8225 (4s)
+epoca 5/12 loss=0.2648 val AUROC composito=0.8165 (4s)
+epoca 6/12 loss=0.2599 val AUROC composito=0.8264 (4s)
+epoca 7/12 loss=0.2546 val AUROC composito=0.8278 (4s)
+epoca 8/12 loss=0.2485 val AUROC composito=0.8307 (4s)
+epoca 9/12 loss=0.2406 val AUROC composito=0.8293 (4s)
+epoca 10/12 loss=0.2304 val AUROC composito=0.8295 (5s)
+epoca 11/12 loss=0.2187 val AUROC composito=0.8251 (5s)
+epoca 12/12 loss=0.2112 val AUROC composito=0.8232 (4s)
+                                              target     n  n_pos  auroc_cnn  cnn_lo  cnn_hi  auprc_cnn  auroc_tab  tab_lo  tab_hi   gain  gain_lo  gain_hi
+0                       shd_moderate_or_greater_flag  4626   1990      0.823   0.811   0.834      0.804      0.746   0.733   0.759  0.077    0.063    0.091
+1                                   lvef_lte_45_flag  4626    866      0.889   0.876   0.902      0.729      0.764   0.748   0.782  0.125    0.109    0.141
+2                                   lvwt_gte_13_flag  4626    877      0.751   0.734   0.766      0.406      0.686   0.669   0.705  0.065    0.041    0.084
+3           aortic_stenosis_moderate_or_greater_flag  4626    252      0.831   0.807   0.851      0.276      0.844   0.819   0.868 -0.012   -0.039    0.014
+4      aortic_regurgitation_moderate_or_greater_flag  4626     62      0.768   0.697   0.818      0.050      0.632   0.564   0.694  0.136    0.077    0.189
+5      mitral_regurgitation_moderate_or_greater_flag  4626    282      0.839   0.817   0.860      0.266      0.767   0.735   0.789  0.072    0.052    0.103
+6   tricuspid_regurgitation_moderate_or_greater_flag  4626    305      0.843   0.821   0.865      0.335      0.753   0.727   0.779  0.090    0.063    0.121
+7   pulmonary_regurgitation_moderate_or_greater_flag  4626     21      0.747   0.602   0.870      0.016      0.613   0.500   0.751  0.133   -0.020    0.271
+8   rv_systolic_dysfunction_moderate_or_greater_flag  4626    368      0.885   0.868   0.904      0.500      0.764   0.737   0.787  0.121    0.098    0.146
+9           pericardial_effusion_moderate_large_flag  4626     52      0.754   0.687   0.821      0.033      0.641   0.567   0.706  0.113    0.031    0.203
+10                                  pasp_gte_45_flag  4626    581      0.775   0.755   0.794      0.387      0.685   0.663   0.707  0.090    0.064    0.116
+11                                tr_max_gte_32_flag  4626    267      0.785   0.756   0.815      0.242      0.673   0.642   0.704  0.112    0.073    0.153
+       qrs     n  n_pos  auroc_cnn  cnn_lo  cnn_hi  auroc_tab  tab_lo  tab_hi   gain
+0     <100  3388   1204      0.791   0.774   0.808      0.704   0.689   0.722  0.087
+1  100-119   671    379      0.844   0.815   0.871      0.723   0.683   0.759  0.121
+2    >=120   567    407      0.845   0.814   0.883      0.752   0.710   0.798  0.093
+candidato salvato in /home/idalab/Desktop/Teo/esperimentiClaude/echonext-agentic/results/P4/candidates/cnn_multilabel

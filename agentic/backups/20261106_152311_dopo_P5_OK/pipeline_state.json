@@ -1,0 +1,235 @@
+{
+  "version": 1,
+  "created": "2026-11-06 14:14:51",
+  "config": {
+    "data_dir": "/home/idalab/Desktop/Teo/physionet.org/files/echonext/1.1.1",
+    "primary_target": "shd_moderate_or_greater_flag",
+    "max_followups": 4,
+    "max_review_rounds": 2,
+    "max_attempts": 3,
+    "thresholds": {
+      "tabular_signal_min_gain": 0.02,
+      "promising_target_auroc_lo": 0.65,
+      "credible_subgroup_margin": 0.02,
+      "good_auroc": 0.8,
+      "min_n_val": 100,
+      "min_pos_val": 25
+    },
+    "tabular_signal": true,
+    "cluster_targets": [
+      "shd_moderate_or_greater_flag",
+      "aortic_stenosis_moderate_or_greater_flag",
+      "mitral_regurgitation_moderate_or_greater_flag"
+    ],
+    "clusters_mode": "normal",
+    "waveform_dominant": true
+  },
+  "phases": [
+    {
+      "id": "P0",
+      "name": "data-audit",
+      "agent": "data-auditor",
+      "depends_on": [],
+      "gate": true,
+      "priority": 0,
+      "goal": "Trovare i file, verificare l'integrità del dataset (split, pazienti, mancanti, forme d'onda) e profilare le etichette.",
+      "status": "done",
+      "attempts": 1,
+      "started": "2026-11-06 14:17:23",
+      "finished": "2026-11-06 14:19:21",
+      "summary": "STATUS OK: integrità OK, 72475 ECG train/4626 val, prev target 0.524/0.430, GPU sì",
+      "kind": "planned",
+      "approved": true,
+      "report": "reports/P0_data-audit.md",
+      "gate_pending": false
+    },
+    {
+      "id": "P1",
+      "name": "baseline",
+      "agent": "baseline-modeler",
+      "depends_on": [
+        "P0"
+      ],
+      "gate": true,
+      "priority": 0,
+      "goal": "Baseline tabulare sul target composito: età+sesso contro tutte le feature ECG, 5 modelli, CV per paziente.",
+      "status": "done",
+      "attempts": 1,
+      "started": "2026-11-06 14:19:31",
+      "finished": "2026-11-06 14:21:32",
+      "summary": "STATUS OK: TABULAR_SIGNAL yes, AUROC val tutte 0.746 [0.733-0.760] vs età+sesso 0.659, hist_gb",
+      "kind": "planned",
+      "approved": true,
+      "report": "reports/P1_baseline.md",
+      "gate_pending": false
+    },
+    {
+      "id": "P2",
+      "name": "conditions",
+      "agent": "condition-analyst",
+      "depends_on": [
+        "P1"
+      ],
+      "gate": true,
+      "priority": 0,
+      "goal": "Predizione per singola condizione, stratificazione per gruppi noti, scoperta di sottogruppi validata.",
+      "status": "done",
+      "attempts": 1,
+      "started": "2026-11-06 14:21:42",
+      "finished": "2026-11-06 14:27:42",
+      "summary": "STATUS OK: 8 target promettenti (AS 0.844, MR 0.770, LVEF<=45 0.764...), nessun sottogruppo credibile, 1950 regole su train",
+      "kind": "planned",
+      "approved": true,
+      "report": "reports/P2_conditions.md",
+      "gate_pending": false
+    },
+    {
+      "id": "P3",
+      "name": "lvef-qrs",
+      "agent": "lvef-qrs-analyst",
+      "depends_on": [
+        "P0",
+        "P1"
+      ],
+      "gate": true,
+      "priority": 0,
+      "goal": "LVEF (regressione e <=45%) e ipotesi dei medici sul QRS come modificatore d'effetto.",
+      "status": "done",
+      "attempts": 1,
+      "started": "2026-11-06 14:28:00",
+      "finished": "2026-11-06 14:32:13",
+      "summary": "STATUS OK: QRS_MODIFICA inconclusiva; LVEF MAE 9.54 R2 0.163; LVEF<=45 AUROC 0.764 [0.748-0.782]",
+      "kind": "planned",
+      "approved": true,
+      "report": "reports/P3_lvef-qrs.md",
+      "gate_pending": false
+    },
+    {
+      "id": "P4",
+      "name": "waveform",
+      "agent": "waveform-modeler",
+      "depends_on": [
+        "P0",
+        "P1"
+      ],
+      "gate": true,
+      "priority": 0,
+      "goal": "CNN 1D multi-etichetta sulle forme d'onda, confronto con la baseline tabulare.",
+      "status": "done",
+      "attempts": 1,
+      "started": "2026-11-06 14:34:06",
+      "finished": "2026-11-06 14:39:12",
+      "summary": "STATUS OK: CNN composito AUROC 0.823 [0.811-0.834], GAIN_VS_TABULARE +0.077 [0.063,0.091]",
+      "kind": "planned",
+      "approved": true,
+      "report": "reports/P4_waveform.md",
+      "gate_pending": false
+    },
+    {
+      "id": "P5",
+      "name": "clusters",
+      "agent": "cluster-analyst",
+      "depends_on": [
+        "P1",
+        "P2"
+      ],
+      "gate": true,
+      "priority": 0,
+      "goal": "Cluster con selezione incrementale delle feature e predizione dentro i cluster, con soglia di rumore.",
+      "status": "done",
+      "attempts": 2,
+      "started": "2026-11-06 15:21:44",
+      "finished": "2026-11-06 15:23:11",
+      "summary": "STATUS PARZIALE",
+      "kind": "planned",
+      "approved": true,
+      "report": "reports/P5_clusters.md",
+      "interrupted": "2026-11-06 15:21:15",
+      "gate_pending": true
+    },
+    {
+      "id": "P6",
+      "name": "review",
+      "agent": "skeptic-reviewer",
+      "depends_on": [
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "gate": true,
+      "priority": 0,
+      "goal": "Revisione indipendente: leakage, riproduzione dei numeri, selezione sul validation, affermazioni non supportate.",
+      "status": "pending",
+      "attempts": 0,
+      "started": null,
+      "finished": null,
+      "summary": null,
+      "kind": "planned",
+      "approved": true,
+      "report": "reports/P6_review.md"
+    },
+    {
+      "id": "P7",
+      "name": "final-test",
+      "agent": "final-evaluator",
+      "depends_on": [
+        "P6"
+      ],
+      "gate": false,
+      "priority": 0,
+      "requires_approval": true,
+      "goal": "Valutazione UNA SOLA VOLTA dei candidati congelati sul test set e interpretazione.",
+      "status": "pending",
+      "attempts": 0,
+      "started": null,
+      "finished": null,
+      "summary": null,
+      "kind": "planned",
+      "approved": false,
+      "report": "reports/P7_final-test.md"
+    },
+    {
+      "id": "P8",
+      "name": "synthesis",
+      "agent": "synthesizer",
+      "depends_on": [
+        "P7"
+      ],
+      "gate": false,
+      "priority": 0,
+      "goal": "Report finale spiegato per i partner: risultati, limiti, cosa funziona e cosa no.",
+      "status": "pending",
+      "attempts": 0,
+      "started": null,
+      "finished": null,
+      "summary": null,
+      "kind": "planned",
+      "approved": true,
+      "report": "reports/P8_synthesis.md"
+    },
+    {
+      "id": "P9",
+      "name": "notebook",
+      "agent": "notebook-builder",
+      "depends_on": [
+        "P8"
+      ],
+      "gate": false,
+      "priority": 0,
+      "goal": "Notebook Jupyter autonomo che permette ai partner di rifare passo passo le analisi, con obiettivo, scelte e risultati attesi.",
+      "status": "pending",
+      "attempts": 0,
+      "started": null,
+      "finished": null,
+      "summary": null,
+      "kind": "planned",
+      "approved": true,
+      "report": "reports/P9_notebook.md"
+    }
+  ],
+  "followups_used": 0,
+  "review_rounds": 0,
+  "frozen": false,
+  "test_used": false
+}

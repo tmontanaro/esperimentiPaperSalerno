@@ -1,0 +1,21 @@
+{
+  "focus": [
+    "shd_moderate_or_greater_flag",
+    "aortic_stenosis_moderate_or_greater_flag",
+    "lvef_lte_45_flag"
+  ],
+  "promising": [
+    "aortic_stenosis_moderate_or_greater_flag",
+    "lvef_lte_45_flag",
+    "mitral_regurgitation_moderate_or_greater_flag",
+    "rv_systolic_dysfunction_moderate_or_greater_flag",
+    "shd_moderate_or_greater_flag",
+    "tricuspid_regurgitation_moderate_or_greater_flag"
+  ],
+  "skipped": [],
+  "rules_per_target": 650,
+  "rules_tried_total": 1950,
+  "val_evals": 148,
+  "val_rule_rows": 15,
+  "credible": []
+}

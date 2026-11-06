@@ -4,82 +4,77 @@
 - Stato: OK
 
 ## Obiettivo
-Verificare che i dati siano utilizzabili prima delle altre fasi: file presenti, split senza pazienti condivisi, schema atteso, valori mancanti, prevalenza delle 12 etichette, forme d'onda coerenti con il CSV, disponibilità di GPU. Nota: l'SHD (cardiopatia strutturale) NON coincide con lo scompenso cardiaco.
+Verificare che i dati EchoNext siano utilizzabili: split senza pazienti condivisi, colonne attese, mancanti, forme d'onda coerenti col CSV, profilo delle 12 etichette. Serve a tutte le fasi successive. Promemoria: SHD (cardiopatia strutturale) NON coincide con scompenso cardiaco.
 
 ## Input letti
-- `config.data_dir` = `/tmp/echonext_synth` (cartella indicata dal brief; i nomi suggeriscono dati sintetici, vedi Problemi aperti).
-- `lib.load_data()` (train e validation; del test solo conteggi e id aggregati tramite `Data.integrity`).
-- Header dei tre file `.npy` (`mmap_mode="r"`, nessun contenuto letto). Dipendenze: nessuna.
+- Config `data_dir` = /home/idalab/Desktop/Teo/physionet.org/files/echonext/1.1.1 (CSV di metadati e file `EchoNext_{train,val,test}_waveforms.npy`).
+- Nessun handoff (P0 non ha dipendenze). Del test sono stati usati solo conteggi, id aggregati e l'header dei file .npy.
 
 ## Cosa è stato fatto
-- Script `experiments/P0/audit.py` (argomento opzionale `debug_n`). Smoke test con `debug_n=2000`, poi esecuzione completa (che scrive il JSON).
-- Controlli: sovrapposizione pazienti, ECG per paziente, colonne attese, frazione di mancanti, prevalenze, quantili di QRS ed età, correlazioni tra le 7 feature (train), shape e N dei `.npy` vs righe CSV, GPU.
+- Script `experiments/P0/audit.py` (usa `lib.load_data()`, `Data.integrity`, `lib.show()`).
+- Smoke test con `debug_n=2000` (output in `results/P0/debug_profile.json`), poi run completo (`results/P0/data_profile.json`).
+- Controlli: overlap pazienti, ECG per paziente, colonne attese, mancanti, prevalenze, quantili di QRS ed età, correlazioni, header .npy via `mmap_mode="r"`, GPU.
 
 ## Risultati
-**Integrità (conteggi CSV):** train 2127, val 252, test 241 (solo conteggio), più 380 righe con `split = "no_split"`.
+Conteggi per split (ECG): train 72475, val 4626, test 5442, no_split 17457 (scartati dalla libreria). Pazienti: train 26218, val 4626.
+Sovrapposizione pazienti: train-val 0, train-test 0, val-test 0. ECG per paziente: massimo 1 in val e test; in train massimo 146 (12023 pazienti su 26218 hanno più di un ECG; mediana 1, 90° percentile 5, 99° percentile 23). Quindi la CV in train va SEMPRE raggruppata per `patient_key`.
+Colonne attese: tutte presenti (ECG_FEATURES, FLAG_COLS, `lvef_value`, `qrs_duration`, `patient_key`, `split`).
 
-| Controllo | Esito |
-|---|---|
-| Pazienti condivisi train/val, train/test, val/test | 0 / 0 / 0 |
-| Max ECG per paziente (train / val / test) | 5 / 1 / 1 |
-| Colonne attese (ECG_FEATURES, FLAG_COLS, lvef_value, qrs_duration, patient_key, split) | tutte presenti |
-| Forme d'onda train / val / test | shape (N,1,2500,12), N = 2127 / 252 / 241 = righe CSV |
-| GPU (`torch.cuda.is_available()`) | True |
+Mancanti (frazione, train / val): `pr_interval` 0.105 / 0.101; `atrial_rate` 0.0062 / 0.0067; `lvef_value` 0.089 / 0.111; tutte le altre feature e le 12 etichette 0.000. Le etichette granulari non risultano mancanti in nessuna riga di train/val (nessuna riga con etichetta NaN): gli ECG senza eco entro un anno non sono presenti in questi split (o sono tra i `no_split`, non analizzati). Il mancante di `lvef_value` (solo valore continuo, 8.9% / 11.1%) va gestito in P3.
 
-**Mancanti (train / val):** le 7 feature sono complete tranne `atrial_rate` e `pr_interval` (8,7% / 8,7%, tipico di ritmi senza onda P misurabile). Le 11 etichette granulari e `lvef_value` mancano nel 18,0% (train) e 21,4% (val) degli ECG, cioè quelli senza eco entro un anno; il composito non ha mancanti. Etichettati: train 1744/2127, val 198/252.
+Prevalenza etichette (train n=72475 / val n=4626):
 
-**Prevalenza etichette (positivi sugli etichettati)**
+| Etichetta | Prev. train | n pos train | Prev. val | n pos val |
+|---|---|---|---|---|
+| shd_moderate_or_greater (target) | 0.524 | 37958 | 0.430 | 1990 |
+| lvef_lte_45 | 0.234 | 16962 | 0.187 | 866 |
+| lvwt_gte_13 | 0.244 | 17667 | 0.190 | 877 |
+| aortic_stenosis | 0.040 | 2919 | 0.055 | 252 |
+| aortic_regurgitation | 0.012 | 878 | 0.013 | 62 |
+| mitral_regurgitation | 0.085 | 6137 | 0.061 | 282 |
+| tricuspid_regurgitation | 0.106 | 7707 | 0.066 | 305 |
+| pulmonary_regurgitation | 0.008 | 603 | 0.0045 | 21 |
+| rv_systolic_dysfunction | 0.132 | 9597 | 0.080 | 368 |
+| pericardial_effusion | 0.029 | 2079 | 0.011 | 52 |
+| pasp_gte_45 | 0.189 | 13727 | 0.126 | 581 |
+| tr_max_gte_32 | 0.103 | 7492 | 0.058 | 267 |
 
-| Etichetta | Train n_pos (prev) | Val n_pos (prev) |
-|---|---|---|
-| shd_moderate_or_greater_flag | 1374 / 2127 (0,646) | 159 / 252 (0,631) |
-| lvef_lte_45_flag | 234 (0,134) | 21 (0,106) |
-| lvwt_gte_13_flag | 220 (0,126) | 27 (0,136) |
-| aortic_stenosis | 114 (0,065) | 23 (0,116) |
-| aortic_regurgitation | 113 (0,065) | 15 (0,076) |
-| mitral_regurgitation | 112 (0,064) | 9 (0,045) |
-| tricuspid_regurgitation | 124 (0,071) | 11 (0,056) |
-| pulmonary_regurgitation | 15 (0,009) | 4 (0,020) |
-| rv_systolic_dysfunction | 124 (0,071) | 9 (0,045) |
-| pericardial_effusion | 36 (0,021) | 4 (0,020) |
-| pasp_gte_45 | 164 (0,094) | 19 (0,096) |
-| tr_max_gte_32 | 171 (0,098) | 16 (0,081) |
+Le prevalenze in validation sono sistematicamente più basse che in train (train conta più ECG per paziente, quindi pazienti malati pesano di più): va ricordato nel confronto train/val. Etichette rare in validation (pulmonary_regurgitation 21 positivi, pericardial_effusion 52, aortic_regurgitation 62) avranno IC molto larghi.
 
-In validation molte condizioni hanno meno di 20 positivi: gli IC saranno larghi; pulmonary_regurgitation (4 positivi) e pericardial_effusion (4) non sono valutabili in modo affidabile.
+Quantili (1%,5%,25%,50%,75%,95%,99%): QRS train 64, 70, 80, 90, 102, 142, 168 ms; QRS val 62.5, 70, 80, 88, 100, 142, 164. Età train 23, 30, 52, 63, 73, 85, 90; età val 22, 30, 52, 64, 75, 88, 90 (età troncata a 90). Frazione di sesso maschile: vedi `data_profile.json`.
 
-**Distribuzioni (train / val):** QRS (ms) mediana 91 / 91; Q1-Q3 78-105 / 77-105; 5°-95° perc. 70-127 / 70-132,9; 99° 145,7 / 144. QRS ≥ 120: 9,6% / 12,7% (pochi pazienti in validation per studi per fascia di QRS: ~32). Età mediana 60 / 60; Q1-Q3 49-72 / 49-70; 5°-95° perc. 34-87 / 27,6-84,5. Maschi 49,8% / 46,4%. Il 5° percentile del QRS coincide col minimo (70 ms): probabile troncamento/valore minimo registrato.
+Correlazioni tra feature (train): massime ventricular_rate-atrial_rate 0.49, qrs-qt_corrected 0.40, pr-qrs 0.28, pr-age 0.23, sex-qrs 0.21; le altre |r| < 0.30. Nessuna collinearità problematica.
 
-**Correlazioni (train):** `ventricular_rate` e `atrial_rate` r = 0,987 (quasi ridondanti); tutte le altre coppie |r| ≤ 0,065.
+Forme d'onda (solo header): train (72475,1,2500,12), val (4626,1,2500,12), test (5442,1,2500,12); N coincide col CSV in tutti e tre gli split.
+GPU: `torch.cuda.is_available()` = True (NVIDIA GeForce RTX 5080, torch 2.15.0+cu132).
 
 ## Decisioni e motivazioni
-- Stato OK: nessuna sovrapposizione, schema completo, forme d'onda coerenti.
-- Le 380 righe `no_split` non sono usate da `lib.load_data` (restano fuori da train/val); non sono state analizzate.
-- Per le fasi successive: etichette granulari da trattare come mancanti (non zero) per gli ECG senza eco; considerare la collinearità rate/atrial_rate nei modelli lineari.
+Esito OK: nessuna sovrapposizione, metadati completi, forme d'onda coerenti. Le righe `no_split` non sono usate. Nessuna feature scartata in questa fase.
 
 ## Configurazioni provate
-0 configurazioni di modelli; nessun uso del validation per scegliere (solo descrizione). Nessun `log-exp` richiesto.
+0 configurazioni di modelli; 0 hanno usato il validation per scegliere (audit descrittivo).
 
 ## Artefatti
-- `experiments/P0/audit.py`
-- `results/P0/data_profile.json`
+- /home/idalab/Desktop/Teo/esperimentiClaude/echonext-agentic/experiments/P0/audit.py
+- /home/idalab/Desktop/Teo/esperimentiClaude/echonext-agentic/results/P0/data_profile.json
+- /home/idalab/Desktop/Teo/esperimentiClaude/echonext-agentic/results/P0/debug_profile.json
 
 ## Problemi aperti
-- 380 righe con `split = "no_split"` (non previsto dallo schema): non verificata la sovrapposizione di pazienti di queste righe con gli altri split, perché `Data.integrity` considera solo train/val/test. Se contengono pazienti presenti in train/val/test, andrebbero escluse a monte.
-- `data_dir` è `/tmp/echonext_synth`: se i dati sono sintetici, le conclusioni cliniche non sono trasferibili; cartella in `/tmp` volatile.
-- Prevalenza SHD ~64% molto alta rispetto a una coorte clinica reale.
-- torch presente, nessun problema di dipendenze.
+- Etichette granulari mai NaN in train/val: non è possibile quantificare gli ECG "senza eco entro un anno" da questi split; probabilmente filtrati a monte.
+- Molti ECG per paziente in train (max 146): rischio di sovrastimare la precisione senza GroupKFold; e pazienti molto rappresentati dominano.
+- Differenza di prevalenza train vs val (target 0.524 vs 0.430) = possibile shift di distribuzione.
+- `pr_interval` mancante nel ~10%: imputare dentro la pipeline (in CV).
+- Le 17457 righe `no_split` non sono state valutate.
 
 ## Handoff
 STATUS: OK
 RISULTATI_CHIAVE:
-- INTEGRITA: OK (sovrapposizioni 0/0/0; ECG per paziente val=1, test=1)
-- N_TRAIN: 2127 · N_VAL: 252 (N_TEST solo conteggio: 241)
-- PREV_TARGET_TRAIN: 0,646 (1374/2127); validation 0,631 (159/252)
-- WAVEFORMS: presenti (shape (N,1,2500,12), N = righe CSV in tutti gli split)
-- GPU: sì
-- Etichette granulari mancanti: 18,0% train, 21,4% val; atrial_rate/pr_interval mancanti 8,7%
-- Positivi in val: lvef_lte_45 21/198; pulmonary_regurgitation 4, pericardial_effusion 4 (non valutabili)
-- Avvertenza: 380 righe `no_split` non classificate
+- INTEGRITA: OK (overlap pazienti train/val/test = 0; max 1 ECG per paziente in val e test, max 146 in train)
+- N_TRAIN: 72475 ECG (26218 pazienti); N_VAL: 4626 ECG (4626 pazienti)
+- PREV_TARGET_TRAIN: 0.524 (val 0.430)
+- WAVEFORMS: presenti (shape (N,1,2500,12), N coincide col CSV in train/val/test)
+- GPU: sì (RTX 5080)
+- Mancanti: pr_interval 10.5%, atrial_rate 0.6%, lvef_value 8.9% (train)
 RACCOMANDAZIONE:
-- Procedere con P1; P4 può addestrare su GPU. Escludere/valutare con cautela condizioni con <10 positivi in validation.
-- Verificare l'origine delle righe `no_split` e che i dati non siano solo sintetici.
+- Usare GroupKFold su `patient_key` in train; imputare pr_interval/atrial_rate nella pipeline.
+- P3: gestire i NaN di lvef_value (escluderli, dichiarando n); P4: GPU disponibile, addestramento completo possibile.

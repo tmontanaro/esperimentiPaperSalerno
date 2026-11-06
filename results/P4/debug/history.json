@@ -1,0 +1,14 @@
+[
+ {
+  "epoch": 1,
+  "train_loss": 0.5648163795471192,
+  "val_auroc_monitor": 0.6766607167691953,
+  "sec": 1
+ },
+ {
+  "epoch": 2,
+  "train_loss": 0.3453235745429993,
+  "val_auroc_monitor": 0.7051872858324472,
+  "sec": 0
+ }
+]

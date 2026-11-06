@@ -1,0 +1,11 @@
+{
+  "name": "cnn_multilabel",
+  "target": "shd_moderate_or_greater_flag",
+  "kind": "model",
+  "description": "ResNet 1D multi-etichetta su forme d'onda, epoca finale",
+  "val_metrics": {
+    "auroc_cnn": 0.8231523703494712,
+    "cnn_lo": 0.8110217703907018,
+    "cnn_hi": 0.8336174429331608
+  }
+}

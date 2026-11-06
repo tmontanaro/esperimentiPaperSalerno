@@ -1,0 +1,397 @@
+{
+ "debug_n": 2000,
+ "data_dir": "/home/idalab/Desktop/Teo/physionet.org/files/echonext/1.1.1",
+ "meta_file": "echonext_metadata_100k.csv",
+ "integrity": {
+  "split_counts": {
+   "train": 72475,
+   "no_split": 17457,
+   "test": 5442,
+   "val": 4626
+  },
+  "patient_overlap": {
+   "train_val": 0,
+   "train_test": 0,
+   "val_test": 0
+  },
+  "ecg_per_patient_max": {
+   "train": 146,
+   "val": 1,
+   "test": 1
+  }
+ },
+ "missing_expected_columns": [],
+ "missing_frac": {
+  "train": {
+   "sex": 0.0,
+   "ventricular_rate": 0.0,
+   "atrial_rate": 0.0085,
+   "pr_interval": 0.098,
+   "qrs_duration": 0.0,
+   "qt_corrected": 0.0,
+   "age_at_ecg": 0.0,
+   "shd_moderate_or_greater_flag": 0.0,
+   "lvef_lte_45_flag": 0.0,
+   "lvwt_gte_13_flag": 0.0,
+   "aortic_stenosis_moderate_or_greater_flag": 0.0,
+   "aortic_regurgitation_moderate_or_greater_flag": 0.0,
+   "mitral_regurgitation_moderate_or_greater_flag": 0.0,
+   "tricuspid_regurgitation_moderate_or_greater_flag": 0.0,
+   "pulmonary_regurgitation_moderate_or_greater_flag": 0.0,
+   "rv_systolic_dysfunction_moderate_or_greater_flag": 0.0,
+   "pericardial_effusion_moderate_large_flag": 0.0,
+   "pasp_gte_45_flag": 0.0,
+   "tr_max_gte_32_flag": 0.0,
+   "lvef_value": 0.122
+  },
+  "val": {
+   "sex": 0.0,
+   "ventricular_rate": 0.0,
+   "atrial_rate": 0.0085,
+   "pr_interval": 0.1125,
+   "qrs_duration": 0.0,
+   "qt_corrected": 0.0,
+   "age_at_ecg": 0.0,
+   "shd_moderate_or_greater_flag": 0.0,
+   "lvef_lte_45_flag": 0.0,
+   "lvwt_gte_13_flag": 0.0,
+   "aortic_stenosis_moderate_or_greater_flag": 0.0,
+   "aortic_regurgitation_moderate_or_greater_flag": 0.0,
+   "mitral_regurgitation_moderate_or_greater_flag": 0.0,
+   "tricuspid_regurgitation_moderate_or_greater_flag": 0.0,
+   "pulmonary_regurgitation_moderate_or_greater_flag": 0.0,
+   "rv_systolic_dysfunction_moderate_or_greater_flag": 0.0,
+   "pericardial_effusion_moderate_large_flag": 0.0,
+   "pasp_gte_45_flag": 0.0,
+   "tr_max_gte_32_flag": 0.0,
+   "lvef_value": 0.134
+  }
+ },
+ "label_profile": {
+  "train": {
+   "shd_moderate_or_greater_flag": {
+    "n_labeled": 2000,
+    "n_pos": 1068,
+    "prev": 0.534,
+    "frac_nan": 0.0
+   },
+   "lvef_lte_45_flag": {
+    "n_labeled": 2000,
+    "n_pos": 515,
+    "prev": 0.2575,
+    "frac_nan": 0.0
+   },
+   "lvwt_gte_13_flag": {
+    "n_labeled": 2000,
+    "n_pos": 494,
+    "prev": 0.247,
+    "frac_nan": 0.0
+   },
+   "aortic_stenosis_moderate_or_greater_flag": {
+    "n_labeled": 2000,
+    "n_pos": 96,
+    "prev": 0.048,
+    "frac_nan": 0.0
+   },
+   "aortic_regurgitation_moderate_or_greater_flag": {
+    "n_labeled": 2000,
+    "n_pos": 26,
+    "prev": 0.013,
+    "frac_nan": 0.0
+   },
+   "mitral_regurgitation_moderate_or_greater_flag": {
+    "n_labeled": 2000,
+    "n_pos": 191,
+    "prev": 0.0955,
+    "frac_nan": 0.0
+   },
+   "tricuspid_regurgitation_moderate_or_greater_flag": {
+    "n_labeled": 2000,
+    "n_pos": 209,
+    "prev": 0.1045,
+    "frac_nan": 0.0
+   },
+   "pulmonary_regurgitation_moderate_or_greater_flag": {
+    "n_labeled": 2000,
+    "n_pos": 16,
+    "prev": 0.008,
+    "frac_nan": 0.0
+   },
+   "rv_systolic_dysfunction_moderate_or_greater_flag": {
+    "n_labeled": 2000,
+    "n_pos": 283,
+    "prev": 0.1415,
+    "frac_nan": 0.0
+   },
+   "pericardial_effusion_moderate_large_flag": {
+    "n_labeled": 2000,
+    "n_pos": 61,
+    "prev": 0.0305,
+    "frac_nan": 0.0
+   },
+   "pasp_gte_45_flag": {
+    "n_labeled": 2000,
+    "n_pos": 392,
+    "prev": 0.196,
+    "frac_nan": 0.0
+   },
+   "tr_max_gte_32_flag": {
+    "n_labeled": 2000,
+    "n_pos": 220,
+    "prev": 0.11,
+    "frac_nan": 0.0
+   }
+  },
+  "val": {
+   "shd_moderate_or_greater_flag": {
+    "n_labeled": 2000,
+    "n_pos": 791,
+    "prev": 0.3955,
+    "frac_nan": 0.0
+   },
+   "lvef_lte_45_flag": {
+    "n_labeled": 2000,
+    "n_pos": 309,
+    "prev": 0.1545,
+    "frac_nan": 0.0
+   },
+   "lvwt_gte_13_flag": {
+    "n_labeled": 2000,
+    "n_pos": 356,
+    "prev": 0.178,
+    "frac_nan": 0.0
+   },
+   "aortic_stenosis_moderate_or_greater_flag": {
+    "n_labeled": 2000,
+    "n_pos": 102,
+    "prev": 0.051,
+    "frac_nan": 0.0
+   },
+   "aortic_regurgitation_moderate_or_greater_flag": {
+    "n_labeled": 2000,
+    "n_pos": 22,
+    "prev": 0.011,
+    "frac_nan": 0.0
+   },
+   "mitral_regurgitation_moderate_or_greater_flag": {
+    "n_labeled": 2000,
+    "n_pos": 119,
+    "prev": 0.0595,
+    "frac_nan": 0.0
+   },
+   "tricuspid_regurgitation_moderate_or_greater_flag": {
+    "n_labeled": 2000,
+    "n_pos": 131,
+    "prev": 0.0655,
+    "frac_nan": 0.0
+   },
+   "pulmonary_regurgitation_moderate_or_greater_flag": {
+    "n_labeled": 2000,
+    "n_pos": 9,
+    "prev": 0.0045,
+    "frac_nan": 0.0
+   },
+   "rv_systolic_dysfunction_moderate_or_greater_flag": {
+    "n_labeled": 2000,
+    "n_pos": 125,
+    "prev": 0.0625,
+    "frac_nan": 0.0
+   },
+   "pericardial_effusion_moderate_large_flag": {
+    "n_labeled": 2000,
+    "n_pos": 14,
+    "prev": 0.007,
+    "frac_nan": 0.0
+   },
+   "pasp_gte_45_flag": {
+    "n_labeled": 2000,
+    "n_pos": 251,
+    "prev": 0.1255,
+    "frac_nan": 0.0
+   },
+   "tr_max_gte_32_flag": {
+    "n_labeled": 2000,
+    "n_pos": 117,
+    "prev": 0.0585,
+    "frac_nan": 0.0
+   }
+  }
+ },
+ "granular_missing_pattern": {
+  "train": {
+   "target_nan": 0.0,
+   "all_granular_nan": 0.0,
+   "any_granular_nan": 0.0,
+   "lvef_value_nan": 0.122
+  },
+  "val": {
+   "target_nan": 0.0,
+   "all_granular_nan": 0.0,
+   "any_granular_nan": 0.0,
+   "lvef_value_nan": 0.134
+  }
+ },
+ "quantiles": {
+  "train_qrs_duration": {
+   "0.01": 63.98,
+   "0.05": 70.0,
+   "0.25": 80.0,
+   "0.5": 90.0,
+   "0.75": 102.0,
+   "0.95": 144.0,
+   "0.99": 170.02
+  },
+  "train_age_at_ecg": {
+   "0.01": 22.0,
+   "0.05": 30.0,
+   "0.25": 51.0,
+   "0.5": 62.0,
+   "0.75": 72.0,
+   "0.95": 85.0,
+   "0.99": 90.0
+  },
+  "val_qrs_duration": {
+   "0.01": 62.0,
+   "0.05": 70.0,
+   "0.25": 80.0,
+   "0.5": 88.0,
+   "0.75": 98.0,
+   "0.95": 138.0,
+   "0.99": 162.0
+  },
+  "val_age_at_ecg": {
+   "0.01": 22.0,
+   "0.05": 35.0,
+   "0.25": 56.0,
+   "0.5": 67.0,
+   "0.75": 78.0,
+   "0.95": 89.0,
+   "0.99": 90.0
+  }
+ },
+ "lvef_quantiles_train": {
+  "0.01": 10.0,
+  "0.05": 17.5,
+  "0.25": 40.0,
+  "0.5": 57.5,
+  "0.75": 61.82,
+  "0.95": 67.5,
+  "0.99": 72.01
+ },
+ "sex_male_frac": {
+  "train": 0.549,
+  "val": 0.4065
+ },
+ "corr_features_train": {
+  "sex": {
+   "sex": 1.0,
+   "ventricular_rate": 0.024,
+   "atrial_rate": 0.014,
+   "pr_interval": 0.125,
+   "qrs_duration": 0.202,
+   "qt_corrected": 0.011,
+   "age_at_ecg": -0.041
+  },
+  "ventricular_rate": {
+   "sex": 0.024,
+   "ventricular_rate": 1.0,
+   "atrial_rate": 0.522,
+   "pr_interval": -0.282,
+   "qrs_duration": -0.092,
+   "qt_corrected": 0.217,
+   "age_at_ecg": -0.149
+  },
+  "atrial_rate": {
+   "sex": 0.014,
+   "ventricular_rate": 0.522,
+   "atrial_rate": 1.0,
+   "pr_interval": -0.287,
+   "qrs_duration": -0.058,
+   "qt_corrected": 0.106,
+   "age_at_ecg": -0.005
+  },
+  "pr_interval": {
+   "sex": 0.125,
+   "ventricular_rate": -0.282,
+   "atrial_rate": -0.287,
+   "pr_interval": 1.0,
+   "qrs_duration": 0.262,
+   "qt_corrected": 0.042,
+   "age_at_ecg": 0.187
+  },
+  "qrs_duration": {
+   "sex": 0.202,
+   "ventricular_rate": -0.092,
+   "atrial_rate": -0.058,
+   "pr_interval": 0.262,
+   "qrs_duration": 1.0,
+   "qt_corrected": 0.394,
+   "age_at_ecg": 0.182
+  },
+  "qt_corrected": {
+   "sex": 0.011,
+   "ventricular_rate": 0.217,
+   "atrial_rate": 0.106,
+   "pr_interval": 0.042,
+   "qrs_duration": 0.394,
+   "qt_corrected": 1.0,
+   "age_at_ecg": 0.075
+  },
+  "age_at_ecg": {
+   "sex": -0.041,
+   "ventricular_rate": -0.149,
+   "atrial_rate": -0.005,
+   "pr_interval": 0.187,
+   "qrs_duration": 0.182,
+   "qt_corrected": 0.075,
+   "age_at_ecg": 1.0
+  }
+ },
+ "waveforms": {
+  "train": {
+   "exists": true,
+   "shape": [
+    72475,
+    1,
+    2500,
+    12
+   ],
+   "n_csv": 72475,
+   "n_match": true,
+   "shape_ok": true
+  },
+  "val": {
+   "exists": true,
+   "shape": [
+    4626,
+    1,
+    2500,
+    12
+   ],
+   "n_csv": 4626,
+   "n_match": true,
+   "shape_ok": true
+  },
+  "test": {
+   "exists": true,
+   "shape": [
+    5442,
+    1,
+    2500,
+    12
+   ],
+   "n_csv": 5442,
+   "n_match": true,
+   "shape_ok": true
+  }
+ },
+ "torch": "2.15.0+cu132",
+ "gpu": true,
+ "integrity_ok": true,
+ "waveforms_ok": true,
+ "n_train": 72475,
+ "n_val": 4626,
+ "prev_target_train": 0.534,
+ "n_train_loaded": 2000,
+ "n_val_loaded": 2000
+}
