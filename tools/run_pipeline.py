@@ -48,6 +48,10 @@ Rispondi con al massimo 6 righe: decisione, azioni eseguite, motivo."""
 
 
 BACKUPS = ROOT / "agentic" / "backups"
+# messaggi parametrizzabili (la pipeline 2 li sostituisce in tools/run_pipeline2.py)
+FINAL_MSG = "Pipeline completata. Vedi reports/ (report finale: reports/P8_synthesis.md)."
+APPROVAL_MSG = "Controlla agentic/FROZEN.json e reports/P6_review.md; poi:  python3 tools/state.py approve {id}  e rilancia."
+RESET_HINT = "Dopo aver risolto: python3 tools/state.py reset <ID> --attempts   e rilancia."
 
 
 def snapshot(label: str) -> None:
@@ -272,17 +276,17 @@ def main() -> int:
             pending = [p for p in st["phases"] if p["status"] == "pending"]
             if failed:
                 print("Pipeline ferma: fasi fallite:", ", ".join(f"{p['id']} ({p['summary']})" for p in failed))
-                print("Dopo aver risolto: python3 tools/state.py reset <ID> --attempts   e rilancia.")
+                print(RESET_HINT)
                 return 2
             if pending:
                 print("Pipeline bloccata: dipendenze non soddisfatte per", ", ".join(p["id"] for p in pending))
                 return 2
-            print("Pipeline completata. Vedi reports/ (report finale: reports/P8_synthesis.md).")
+            print(FINAL_MSG)
             return 0
         p = todo[0]
         if p.get("requires_approval") and not p.get("approved"):
             print(f"\nPAUSA: la fase {p['id']} ({p['name']}) richiede la tua approvazione.\n"
-                  f"Controlla agentic/FROZEN.json e reports/P6_review.md; poi:  python3 tools/state.py approve {p['id']}  e rilancia.")
+                  + APPROVAL_MSG.format(id=p['id']))
             return 10
         if a.dry_run:
             print("Prossima fase:", p["id"], p["name"], p["agent"])
