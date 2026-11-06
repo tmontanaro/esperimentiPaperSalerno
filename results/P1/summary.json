@@ -1,0 +1,29 @@
+{
+  "target": "shd_moderate_or_greater_flag",
+  "best_eta_sesso": {
+    "model": "mlp_dense",
+    "n": 4626,
+    "n_pos": 1990,
+    "prev": 0.4301772589710333,
+    "auroc": 0.658708374955201,
+    "auroc_lo": 0.6415244639805588,
+    "auroc_hi": 0.6750359851344876,
+    "auprc": 0.5824892507676145,
+    "sec": 2.3
+  },
+  "best_tutte": {
+    "model": "hist_gb",
+    "n": 4626,
+    "n_pos": 1990,
+    "prev": 0.4301772589710333,
+    "auroc": 0.7463896683722101,
+    "auroc_lo": 0.7330934468845018,
+    "auroc_hi": 0.7594859312404367,
+    "auprc": 0.6987684731497075,
+    "sec": 0.7
+  },
+  "gain": 0.08768129341700914,
+  "cv_auc_hist_gb": 0.7277934449128792,
+  "val_auc_hist_gb": 0.7463896683722101,
+  "tabular_signal": true
+}

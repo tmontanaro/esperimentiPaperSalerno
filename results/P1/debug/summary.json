@@ -1,0 +1,29 @@
+{
+  "target": "shd_moderate_or_greater_flag",
+  "best_eta_sesso": {
+    "model": "lasso_logreg",
+    "n": 2000,
+    "n_pos": 791,
+    "prev": 0.3955,
+    "auroc": 0.6712106525123939,
+    "auroc_lo": 0.6468218528626313,
+    "auroc_hi": 0.6924186293551001,
+    "auprc": 0.5508004866731919,
+    "sec": 0.3
+  },
+  "best_tutte": {
+    "model": "random_forest",
+    "n": 2000,
+    "n_pos": 791,
+    "prev": 0.3955,
+    "auroc": 0.7340950038637735,
+    "auroc_lo": 0.7111778452629746,
+    "auroc_hi": 0.7554872848015052,
+    "auprc": 0.6504925096031535,
+    "sec": 0.5
+  },
+  "gain": 0.0628843513513796,
+  "cv_auc_hist_gb": 0.6926327337609104,
+  "val_auc_hist_gb": 0.7172847135736088,
+  "tabular_signal": true
+}
