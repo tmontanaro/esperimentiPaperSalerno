@@ -1,0 +1,15 @@
+{
+  "name": "global_best",
+  "target": "shd_moderate_or_greater_flag",
+  "kind": "global",
+  "description": "lasso_logreg addestrato sul train con le 7 feature ECG (target composito)",
+  "val_metrics": {
+    "n": 252,
+    "n_pos": 159,
+    "prev": 0.6309523809523809,
+    "auroc": 0.574355853114222,
+    "auroc_lo": 0.49726558344192073,
+    "auroc_hi": 0.6493657998863159,
+    "auprc": 0.7004460676696441
+  }
+}

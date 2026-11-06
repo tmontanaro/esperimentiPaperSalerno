@@ -1,2 +1,3 @@
 ts,exp_id,phase,target,uses_val,n_configs,metric_val,description
 2026-11-06 11:46:12,E0001,P1,,1,5,,hist_gb globale
+2026-11-06 11:59:25,E0002,P1,,1,10,,"baseline: 2 insiemi feature (eta+sesso; 7 ECG) x 5 modelli, valutati su validation"

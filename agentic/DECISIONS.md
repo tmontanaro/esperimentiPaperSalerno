@@ -18,3 +18,4 @@
 | 2026-11-06 11:53:45 | issue | P0 | fase interrotta: riparte dai file parziali in results/ e dal file .progress.md |
 | 2026-11-06 11:58:17 | issue | P0 | Handoff P0 senza campi INTEGRITA e GPU (contiene solo risultato simulato): non posso applicare la clausola GPU:no; assunzione P4 non registrata. Attempts=3 con due interruzioni. |
 | 2026-11-06 11:58:17 | decision | P0 | Gate P0: STATUS=OK, nessun INTEGRITA: PROBLEMI riportato, GPU non indicata. Nessuna modifica a config/fasi; si procede con P1. |
+| 2026-11-06 11:59:26 | decision | P1 | TABULAR_SIGNAL=no: migliore tutte-ECG lasso_logreg 0.574 [0.497-0.649] vs migliore eta+sesso mlp_dense 0.588; gain -0.014 <0.02, IC inf 0.497<0.55 |

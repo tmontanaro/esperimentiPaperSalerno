@@ -1,0 +1,23 @@
+# Log delle esecuzioni (append-only)
+
+| Quando | Fase | Agente | Esito | Durata | Costo stimato | Note |
+|---|---|---|---|---|---|---|
+| 2026-11-06 11:46:11 | P0 | data-auditor | OK (OK) | 0.0 min | $0.00 | reports/P0_data-audit.md |
+| 2026-11-06 11:46:11 | gate P0 | orchestrator | OK | 0.0 min | $0.00 | gate P0 simulato |
+| 2026-11-06 11:46:12 | P1 | baseline-modeler | OK (OK) | 0.0 min | $0.00 | reports/P1_baseline.md |
+| 2026-11-06 11:46:12 | gate P1 | orchestrator | OK | 0.0 min | $0.00 | gate P1 simulato |
+| 2026-11-06 11:46:12 | P2 | condition-analyst | OK (OK) | 0.0 min | $0.00 | reports/P2_conditions.md |
+| 2026-11-06 11:46:12 | gate P2 | orchestrator | OK | 0.0 min | $0.00 | gate P2 simulato |
+| 2026-11-06 11:46:12 | P3 | lvef-qrs-analyst | OK (OK) | 0.0 min | $0.00 | reports/P3_lvef-qrs.md |
+| 2026-11-06 11:46:12 | gate P3 | orchestrator | OK | 0.0 min | $0.00 | gate P3 simulato |
+| 2026-11-06 11:46:12 | P4 | waveform-modeler | OK (OK) | 0.0 min | $0.00 | reports/P4_waveform.md |
+| 2026-11-06 11:46:12 | gate P4 | orchestrator | OK | 0.0 min | $0.00 | gate P4 simulato |
+| 2026-11-06 11:46:12 | P5 | cluster-analyst | OK (OK) | 0.0 min | $0.00 | reports/P5_clusters.md |
+| 2026-11-06 11:46:12 | gate P5 | orchestrator | OK | 0.0 min | $0.00 | gate P5 simulato |
+| 2026-11-06 11:46:12 | P6 | skeptic-reviewer | OK (OK) | 0.0 min | $0.00 | reports/P6_review.md |
+| 2026-11-06 11:46:12 | gate P6 | orchestrator | OK | 0.0 min | $0.00 | gate P6 simulato |
+| 2026-11-06 11:46:35 | P7 | final-evaluator | OK (OK) | 0.0 min | $0.00 | reports/P7_final-test.md |
+| 2026-11-06 11:46:35 | P8 | synthesizer | OK (OK) | 0.0 min | $0.00 | reports/P8_synthesis.md |
+| 2026-11-06 11:58:11 | P0 | data-auditor | OK (OK) | 0.1 min | $0.04 | reports/P0_data-audit.md |
+| 2026-11-06 11:58:20 | gate P0 | orchestrator | OK | 0.1 min | $0.05 | **Decisione:** Gate P0 superato senza modifiche, quindi si procede con P1.  **Azioni:** ho registrato due note con `state.py`, una `decision` e una `issue`. Non |
+| 2026-11-06 11:59:55 | P1 | baseline-modeler | OK (OK) | 1.6 min | $0.27 | reports/P1_baseline.md |
