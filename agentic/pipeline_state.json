@@ -195,14 +195,15 @@
       "gate": false,
       "priority": 0,
       "goal": "Report finale spiegato per i partner: risultati, limiti, cosa funziona e cosa no.",
-      "status": "pending",
-      "attempts": 0,
-      "started": null,
-      "finished": null,
-      "summary": null,
+      "status": "done",
+      "attempts": 1,
+      "started": "2026-11-06 14:08:50",
+      "finished": "2026-11-06 14:08:50",
+      "summary": "STATUS OK",
       "kind": "planned",
       "approved": true,
-      "report": "reports/P8_synthesis.md"
+      "report": "reports/P8_synthesis.md",
+      "gate_pending": false
     },
     {
       "id": "P9",
