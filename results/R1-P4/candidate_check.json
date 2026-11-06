@@ -1,0 +1,1 @@
+{"colonne": ["score", "in_scope"], "indice_uguale": true, "n": 500, "max_abs_diff": 0.00019618868827819824, "mean_abs_diff": 3.923773874703329e-07, "auroc_500": 0.8198036165662065}

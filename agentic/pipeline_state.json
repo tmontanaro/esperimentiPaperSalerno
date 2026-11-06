@@ -242,15 +242,16 @@
       "gate": false,
       "priority": 0,
       "goal": "Stratificare CNN candidato su val per race_ethnicity, location_setting, sex, age_bin (AUROC IC, n, positivi, CNN vs hist_gb con IC appaiato) da val_pred_emb.npz senza riaddestrare; documentare candidate.predict su 500 righe val (colonne, indice, max|score-pred salvata|)",
-      "status": "pending",
-      "attempts": 0,
-      "started": null,
-      "finished": null,
-      "summary": null,
+      "status": "done",
+      "attempts": 1,
+      "started": "2026-11-06 15:30:17",
+      "finished": "2026-11-06 15:32:29",
+      "summary": "STATUS OK",
       "kind": "followup",
       "revises": "P4",
       "approved": true,
-      "report": "reports/R1-P4_review-waveform.md"
+      "report": "reports/R1-P4_review-waveform.md",
+      "gate_pending": false
     },
     {
       "id": "R1-P5",
