@@ -1,0 +1,36 @@
+{
+ "status": "partial",
+ "jobs_total": 5,
+ "jobs_done": 1,
+ "current": null,
+ "epoch": "2/2",
+ "pid": 30448,
+ "started": "2026-11-06 17:39:25",
+ "updated": "2026-11-06 17:39:51",
+ "job_seconds": [
+  25.03008008003235
+ ],
+ "config": {
+  "leads": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "epochs": 2,
+  "batch": 128,
+  "lr": 0.002,
+  "reg_weight": 0.5,
+  "population": "clean",
+  "folds": 5,
+  "debug_n": null
+ }
+}

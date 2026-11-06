@@ -1,0 +1,17 @@
+{
+ "fonte_generale": "reports/FINAL_REPORT.md (P8), reports/final_test_table.md (P7); numeri copiati, non ricalcolati",
+ "shd_cnn_test": {"auroc": "0.830 [0.820-0.841]", "n": 5442, "pos": 2318, "auprc": 0.802, "fonte": "FINAL_REPORT §2a / final_test_table"},
+ "shd_cnn_test_righe_con_lvef": {"auroc": "0.817 [0.807-0.829]", "n": 4827, "fonte": "final_test_table"},
+ "shd_cnn_val": {"auroc": "0.823 [0.811-0.834]", "fonte": "FINAL_REPORT §3"},
+ "shd_tabulare_test": {"auroc": "0.762 [0.750-0.774]", "fonte": "FINAL_REPORT §2a"},
+ "shd_tabulare_val": {"auroc": "0.746 [0.733-0.759]", "n": 4626, "fonte": "FINAL_REPORT §2a"},
+ "shd_eta_sesso_val": {"auroc": "0.659 [0.642-0.675]", "fonte": "FINAL_REPORT §2a"},
+ "lvef_lte45_tabulare_test": {"auroc": "0.793 [0.776-0.809]", "pos": 962, "fonte": "FINAL_REPORT §2c"},
+ "lvef_lte45_tabulare_val": {"auroc": "0.764 [0.748-0.782]", "fonte": "FINAL_REPORT §3"},
+ "lvef_lte45_cnn_val": {"auroc": "0.889 [0.876-0.902]", "fonte": "FINAL_REPORT §2b"},
+ "prevalenza_shd": {"test": 0.426, "val": 0.430, "train": 0.524, "fonte": "FINAL_REPORT §3, §6"},
+ "righe_senza_lvef": {"train": 6457, "val": 514, "frazione_train": 0.089, "frazione_val": 0.111, "fonte": "FINAL_REPORT §4"},
+ "configurazioni_provate": {"totale": 511, "esperimenti": 22, "con_validation_P6": 433, "fonte": "brief state2 / FINAL_REPORT §5"},
+ "sottogruppi_credibili": 0, "cluster_credibili": 0,
+ "ipotesi_QRS": "inconclusiva"
+}
