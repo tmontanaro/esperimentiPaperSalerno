@@ -139,7 +139,7 @@
       "kind": "planned",
       "approved": true,
       "report": "reports/P5_clusters.md",
-      "gate_pending": true
+      "gate_pending": false
     },
     {
       "id": "P6",
