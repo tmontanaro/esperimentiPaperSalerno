@@ -11,3 +11,5 @@
 | 2026-11-06 11:46:12 | decision | P5 | gate P5 simulato: nessuna modifica |
 | 2026-11-06 11:46:12 | decision | P6 | congelati 1 candidati per la valutazione sul test |
 | 2026-11-06 11:46:12 | decision | P6 | gate P6 simulato: nessuna modifica |
+| 2026-11-06 11:46:28 | decision | P7 | approvazione umana per l'esecuzione |
+| 2026-11-06 11:46:35 | decision | P7 | test set usato una volta su 1 candidati |

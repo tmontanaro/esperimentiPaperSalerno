@@ -175,14 +175,15 @@
       "priority": 0,
       "requires_approval": true,
       "goal": "Valutazione UNA SOLA VOLTA dei candidati congelati sul test set e interpretazione.",
-      "status": "pending",
-      "attempts": 0,
-      "started": null,
-      "finished": null,
-      "summary": null,
+      "status": "done",
+      "attempts": 1,
+      "started": "2026-11-06 11:46:33",
+      "finished": "2026-11-06 11:46:35",
+      "summary": "STATUS OK",
       "kind": "planned",
-      "approved": false,
-      "report": "reports/P7_final-test.md"
+      "approved": true,
+      "report": "reports/P7_final-test.md",
+      "gate_pending": false
     },
     {
       "id": "P8",
@@ -207,5 +208,5 @@
   "followups_used": 0,
   "review_rounds": 0,
   "frozen": true,
-  "test_used": false
+  "test_used": true
 }
