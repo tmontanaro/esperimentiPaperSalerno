@@ -15,9 +15,9 @@
       "min_n_val": 100,
       "min_pos_val": 25
     },
-    "tabular_signal": null,
+    "tabular_signal": false,
     "cluster_targets": [],
-    "clusters_mode": "normal"
+    "clusters_mode": "reduced"
   },
   "phases": [
     {
@@ -56,7 +56,7 @@
       "kind": "planned",
       "approved": true,
       "report": "reports/P1_baseline.md",
-      "gate_pending": true
+      "gate_pending": false
     },
     {
       "id": "P2",
@@ -106,7 +106,7 @@
         "P1"
       ],
       "gate": true,
-      "priority": 0,
+      "priority": 10,
       "goal": "CNN 1D multi-etichetta sulle forme d'onda, confronto con la baseline tabulare.",
       "status": "pending",
       "attempts": 0,
