@@ -159,14 +159,15 @@
       "gate": false,
       "priority": 0,
       "goal": "Scegliere con regole pre-specificate i candidati per il secondo test, addestrarli sul pool dev e congelarli (FROZEN2.json con impronte).",
-      "status": "pending",
-      "attempts": 0,
-      "started": null,
-      "finished": null,
-      "summary": null,
+      "status": "done",
+      "attempts": 1,
+      "started": "2026-11-06 20:32:40",
+      "finished": "2026-11-06 20:45:35",
+      "summary": "STATUS OK",
       "kind": "planned",
       "approved": true,
-      "report": "reports/Q6_candidates.md"
+      "report": "reports/Q6_candidates.md",
+      "gate_pending": false
     },
     {
       "id": "Q7",
@@ -248,6 +249,6 @@
   ],
   "followups_used": 0,
   "review_rounds": 0,
-  "frozen": false,
+  "frozen": true,
   "test_used": false
 }

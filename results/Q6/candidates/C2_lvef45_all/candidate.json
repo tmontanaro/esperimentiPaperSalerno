@@ -1,0 +1,10 @@
+{
+  "name": "C2_lvef45_all",
+  "target": "lvef_lte_45_flag",
+  "kind": "cnn_waveform",
+  "description": "CNN 12 derivazioni, uscita LVEF<=45%",
+  "val_metrics": {
+    "auroc": 0.869,
+    "note": "AUROC fuori-fold in CV su train+validation (non validation singolo)"
+  }
+}

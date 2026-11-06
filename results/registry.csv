@@ -37,3 +37,5 @@ ts,exp_id,phase,target,uses_val,n_configs,metric_val,description
 2026-11-06 20:31:35,E0036,Q5,,1,8,,"calibrazione OOF 4 etichette x (grezza, isotonica fuori dal fold)"
 2026-11-06 20:31:35,E0037,Q5,,1,6,,"punti operativi SHD e LVEF<=45 (sens90, spec90, Youden)"
 2026-11-06 20:31:35,E0038,Q5,,1,44,,occlusione: 12 derivazioni + 10 finestre x fold 0 e 1
+2026-11-06 20:45:00,E0039,Q6,,1,1,,"final-fit 12 derivazioni, 3 seed, config Q1"
+2026-11-06 20:45:01,E0040,Q6,,1,1,,"final-fit 3 derivazioni I_II_V1, 3 seed"

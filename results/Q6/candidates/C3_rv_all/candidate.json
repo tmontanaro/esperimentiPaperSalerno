@@ -1,0 +1,10 @@
+{
+  "name": "C3_rv_all",
+  "target": "rv_systolic_dysfunction_moderate_or_greater_flag",
+  "kind": "cnn_waveform",
+  "description": "CNN 12 derivazioni, uscita disfunzione sistolica VD",
+  "val_metrics": {
+    "auroc": 0.844,
+    "note": "AUROC fuori-fold in CV su train+validation (non validation singolo)"
+  }
+}

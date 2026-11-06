@@ -1,0 +1,89 @@
+{
+  "candidates": [
+    {
+      "name": "C1_shd_all",
+      "dir": "results/Q6/candidates/C1_shd_all",
+      "target": "shd_moderate_or_greater_flag",
+      "comparator_dir": "results/P1/candidates/global_best",
+      "sha256": {
+        "candidate.json": "76ca4bdcb578c80107b04b2548af55c286ec1c802f34620052007104214e40a1",
+        "candidate.py": "de04e8725deeb407fe77139f3b5f23b3068d2468431834bdf30dfc44254b287c"
+      },
+      "weights_dir": "results/Q6/final_all",
+      "weights_sha256": {
+        "config.json": "b2efc6506e52afefbc53aae760fd15f2434252663f949ae7f50e5422705e2936",
+        "weights_seed0.pt": "0e1b415c0bad82e06a44b81d4ccd075543fb5fc4fde93455a21357d8c9589415",
+        "weights_seed1.pt": "cc672a71d2224e13dd8fccd1652bfd7892be1422529df210128ae78ab6f7abd5",
+        "weights_seed2.pt": "07540f9586200fe3310d1e39e6d0deeeccb88df7b65a41bf284036f3fccb27ee"
+      }
+    },
+    {
+      "name": "C2_lvef45_all",
+      "dir": "results/Q6/candidates/C2_lvef45_all",
+      "target": "lvef_lte_45_flag",
+      "comparator_dir": "results/P3/candidates/lvef_lte45_global",
+      "sha256": {
+        "candidate.json": "49c79b1f18726e38c82927439f4b1b96008b430105d22acdb2e7c2b01db603b9",
+        "candidate.py": "3e41c88920bad61ff07d70b5ceec5e397d64beff0e1593ef731e20e96e3d2e8f"
+      },
+      "weights_dir": "results/Q6/final_all",
+      "weights_sha256": {
+        "config.json": "b2efc6506e52afefbc53aae760fd15f2434252663f949ae7f50e5422705e2936",
+        "weights_seed0.pt": "0e1b415c0bad82e06a44b81d4ccd075543fb5fc4fde93455a21357d8c9589415",
+        "weights_seed1.pt": "cc672a71d2224e13dd8fccd1652bfd7892be1422529df210128ae78ab6f7abd5",
+        "weights_seed2.pt": "07540f9586200fe3310d1e39e6d0deeeccb88df7b65a41bf284036f3fccb27ee"
+      }
+    },
+    {
+      "name": "C3_rv_all",
+      "dir": "results/Q6/candidates/C3_rv_all",
+      "target": "rv_systolic_dysfunction_moderate_or_greater_flag",
+      "sha256": {
+        "candidate.json": "9f28a6abe9f47a977fe05a846bbe2f6e780f76c8057c970ec34c7bc2360c2c21",
+        "candidate.py": "6b6efab65db5fc9c230494242013612787e14414bfa1f69193acb95674293a2d"
+      },
+      "weights_dir": "results/Q6/final_all",
+      "weights_sha256": {
+        "config.json": "b2efc6506e52afefbc53aae760fd15f2434252663f949ae7f50e5422705e2936",
+        "weights_seed0.pt": "0e1b415c0bad82e06a44b81d4ccd075543fb5fc4fde93455a21357d8c9589415",
+        "weights_seed1.pt": "cc672a71d2224e13dd8fccd1652bfd7892be1422529df210128ae78ab6f7abd5",
+        "weights_seed2.pt": "07540f9586200fe3310d1e39e6d0deeeccb88df7b65a41bf284036f3fccb27ee"
+      }
+    },
+    {
+      "name": "C4_as_all",
+      "dir": "results/Q6/candidates/C4_as_all",
+      "target": "aortic_stenosis_moderate_or_greater_flag",
+      "sha256": {
+        "candidate.json": "cab2a8b52c3be6446db94f7f4394bc0fc712499b1261e095e4829462d9dec0b0",
+        "candidate.py": "8e78fa38aa07d318fea1e19018c2f6ad6a7baf9de7d9a007e982a75d4dd466ce"
+      },
+      "weights_dir": "results/Q6/final_all",
+      "weights_sha256": {
+        "config.json": "b2efc6506e52afefbc53aae760fd15f2434252663f949ae7f50e5422705e2936",
+        "weights_seed0.pt": "0e1b415c0bad82e06a44b81d4ccd075543fb5fc4fde93455a21357d8c9589415",
+        "weights_seed1.pt": "cc672a71d2224e13dd8fccd1652bfd7892be1422529df210128ae78ab6f7abd5",
+        "weights_seed2.pt": "07540f9586200fe3310d1e39e6d0deeeccb88df7b65a41bf284036f3fccb27ee"
+      }
+    },
+    {
+      "name": "C5_shd_I_II_V1",
+      "dir": "results/Q6/candidates/C5_shd_I_II_V1",
+      "target": "shd_moderate_or_greater_flag",
+      "comparator_dir": "results/P1/candidates/global_best",
+      "sha256": {
+        "candidate.json": "ac0d982529b1dac2a99bd440b0473ec678f8b71bb017658524dafcb823607b28",
+        "candidate.py": "87451e70f82fc8a4a8a7764cf0667d673ab18be1f56214cad2fc2d5d1353b850"
+      },
+      "weights_dir": "results/Q6/final_I_II_V1",
+      "weights_sha256": {
+        "config.json": "e0ea7ac7bed4d00db2540573086bdf46067f728808e2d41dc470439a144ef773",
+        "weights_seed0.pt": "b6ee066da01965942e8c509f53e9981a24728ac1d49469101a7f8447b418739b",
+        "weights_seed1.pt": "ba03621c49e6c0c1d24a2ef134646c92d0a1bfd881b034d956f058a4ca808b0b",
+        "weights_seed2.pt": "40b3d36b9d1260300bb0f7dd1df28cf53243d0a07dba199a06cb1eaac73ebe07"
+      }
+    }
+  ],
+  "rules": "Preregistrazione results/Q6/preregistration.md: C1 SHD e C2 LVEF<=45 sempre; altre etichette TARGETS_GOOD di Q1 con >=100 positivi (VD, stenosi aortica); un candidato con set minimo di Q2 (3 derivazioni, SHD). Confermato: AUROC test IC inf >= 0.75 e calo da CV clean <= 0.05; buona: AUROC >= 0.80 con IC inf >= 0.75.",
+  "frozen_at": "2026-11-06 20:45:03"
+}

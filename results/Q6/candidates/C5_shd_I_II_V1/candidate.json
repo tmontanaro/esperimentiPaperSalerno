@@ -1,0 +1,10 @@
+{
+  "name": "C5_shd_I_II_V1",
+  "target": "shd_moderate_or_greater_flag",
+  "kind": "cnn_waveform",
+  "description": "CNN 3 derivazioni (I, II, una toracica), uscita SHD",
+  "val_metrics": {
+    "auroc": 0.802,
+    "note": "AUROC fuori-fold in CV su train+validation (non validation singolo)"
+  }
+}

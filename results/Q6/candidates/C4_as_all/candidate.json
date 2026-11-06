@@ -1,0 +1,10 @@
+{
+  "name": "C4_as_all",
+  "target": "aortic_stenosis_moderate_or_greater_flag",
+  "kind": "cnn_waveform",
+  "description": "CNN 12 derivazioni, uscita stenosi aortica",
+  "val_metrics": {
+    "auroc": 0.811,
+    "note": "AUROC fuori-fold in CV su train+validation (non validation singolo)"
+  }
+}
