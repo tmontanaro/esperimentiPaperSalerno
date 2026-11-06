@@ -13,3 +13,6 @@
 | 2026-11-06 11:46:12 | decision | P6 | gate P6 simulato: nessuna modifica |
 | 2026-11-06 11:46:28 | decision | P7 | approvazione umana per l'esecuzione |
 | 2026-11-06 11:46:35 | decision | P7 | test set usato una volta su 1 candidati |
+| 2026-11-06 11:47:37 | config | - | pipeline inizializzata, data_dir=/tmp/echonext_synth |
+| 2026-11-06 11:48:13 | issue | P0 | fase interrotta: riparte dai file parziali in results/ e dal file .progress.md |
+| 2026-11-06 11:53:45 | issue | P0 | fase interrotta: riparte dai file parziali in results/ e dal file .progress.md |

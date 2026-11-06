@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "created": "2026-11-06 11:46:02",
+  "created": "2026-11-06 11:47:37",
   "config": {
     "data_dir": "/tmp/echonext_synth",
     "primary_target": "shd_moderate_or_greater_flag",
@@ -29,14 +29,15 @@
       "priority": 0,
       "goal": "Trovare i file, verificare l'integrità del dataset (split, pazienti, mancanti, forme d'onda) e profilare le etichette.",
       "status": "done",
-      "attempts": 1,
-      "started": "2026-11-06 11:46:11",
-      "finished": "2026-11-06 11:46:11",
+      "attempts": 3,
+      "started": "2026-11-06 11:58:03",
+      "finished": "2026-11-06 11:58:11",
       "summary": "STATUS OK",
       "kind": "planned",
       "approved": true,
       "report": "reports/P0_data-audit.md",
-      "gate_pending": false
+      "interrupted": "2026-11-06 11:53:45",
+      "gate_pending": true
     },
     {
       "id": "P1",
@@ -48,15 +49,14 @@
       "gate": true,
       "priority": 0,
       "goal": "Baseline tabulare sul target composito: età+sesso contro tutte le feature ECG, 5 modelli, CV per paziente.",
-      "status": "done",
-      "attempts": 1,
-      "started": "2026-11-06 11:46:11",
-      "finished": "2026-11-06 11:46:12",
-      "summary": "STATUS OK",
+      "status": "pending",
+      "attempts": 0,
+      "started": null,
+      "finished": null,
+      "summary": null,
       "kind": "planned",
       "approved": true,
-      "report": "reports/P1_baseline.md",
-      "gate_pending": false
+      "report": "reports/P1_baseline.md"
     },
     {
       "id": "P2",
@@ -68,15 +68,14 @@
       "gate": true,
       "priority": 0,
       "goal": "Predizione per singola condizione, stratificazione per gruppi noti, scoperta di sottogruppi validata.",
-      "status": "done",
-      "attempts": 1,
-      "started": "2026-11-06 11:46:12",
-      "finished": "2026-11-06 11:46:12",
-      "summary": "STATUS OK",
+      "status": "pending",
+      "attempts": 0,
+      "started": null,
+      "finished": null,
+      "summary": null,
       "kind": "planned",
       "approved": true,
-      "report": "reports/P2_conditions.md",
-      "gate_pending": false
+      "report": "reports/P2_conditions.md"
     },
     {
       "id": "P3",
@@ -89,15 +88,14 @@
       "gate": true,
       "priority": 0,
       "goal": "LVEF (regressione e <=45%) e ipotesi dei medici sul QRS come modificatore d'effetto.",
-      "status": "done",
-      "attempts": 1,
-      "started": "2026-11-06 11:46:12",
-      "finished": "2026-11-06 11:46:12",
-      "summary": "STATUS OK",
+      "status": "pending",
+      "attempts": 0,
+      "started": null,
+      "finished": null,
+      "summary": null,
       "kind": "planned",
       "approved": true,
-      "report": "reports/P3_lvef-qrs.md",
-      "gate_pending": false
+      "report": "reports/P3_lvef-qrs.md"
     },
     {
       "id": "P4",
@@ -110,15 +108,14 @@
       "gate": true,
       "priority": 0,
       "goal": "CNN 1D multi-etichetta sulle forme d'onda, confronto con la baseline tabulare.",
-      "status": "done",
-      "attempts": 1,
-      "started": "2026-11-06 11:46:12",
-      "finished": "2026-11-06 11:46:12",
-      "summary": "STATUS OK",
+      "status": "pending",
+      "attempts": 0,
+      "started": null,
+      "finished": null,
+      "summary": null,
       "kind": "planned",
       "approved": true,
-      "report": "reports/P4_waveform.md",
-      "gate_pending": false
+      "report": "reports/P4_waveform.md"
     },
     {
       "id": "P5",
@@ -131,15 +128,14 @@
       "gate": true,
       "priority": 0,
       "goal": "Cluster con selezione incrementale delle feature e predizione dentro i cluster, con soglia di rumore.",
-      "status": "done",
-      "attempts": 1,
-      "started": "2026-11-06 11:46:12",
-      "finished": "2026-11-06 11:46:12",
-      "summary": "STATUS OK",
+      "status": "pending",
+      "attempts": 0,
+      "started": null,
+      "finished": null,
+      "summary": null,
       "kind": "planned",
       "approved": true,
-      "report": "reports/P5_clusters.md",
-      "gate_pending": false
+      "report": "reports/P5_clusters.md"
     },
     {
       "id": "P6",
@@ -154,15 +150,14 @@
       "gate": true,
       "priority": 0,
       "goal": "Revisione indipendente: leakage, riproduzione dei numeri, selezione sul validation, affermazioni non supportate.",
-      "status": "done",
-      "attempts": 1,
-      "started": "2026-11-06 11:46:12",
-      "finished": "2026-11-06 11:46:12",
-      "summary": "STATUS OK",
+      "status": "pending",
+      "attempts": 0,
+      "started": null,
+      "finished": null,
+      "summary": null,
       "kind": "planned",
       "approved": true,
-      "report": "reports/P6_review.md",
-      "gate_pending": false
+      "report": "reports/P6_review.md"
     },
     {
       "id": "P7",
@@ -175,15 +170,14 @@
       "priority": 0,
       "requires_approval": true,
       "goal": "Valutazione UNA SOLA VOLTA dei candidati congelati sul test set e interpretazione.",
-      "status": "done",
-      "attempts": 1,
-      "started": "2026-11-06 11:46:33",
-      "finished": "2026-11-06 11:46:35",
-      "summary": "STATUS OK",
+      "status": "pending",
+      "attempts": 0,
+      "started": null,
+      "finished": null,
+      "summary": null,
       "kind": "planned",
-      "approved": true,
-      "report": "reports/P7_final-test.md",
-      "gate_pending": false
+      "approved": false,
+      "report": "reports/P7_final-test.md"
     },
     {
       "id": "P8",
@@ -195,19 +189,18 @@
       "gate": false,
       "priority": 0,
       "goal": "Report finale spiegato per i partner: risultati, limiti, cosa funziona e cosa no.",
-      "status": "done",
-      "attempts": 1,
-      "started": "2026-11-06 11:46:35",
-      "finished": "2026-11-06 11:46:35",
-      "summary": "STATUS OK",
+      "status": "pending",
+      "attempts": 0,
+      "started": null,
+      "finished": null,
+      "summary": null,
       "kind": "planned",
       "approved": true,
-      "report": "reports/P8_synthesis.md",
-      "gate_pending": false
+      "report": "reports/P8_synthesis.md"
     }
   ],
   "followups_used": 0,
   "review_rounds": 0,
-  "frozen": true,
-  "test_used": true
+  "frozen": false,
+  "test_used": false
 }
