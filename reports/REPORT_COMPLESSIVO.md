@@ -13,6 +13,42 @@ Indice: In breve · A. Obiettivo · B. Risultati · C. Prove fatte · D. Fattibi
 - Fattibile? VERDETTO_FATTIBILITA: IN PARTE. Sì come strumento di ricerca per classificare SHD, LVEF ≤ 45%, disfunzione VD e stenosi aortica con la CNN. No come strumento per scegliere sottogruppi «facili», né per stimare la LVEF come numero preciso, né per una decisione clinica senza validazione esterna e ricalibrazione.
 - SHD non coincide con lo scompenso cardiaco: è un'etichetta dell'ecocardiogramma.
 
+### SPIEGAZIONE
+    Il risultato risponde alla tua domanda iniziale in due modi. La risposta è sì per la predizione generale con il tracciato grezzo, no per i gruppi di pazienti “facili”.
+
+    Cosa vogliono dire le sigle
+    - ECG a 12 derivazioni: il tracciato elettrico del cuore, registrato da 12 “punti di vista” (le derivazioni). Il dataset ne ha 10 secondi per paziente.
+    - SHD (cardiopatia strutturale moderata o grave): un’etichetta che viene dall’ecocardiogramma, non dall’ECG. Vale 1 se l’eco mostra almeno una di 11 anomalie di grado almeno moderato (stenosi aortica, rigurgiti valvolari, ipertrofia, funzione ridotta...). Non è scompenso cardiaco.
+    - LVEF ≤ 45%: la frazione di eiezione è la percentuale di sangue che il ventricolo sinistro spinge fuori a ogni battito, e sotto il 45% il cuore pompa poco.
+    - Disfunzione del VD: il ventricolo destro, quello che manda il sangue ai polmoni, pompa meno del normale.
+    - Stenosi aortica: la valvola aortica è ristretta e fa fatica a far passare il sangue.
+    - CNN: una rete neurale che legge direttamente il segnale grezzo, 2500 punti per ognuna delle 12 derivazioni. Le “7 misure tabulari” (età, sesso, frequenza, PR, QRS, QTc...) sono invece numeri già riassunti dall’apparecchio.
+    - AUROC: dato un paziente malato e uno sano scelti a caso, è la probabilità che il modello dia il punteggio più alto al malato. 0.5 è il lancio di una moneta e 1.0 è perfetto. 0.82 vuol dire che in 82 coppie su 100 il modello ordina bene.
+    - [0.813-0.836]: l’intervallo di confidenza al 95%. Il valore vero sta probabilmente lì dentro, e più è stretto, più il numero è affidabile. L’intervallo tiene conto del fatto che lo stesso paziente ha più ECG.
+    - Popolazione principale («clean»): le sole righe in cui la LVEF è stata misurata, 4827 nel test. Le altre 615 righe hanno tutte le 12 etichette a zero, il che è anomalo, quindi sono riportate a parte come controllo.
+    - Candidati congelati e confermati: prima di aprire il test abbiamo scelto 5 modelli, li abbiamo “sigillati” con un’impronta (così non si possono modificare dopo) e abbiamo scritto il criterio di successo: AUROC ≥ 0.80 e limite inferiore dell’intervallo ≥ 0.75. Tutti e 5 lo hanno superato.
+    
+    Cosa vuol dire, rispetto agli obiettivi
+    - Le tue domande erano: (1) si può prevedere SHD, le singole condizioni e la LVEF dall’ECG? (2) ci sono gruppi di pazienti o di misure per cui la predizione funziona meglio? (3) il QRS cambia il legame con la LVEF?
+
+        -> Sì, ma serve il tracciato intero, non le 7 misure.
+            Con le 7 misure SHD stava a 0.71–0.76, una predizione moderata. Con la CNN sale a 0.82, circa +0.08–0.10.
+            Per LVEF ≤ 45% si passa da 0.79 a 0.90.
+            Il segnale c’è, ma sta nella forma dell’onda, non nei numeri riassuntivi.
+        -> Sì per quattro obiettivi, no per i “sottogruppi facili”.
+            Funzionano SHD, LVEF ≤ 45%, disfunzione del VD e stenosi aortica.
+            Nessun gruppo di pazienti, né cluster, né regola semplice, risulta in modo credibile più prevedibile degli altri. Questo è un risultato negativo solido: è su questo che hai chiesto chiarimenti nella tua prima richiesta.
+            Sul “sottoinsieme di feature” c’è una buona notizia: 3 derivazioni su 12 bastano per SHD, con una perdita di appena 0.006 (0.818 contro 0.824).
+        -> Il QRS non modifica la relazione sopra la CNN. La differenza è +0.0001, cioè nulla. Attenzione però: la CNN legge già il QRS nel tracciato, quindi non poteva mostrarne un effetto separato. Per le sole misure tabulari l’esito era rimasto inconclusivo.
+    
+    Cosa NON vuol dire
+    - Non è uno strumento diagnostico. Per SHD, con la specificità al 90% (pochi falsi allarmi), il modello trova solo il 54% dei malati. Se si vuole trovarne il 90%, i falsi allarmi sono il 55% dei sani. Per LVEF ≤ 45% va meglio: con sensibilità al 90% il valore predittivo negativo è 0.944, cioè chi risulta negativo ha il 94% di probabilità di non avere la LVEF bassa.
+    - È un buon ordinamento, non una stima di rischio. Le probabilità grezze sul test sono meno affidabili che in cross-validation: l’errore di calibrazione è 0.056 contro 0.031. Vanno ricalibrate prima di mostrarle come “rischio del X%”.
+    - Non vale per tutti i pazienti. Il campione ha un solo centro e include solo persone che hanno già fatto un’eco entro un anno, con prevalenza di SHD del 43–57% (in una popolazione generale sarebbe molto più bassa). Mancano validazione esterna e dati di screening.
+    - Il test non è più indipendente come la prima volta. È stato letto due volte, e chi ha progettato la pipeline 2 conosceva già i numeri della prima lettura. La conferma resta valida, ma va detto.
+    - Per la stenosi aortica la fiducia è più bassa: i casi positivi sono solo 286, e in cross-validation il modello tabulare non era peggiore della CNN.
+    - Non c’è un confronto tabulare per disfunzione del VD e stenosi aortica sul test, quindi per queste due condizioni non possiamo dire quanto la CNN migliori.
+
 ## A. Qual era l'obiettivo degli esperimenti
 L'ecocardiogramma (eco) è l'esame che mostra il cuore, ma costa tempo e personale. L'ECG è rapido ed economico. Se dall'ECG si potesse capire chi ha probabilmente una cardiopatia strutturale, si potrebbe decidere meglio a chi fare l'eco. Il dataset è EchoNext (PhysioNet 1.1.1): ECG a 12 derivazioni con le etichette ricavate dall'eco.
 
