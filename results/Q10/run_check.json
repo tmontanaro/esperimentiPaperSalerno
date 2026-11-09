@@ -1,0 +1,696 @@
+{
+ "quick": {
+  "celle_codice": 26,
+  "ok": 26,
+  "fallite": 0,
+  "sec": 11.5,
+  "dettaglio": [
+   {
+    "cella": 0,
+    "ok": true,
+    "sec": 0.6,
+    "righe_output": 1,
+    "errore": null
+   },
+   {
+    "cella": 1,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 26,
+    "errore": null
+   },
+   {
+    "cella": 2,
+    "ok": true,
+    "sec": 1.8,
+    "righe_output": 15,
+    "errore": null
+   },
+   {
+    "cella": 3,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 3,
+    "errore": null
+   },
+   {
+    "cella": 4,
+    "ok": true,
+    "sec": 3.3,
+    "righe_output": 13,
+    "errore": null
+   },
+   {
+    "cella": 5,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 3,
+    "errore": null
+   },
+   {
+    "cella": 6,
+    "ok": true,
+    "sec": 0.8,
+    "righe_output": 8,
+    "errore": null
+   },
+   {
+    "cella": 7,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 2,
+    "errore": null
+   },
+   {
+    "cella": 8,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 1,
+    "errore": null
+   },
+   {
+    "cella": 9,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 2,
+    "errore": null
+   },
+   {
+    "cella": 10,
+    "ok": true,
+    "sec": 3.2,
+    "righe_output": 16,
+    "errore": null
+   },
+   {
+    "cella": 11,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 1,
+    "errore": null
+   },
+   {
+    "cella": 12,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 2,
+    "errore": null
+   },
+   {
+    "cella": 13,
+    "ok": true,
+    "sec": 0.3,
+    "righe_output": 3,
+    "errore": null
+   },
+   {
+    "cella": 14,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 2,
+    "errore": null
+   },
+   {
+    "cella": 15,
+    "ok": true,
+    "sec": 0.2,
+    "righe_output": 7,
+    "errore": null
+   },
+   {
+    "cella": 16,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 1,
+    "errore": null
+   },
+   {
+    "cella": 17,
+    "ok": true,
+    "sec": 1.2,
+    "righe_output": 5,
+    "errore": null
+   },
+   {
+    "cella": 18,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 9,
+    "errore": null
+   },
+   {
+    "cella": 19,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 2,
+    "errore": null
+   },
+   {
+    "cella": 20,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 2,
+    "errore": null
+   },
+   {
+    "cella": 21,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 0,
+    "errore": null
+   },
+   {
+    "cella": 22,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 1,
+    "errore": null
+   },
+   {
+    "cella": 23,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 0,
+    "errore": null
+   },
+   {
+    "cella": 24,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 7,
+    "errore": null
+   },
+   {
+    "cella": 25,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 5,
+    "errore": null
+   }
+  ],
+  "metodo": "esecuzione in-process delle celle (nbclient non installato)",
+  "confronto_numeri": [
+   [
+    "Q0 R2 aVF (c5)",
+    0.996,
+    0.9964
+   ],
+   [
+    "Q1 tabulare SHD clean (solo QUICK=False)",
+    0.712,
+    0.6839
+   ],
+   [
+    "Q8 C1 calo CV-test",
+    -0.009,
+    -0.009
+   ]
+  ]
+ },
+ "quick_heavy": {
+  "celle_codice": 26,
+  "ok": 26,
+  "fallite": 0,
+  "sec": 50.5,
+  "dettaglio": [
+   {
+    "cella": 0,
+    "ok": true,
+    "sec": 0.6,
+    "righe_output": 1,
+    "errore": null
+   },
+   {
+    "cella": 1,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 26,
+    "errore": null
+   },
+   {
+    "cella": 2,
+    "ok": true,
+    "sec": 1.8,
+    "righe_output": 15,
+    "errore": null
+   },
+   {
+    "cella": 3,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 3,
+    "errore": null
+   },
+   {
+    "cella": 4,
+    "ok": true,
+    "sec": 3.2,
+    "righe_output": 13,
+    "errore": null
+   },
+   {
+    "cella": 5,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 3,
+    "errore": null
+   },
+   {
+    "cella": 6,
+    "ok": true,
+    "sec": 0.8,
+    "righe_output": 8,
+    "errore": null
+   },
+   {
+    "cella": 7,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 2,
+    "errore": null
+   },
+   {
+    "cella": 8,
+    "ok": true,
+    "sec": 6.3,
+    "righe_output": 6,
+    "errore": null
+   },
+   {
+    "cella": 9,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 2,
+    "errore": null
+   },
+   {
+    "cella": 10,
+    "ok": true,
+    "sec": 3.2,
+    "righe_output": 16,
+    "errore": null
+   },
+   {
+    "cella": 11,
+    "ok": true,
+    "sec": 5.3,
+    "righe_output": 1,
+    "errore": null
+   },
+   {
+    "cella": 12,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 2,
+    "errore": null
+   },
+   {
+    "cella": 13,
+    "ok": true,
+    "sec": 0.3,
+    "righe_output": 3,
+    "errore": null
+   },
+   {
+    "cella": 14,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 2,
+    "errore": null
+   },
+   {
+    "cella": 15,
+    "ok": true,
+    "sec": 0.1,
+    "righe_output": 7,
+    "errore": null
+   },
+   {
+    "cella": 16,
+    "ok": true,
+    "sec": 3.6,
+    "righe_output": 7,
+    "errore": null
+   },
+   {
+    "cella": 17,
+    "ok": true,
+    "sec": 3.0,
+    "righe_output": 18,
+    "errore": null
+   },
+   {
+    "cella": 18,
+    "ok": true,
+    "sec": 2.3,
+    "righe_output": 18,
+    "errore": null
+   },
+   {
+    "cella": 19,
+    "ok": true,
+    "sec": 1.1,
+    "righe_output": 9,
+    "errore": null
+   },
+   {
+    "cella": 20,
+    "ok": true,
+    "sec": 2.5,
+    "righe_output": 18,
+    "errore": null
+   },
+   {
+    "cella": 21,
+    "ok": true,
+    "sec": 12.1,
+    "righe_output": 8,
+    "errore": null
+   },
+   {
+    "cella": 22,
+    "ok": true,
+    "sec": 0.7,
+    "righe_output": 13,
+    "errore": null
+   },
+   {
+    "cella": 23,
+    "ok": true,
+    "sec": 3.6,
+    "righe_output": 23,
+    "errore": null
+   },
+   {
+    "cella": 24,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 7,
+    "errore": null
+   },
+   {
+    "cella": 25,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 16,
+    "errore": null
+   }
+  ],
+  "metodo": "esecuzione in-process delle celle (nbclient non installato)",
+  "confronto_numeri": [
+   [
+    "Q0 N ECG pool dev (solo QUICK=False)",
+    77101,
+    2983.0
+   ],
+   [
+    "Q0 pazienti pool dev",
+    30844,
+    1500.0
+   ],
+   [
+    "Q0 frazione clean",
+    0.91,
+    0.9041
+   ],
+   [
+    "Q0 R2 aVF (c5)",
+    0.996,
+    0.9964
+   ],
+   [
+    "Q1 tabulare SHD clean (solo QUICK=False)",
+    0.712,
+    0.6839
+   ],
+   [
+    "Q1 CNN SHD clean (QUICK: solo confronto di plausibilit\u00e0)",
+    0.815,
+    0.6822
+   ],
+   [
+    "Q1 CNN LVEF<=45% clean",
+    0.869,
+    0.6927
+   ],
+   [
+    "Q1 differenza CNN-tabulare SHD",
+    0.103,
+    -0.0017
+   ],
+   [
+    "Q2 \u0394 SHD con I_II_V1",
+    -0.006,
+    -0.0099
+   ],
+   [
+    "Q3 \u0394AUROC QRS",
+    0.0001,
+    0.0124
+   ],
+   [
+    "Q3 \u0394R\u00b2 QRS",
+    0.0004,
+    0.0065
+   ],
+   [
+    "Q4 cluster credibili",
+    0,
+    0.0
+   ],
+   [
+    "Q5 ECE SHD grezza",
+    0.031,
+    0.0473
+   ],
+   [
+    "Q8 C1 calo CV-test",
+    -0.009,
+    -0.009
+   ]
+  ]
+ },
+ "full": {
+  "celle_codice": 26,
+  "ok": 26,
+  "fallite": 0,
+  "sec": 48.1,
+  "dettaglio": [
+   {
+    "cella": 0,
+    "ok": true,
+    "sec": 0.6,
+    "righe_output": 1,
+    "errore": null
+   },
+   {
+    "cella": 1,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 26,
+    "errore": null
+   },
+   {
+    "cella": 2,
+    "ok": true,
+    "sec": 17.8,
+    "righe_output": 19,
+    "errore": null
+   },
+   {
+    "cella": 3,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 3,
+    "errore": null
+   },
+   {
+    "cella": 4,
+    "ok": true,
+    "sec": 8.3,
+    "righe_output": 13,
+    "errore": null
+   },
+   {
+    "cella": 5,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 3,
+    "errore": null
+   },
+   {
+    "cella": 6,
+    "ok": true,
+    "sec": 1.7,
+    "righe_output": 8,
+    "errore": null
+   },
+   {
+    "cella": 7,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 2,
+    "errore": null
+   },
+   {
+    "cella": 8,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 1,
+    "errore": null
+   },
+   {
+    "cella": 9,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 2,
+    "errore": null
+   },
+   {
+    "cella": 10,
+    "ok": true,
+    "sec": 7.9,
+    "righe_output": 16,
+    "errore": null
+   },
+   {
+    "cella": 11,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 1,
+    "errore": null
+   },
+   {
+    "cella": 12,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 2,
+    "errore": null
+   },
+   {
+    "cella": 13,
+    "ok": true,
+    "sec": 0.9,
+    "righe_output": 3,
+    "errore": null
+   },
+   {
+    "cella": 14,
+    "ok": true,
+    "sec": 0.1,
+    "righe_output": 2,
+    "errore": null
+   },
+   {
+    "cella": 15,
+    "ok": true,
+    "sec": 0.3,
+    "righe_output": 7,
+    "errore": null
+   },
+   {
+    "cella": 16,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 1,
+    "errore": null
+   },
+   {
+    "cella": 17,
+    "ok": true,
+    "sec": 10.5,
+    "righe_output": 5,
+    "errore": null
+   },
+   {
+    "cella": 18,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 9,
+    "errore": null
+   },
+   {
+    "cella": 19,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 2,
+    "errore": null
+   },
+   {
+    "cella": 20,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 2,
+    "errore": null
+   },
+   {
+    "cella": 21,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 0,
+    "errore": null
+   },
+   {
+    "cella": 22,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 1,
+    "errore": null
+   },
+   {
+    "cella": 23,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 0,
+    "errore": null
+   },
+   {
+    "cella": 24,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 7,
+    "errore": null
+   },
+   {
+    "cella": 25,
+    "ok": true,
+    "sec": 0.0,
+    "righe_output": 8,
+    "errore": null
+   }
+  ],
+  "metodo": "esecuzione in-process delle celle (nbclient non installato)",
+  "confronto_numeri": [
+   [
+    "Q0 N ECG pool dev (solo QUICK=False)",
+    77101,
+    77101.0
+   ],
+   [
+    "Q0 pazienti pool dev",
+    30844,
+    30844.0
+   ],
+   [
+    "Q0 frazione clean",
+    0.91,
+    0.9096
+   ],
+   [
+    "Q0 R2 aVF (c5)",
+    0.996,
+    0.996
+   ],
+   [
+    "Q1 tabulare SHD clean (solo QUICK=False)",
+    0.712,
+    0.7121
+   ],
+   [
+    "Q8 C1 calo CV-test",
+    -0.009,
+    -0.009
+   ]
+  ]
+ }
+}

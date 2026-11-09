@@ -241,14 +241,15 @@
       "gate": false,
       "priority": 0,
       "goal": "Notebook complessivo che integra quello della pipeline 1 e aggiunge i capitoli della pipeline 2.",
-      "status": "pending",
-      "attempts": 0,
-      "started": null,
-      "finished": null,
-      "summary": null,
+      "status": "done",
+      "attempts": 1,
+      "started": "2026-11-09 17:17:32",
+      "finished": "2026-11-09 17:27:28",
+      "summary": "STATUS OK",
       "kind": "planned",
       "approved": true,
-      "report": "reports/Q10_notebook2.md"
+      "report": "reports/Q10_notebook2.md",
+      "gate_pending": false
     }
   ],
   "followups_used": 0,

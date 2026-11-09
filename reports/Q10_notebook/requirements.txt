@@ -1,0 +1,9 @@
+numpy
+pandas
+scipy
+scikit-learn
+# solo per RUN_HEAVY=True (CNN, occlusione):
+torch
+# ambiente per eseguire il notebook (non importati dal codice):
+jupyterlab
+ipykernel
