@@ -10,3 +10,6 @@
 | 2026-11-06 20:33:31 | decision | Q6 | Preregistrazione scritta: 5 candidati (SHD, LVEF<=45, RV, stenosi aortica, SHD con 3 derivazioni); criteri conferma IC inf>=0.75 e calo<=0.05 |
 | 2026-11-06 20:45:03 | decision | Q6 | congelati 5 candidati per il secondo test (impronte sha256 registrate) |
 | 2026-11-06 20:52:13 | decision | Q7 | VERDETTO PASS: 216 AUROC riprodotte (diff max 0.000), 0 pazienti condivisi tra fold, sha256 30/30, test chiuso; 5/5 candidati ammessi; rischi: popolazione criterio non scritta (usare clean), rif. CV C5 a seed singolo |
+| 2026-11-09 16:56:00 | decision | Q8 | approvazione umana per l'esecuzione |
+| 2026-11-09 17:08:14 | decision | Q8 | secondo test usato una volta su 5 candidati congelati |
+| 2026-11-09 17:15:09 | issue | Q9 | fase interrotta: riparte dai file parziali in results/ e dal file .progress.md |

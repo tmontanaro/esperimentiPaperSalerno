@@ -200,14 +200,15 @@
       "priority": 0,
       "requires_approval": true,
       "goal": "Secondo test, pre-specificato, UNA SOLA VOLTA, solo sui candidati congelati; interpretazione onesta.",
-      "status": "pending",
-      "attempts": 0,
-      "started": null,
-      "finished": null,
-      "summary": null,
+      "status": "done",
+      "attempts": 1,
+      "started": "2026-11-09 16:56:00",
+      "finished": "2026-11-09 17:10:06",
+      "summary": "STATUS OK: 5/5 candidati confermati (clean: C1 0.824, C2 0.897, C3 0.889, C4 0.832, C5 0.818); seconda lettura del test",
       "kind": "planned",
-      "approved": false,
-      "report": "reports/Q8_final-test2.md"
+      "approved": true,
+      "report": "reports/Q8_final-test2.md",
+      "gate_pending": false
     },
     {
       "id": "Q9",
@@ -219,14 +220,16 @@
       "gate": false,
       "priority": 0,
       "goal": "Report complessivo in parole povere: obiettivo, prove fatte (pipeline 1 e 2), risultati, cosa è fattibile e cosa no.",
-      "status": "pending",
-      "attempts": 0,
-      "started": null,
-      "finished": null,
-      "summary": null,
+      "status": "done",
+      "attempts": 2,
+      "started": "2026-11-09 17:15:16",
+      "finished": "2026-11-09 17:17:32",
+      "summary": "STATUS OK",
       "kind": "planned",
       "approved": true,
-      "report": "reports/Q9_synthesis2.md"
+      "report": "reports/Q9_synthesis2.md",
+      "interrupted": "2026-11-09 17:15:09",
+      "gate_pending": false
     },
     {
       "id": "Q10",
@@ -251,5 +254,5 @@
   "followups_used": 0,
   "review_rounds": 0,
   "frozen": true,
-  "test_used": false
+  "test_used": true
 }

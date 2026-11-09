@@ -1,0 +1,163 @@
+{
+  "n_test_rows": 5442,
+  "second_look": true,
+  "candidates": [
+    {
+      "name": "C1_shd_all",
+      "dir": "results/Q6/candidates/C1_shd_all",
+      "target": "shd_moderate_or_greater_flag",
+      "val_metrics": {
+        "auroc": 0.815,
+        "note": "AUROC fuori-fold in CV su train+validation (non validation singolo)"
+      },
+      "test_in_scope": {
+        "auroc": 0.8370377571728906,
+        "lo": 0.8271138590504425,
+        "hi": 0.8462794672541853,
+        "n": 5442,
+        "n_pos": 2318,
+        "auprc": 0.8131475436148237,
+        "brier": 0.16313690720847882,
+        "ece": 0.0555522957247179
+      },
+      "test_lvef_known": {
+        "auroc": 0.8243835565561908,
+        "lo": 0.8128629592551555,
+        "hi": 0.8359070526121203,
+        "n": 4827,
+        "n_pos": 2318
+      },
+      "comparator": {
+        "dir": "results/P1/candidates/global_best",
+        "auroc": 0.762079171633456,
+        "lo": 0.7495945917913605,
+        "hi": 0.774075990899715,
+        "diff": 0.07495858553943469,
+        "diff_lo": 0.06321300600542343,
+        "diff_hi": 0.08616715109077461
+      }
+    },
+    {
+      "name": "C2_lvef45_all",
+      "dir": "results/Q6/candidates/C2_lvef45_all",
+      "target": "lvef_lte_45_flag",
+      "val_metrics": {
+        "auroc": 0.869,
+        "note": "AUROC fuori-fold in CV su train+validation (non validation singolo)"
+      },
+      "test_in_scope": {
+        "auroc": 0.9050494691119692,
+        "lo": 0.8933983733969763,
+        "hi": 0.9153306211852774,
+        "n": 5442,
+        "n_pos": 962,
+        "auprc": 0.7506065305091136,
+        "brier": 0.08053087573220935,
+        "ece": 0.024872602400233385
+      },
+      "test_lvef_known": {
+        "auroc": 0.897366418064995,
+        "lo": 0.8860089605960304,
+        "hi": 0.9077320021488574,
+        "n": 4827,
+        "n_pos": 962
+      },
+      "comparator": {
+        "dir": "results/P3/candidates/lvef_lte45_global",
+        "auroc": 0.7926852075289574,
+        "lo": 0.7763720384480965,
+        "hi": 0.8086140473076883,
+        "diff": 0.11236426158301172,
+        "diff_lo": 0.09854120766021476,
+        "diff_hi": 0.12716271398282053
+      }
+    },
+    {
+      "name": "C3_rv_all",
+      "dir": "results/Q6/candidates/C3_rv_all",
+      "target": "rv_systolic_dysfunction_moderate_or_greater_flag",
+      "val_metrics": {
+        "auroc": 0.844,
+        "note": "AUROC fuori-fold in CV su train+validation (non validation singolo)"
+      },
+      "test_in_scope": {
+        "auroc": 0.8993764720471987,
+        "lo": 0.8847420687281983,
+        "hi": 0.9141135003522181,
+        "n": 5442,
+        "n_pos": 419,
+        "auprc": 0.4987638302113963,
+        "brier": 0.05102724492372745,
+        "ece": 0.01742545895304915
+      },
+      "test_lvef_known": {
+        "auroc": 0.8892537542935604,
+        "lo": 0.8729287715350501,
+        "hi": 0.9038347025819474,
+        "n": 4827,
+        "n_pos": 419
+      }
+    },
+    {
+      "name": "C4_as_all",
+      "dir": "results/Q6/candidates/C4_as_all",
+      "target": "aortic_stenosis_moderate_or_greater_flag",
+      "val_metrics": {
+        "auroc": 0.811,
+        "note": "AUROC fuori-fold in CV su train+validation (non validation singolo)"
+      },
+      "test_in_scope": {
+        "auroc": 0.8411742446847179,
+        "lo": 0.8168266624818546,
+        "hi": 0.8634089628346804,
+        "n": 5442,
+        "n_pos": 286,
+        "auprc": 0.2663687832231642,
+        "brier": 0.043612948208746186,
+        "ece": 0.007618099515686318
+      },
+      "test_lvef_known": {
+        "auroc": 0.8322055614502212,
+        "lo": 0.811102654822237,
+        "hi": 0.8569485169978038,
+        "n": 4827,
+        "n_pos": 286
+      }
+    },
+    {
+      "name": "C5_shd_I_II_V1",
+      "dir": "results/Q6/candidates/C5_shd_I_II_V1",
+      "target": "shd_moderate_or_greater_flag",
+      "val_metrics": {
+        "auroc": 0.802,
+        "note": "AUROC fuori-fold in CV su train+validation (non validation singolo)"
+      },
+      "test_in_scope": {
+        "auroc": 0.8302635445585901,
+        "lo": 0.8198525538668905,
+        "hi": 0.8400946784806022,
+        "n": 5442,
+        "n_pos": 2318,
+        "auprc": 0.805984307774942,
+        "brier": 0.1668238564884462,
+        "ece": 0.06000051625964232
+      },
+      "test_lvef_known": {
+        "auroc": 0.8181516342719273,
+        "lo": 0.8081275989299944,
+        "hi": 0.8289834013376334,
+        "n": 4827,
+        "n_pos": 2318
+      },
+      "comparator": {
+        "dir": "results/P1/candidates/global_best",
+        "auroc": 0.762079171633456,
+        "lo": 0.7495945917913605,
+        "hi": 0.774075990899715,
+        "diff": 0.06818437292513413,
+        "diff_lo": 0.056934206566606735,
+        "diff_hi": 0.08086537683389249
+      }
+    }
+  ]
+}
